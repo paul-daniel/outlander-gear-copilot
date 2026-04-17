@@ -1,0 +1,181 @@
+<!-- ===================== HERO ===================== -->
+<section class="relative overflow-hidden mb-16">
+  <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1200')] bg-cover bg-center"></div>
+  <div class="absolute inset-0 bg-outlander-950/50"></div>
+  <div class="relative z-10 px-8 py-24 sm:px-16 sm:py-32 max-w-7xl mx-auto">
+    <p class="text-[11px] uppercase tracking-[0.25em] text-white/70 mb-6">Collection 2026</p>
+    <h1 class="text-4xl sm:text-6xl font-light text-white leading-[1.1] mb-6 max-w-2xl">
+      L'aventure commence<br>avec le bon équipement.
+    </h1>
+    <a href="#products" class="inline-block text-[13px] uppercase tracking-[0.15em] text-white border-b border-white/50 pb-1 hover:border-white transition-colors">
+      Découvrir
+    </a>
+  </div>
+</section>
+
+<div class="max-w-7xl mx-auto px-6 sm:px-10">
+
+  <!-- ===================== FEATURED ===================== -->
+  <section *ngIf="featuredProducts.length > 0" class="mb-20">
+    <h2 class="text-[11px] uppercase tracking-[0.25em] text-gray-400 mb-8">Sélection</h2>
+    <div class="flex gap-5 overflow-x-auto pb-4 -mx-2 px-2 snap-x snap-mandatory scrollbar-hide">
+      <a
+        *ngFor="let p of featuredProducts"
+        [routerLink]="['/products', p.slug]"
+        class="snap-start flex-shrink-0 w-72 group"
+      >
+        <div class="relative overflow-hidden bg-gray-100 aspect-[3/4] mb-4">
+          <img [src]="p.image_url" [alt]="p.name" class="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-500" />
+          <span *ngIf="p.compare_price" class="absolute top-4 left-4 text-[11px] uppercase tracking-wider text-red-600 bg-white px-3 py-1">
+            -{{ getDiscount(p) }}%
+          </span>
+        </div>
+        <p class="text-[11px] uppercase tracking-[0.15em] text-gray-400 mb-1">{{ p.category_name }}</p>
+        <p class="text-[14px] text-gray-900 mb-1">{{ p.name }}</p>
+        <div class="flex items-center gap-2">
+          <span class="text-[14px] font-medium text-gray-900">{{ p.price | number:'1.2-2' }} €</span>
+          <span *ngIf="p.compare_price" class="text-[13px] text-gray-400 line-through">{{ p.compare_price | number:'1.2-2' }} €</span>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- ===================== CATEGORIES ===================== -->
+  <section class="mb-10 border-b border-gray-200 pb-6">
+    <div class="flex flex-wrap items-center gap-6">
+      <button
+        (click)="onCategoryChange('')"
+        class="text-[12px] uppercase tracking-[0.15em] pb-1 transition-colors"
+        [ngClass]="selectedCategory === '' ? 'text-gray-900 border-b border-gray-900' : 'text-gray-400 hover:text-gray-600'"
+      >
+        Tous
+      </button>
+      <button
+        *ngFor="let cat of categories"
+        (click)="onCategoryChange(cat.slug)"
+        class="text-[12px] uppercase tracking-[0.15em] pb-1 transition-colors"
+        [ngClass]="selectedCategory === cat.slug ? 'text-gray-900 border-b border-gray-900' : 'text-gray-400 hover:text-gray-600'"
+      >
+        {{ cat.name }}
+      </button>
+    </div>
+  </section>
+
+  <!-- ===================== SEARCH & SORT ===================== -->
+  <section id="products" class="flex flex-col sm:flex-row gap-4 mb-10 items-center">
+    <div class="relative flex-grow w-full sm:w-auto">
+      <svg class="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-300" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+      </svg>
+      <input
+        type="text"
+        [(ngModel)]="searchQuery"
+        (keyup.enter)="onSearch()"
+        placeholder="Rechercher…"
+        class="w-full pl-11 pr-4 py-3 border-b border-gray-200 focus:border-gray-900 focus:outline-none text-[13px] bg-transparent transition-colors"
+      />
+    </div>
+    <select
+      [(ngModel)]="sortBy"
+      (change)="onSortChange()"
+      class="px-4 py-3 border-b border-gray-200 bg-transparent text-[13px] text-gray-600 focus:outline-none focus:border-gray-900 transition-colors appearance-none cursor-pointer"
+    >
+      <option value="newest">Plus récents</option>
+      <option value="price_asc">Prix croissant</option>
+      <option value="price_desc">Prix décroissant</option>
+      <option value="name">Nom A-Z</option>
+      <option value="rating">Meilleures notes</option>
+    </select>
+    <span class="text-[12px] text-gray-400 tracking-wide">{{ pagination.total }} produit{{ pagination.total > 1 ? 's' : '' }}</span>
+  </section>
+
+  <!-- ===================== LOADER ===================== -->
+  <div *ngIf="loading" class="flex justify-center items-center h-64">
+    <div class="animate-spin rounded-full h-8 w-8 border-t border-b border-gray-900"></div>
+  </div>
+
+  <!-- ===================== ERROR ===================== -->
+  <div *ngIf="error" class="text-center text-red-600 py-10 text-[13px]">{{ error }}</div>
+
+  <!-- ===================== PRODUCT GRID ===================== -->
+  <div *ngIf="!loading && !error" class="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-5 gap-y-12">
+    <div
+      *ngFor="let product of products"
+      class="flex flex-col group"
+    >
+      <!-- Image -->
+      <a [routerLink]="['/products', product.slug]" class="relative overflow-hidden bg-gray-100 aspect-[3/4] mb-4">
+        <img
+          [src]="product.image_url"
+          [alt]="product.name"
+          class="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-500"
+        />
+        <span *ngIf="product.compare_price" class="absolute top-3 left-3 text-[11px] uppercase tracking-wider text-red-600 bg-white px-3 py-1">
+          -{{ getDiscount(product) }}%
+        </span>
+        <!-- Quick add overlay -->
+        <button
+          (click)="addToCart(product); $event.preventDefault()"
+          [disabled]="product.stock_quantity === 0"
+          class="absolute bottom-0 left-0 right-0 bg-white/95 text-center py-3 text-[12px] uppercase tracking-[0.12em] translate-y-full group-hover:translate-y-0 transition-transform duration-300"
+          [ngClass]="product.stock_quantity > 0
+            ? 'text-gray-900 hover:bg-gray-900 hover:text-white'
+            : 'text-gray-400 cursor-not-allowed'"
+        >
+          {{ product.stock_quantity > 0 ? 'Ajouter au panier' : 'Rupture de stock' }}
+        </button>
+      </a>
+
+      <!-- Content -->
+      <div class="flex flex-col">
+        <p class="text-[11px] uppercase tracking-[0.15em] text-gray-400 mb-1">{{ product.category_name }}</p>
+        <a [routerLink]="['/products', product.slug]" class="text-[14px] text-gray-900 mb-1 hover:underline line-clamp-1">
+          {{ product.name }}
+        </a>
+        <div class="flex items-center gap-2 mt-1">
+          <span class="text-[14px] font-medium text-gray-900">{{ product.price | number:'1.2-2' }} €</span>
+          <span *ngIf="product.compare_price" class="text-[13px] text-gray-400 line-through">{{ product.compare_price | number:'1.2-2' }} €</span>
+        </div>
+        <div *ngIf="product.stock_quantity > 0 && product.stock_quantity <= 10" class="mt-1">
+          <span class="text-[11px] text-amber-600">Plus que {{ product.stock_quantity }} en stock</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== EMPTY STATE ===================== -->
+  <div *ngIf="!loading && !error && products.length === 0" class="text-center py-24">
+    <p class="text-[15px] text-gray-900 mb-2">Aucun produit trouvé</p>
+    <p class="text-[13px] text-gray-400">Essayez de modifier vos filtres ou votre recherche.</p>
+  </div>
+
+  <!-- ===================== PAGINATION ===================== -->
+  <nav *ngIf="pagination.total_pages > 1" class="flex justify-center items-center gap-3 mt-16 mb-8">
+    <button
+      (click)="goToPage(pagination.page - 1)"
+      [disabled]="pagination.page === 1"
+      class="text-[12px] uppercase tracking-[0.1em] transition-colors px-3 py-2"
+      [ngClass]="pagination.page === 1 ? 'text-gray-300 cursor-not-allowed' : 'text-gray-600 hover:text-gray-900'"
+    >
+      Précédent
+    </button>
+    <ng-container *ngFor="let p of [].constructor(pagination.total_pages); let i = index">
+      <button
+        (click)="goToPage(i + 1)"
+        class="w-10 h-10 text-[13px] transition-colors"
+        [ngClass]="pagination.page === i + 1 ? 'text-gray-900 border-b-2 border-gray-900' : 'text-gray-400 hover:text-gray-600'"
+      >
+        {{ i + 1 }}
+      </button>
+    </ng-container>
+    <button
+      (click)="goToPage(pagination.page + 1)"
+      [disabled]="pagination.page === pagination.total_pages"
+      class="text-[12px] uppercase tracking-[0.1em] transition-colors px-3 py-2"
+      [ngClass]="pagination.page === pagination.total_pages ? 'text-gray-300 cursor-not-allowed' : 'text-gray-600 hover:text-gray-900'"
+    >
+      Suivant
+    </button>
+  </nav>
+
+</div>

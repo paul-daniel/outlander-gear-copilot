@@ -1,0 +1,106 @@
+<!-- Backdrop -->
+<div
+  *ngIf="isOpen"
+  (click)="close()"
+  class="fixed inset-0 bg-black/20 z-40 transition-opacity"
+></div>
+
+<!-- Slide panel -->
+<div
+  class="fixed top-0 right-0 z-50 h-full w-full sm:w-[420px] bg-white flex flex-col transition-transform duration-300 ease-out shadow-2xl"
+  [class.translate-x-0]="isOpen"
+  [class.translate-x-full]="!isOpen"
+>
+  <!-- Header -->
+  <div class="flex items-center justify-between px-5 py-3.5 border-b border-gray-200/80">
+    <div class="flex items-center gap-2.5">
+      <div class="w-7 h-7 rounded-full bg-outlander-700 flex items-center justify-center">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.455 2.456L21.75 6l-1.036.259a3.375 3.375 0 00-2.455 2.456z" />
+        </svg>
+      </div>
+      <span class="text-[14px] font-semibold text-gray-900">Copilote Outlander</span>
+    </div>
+    <button (click)="close()" class="w-8 h-8 flex items-center justify-center rounded-lg text-gray-400 hover:text-gray-600 hover:bg-gray-100 transition-colors">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+  </div>
+
+  <!-- Messages area -->
+  <div class="flex-1 overflow-y-auto">
+
+    <!-- Empty state -->
+    <div
+      *ngIf="messages.length === 0"
+      class="h-full flex flex-col items-center justify-center px-10 text-center"
+    >
+      <div class="w-12 h-12 rounded-full bg-outlander-700 flex items-center justify-center mb-5">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.455 2.456L21.75 6l-1.036.259a3.375 3.375 0 00-2.455 2.456z" />
+        </svg>
+      </div>
+      <p class="text-[15px] font-semibold text-gray-900 mb-1">Comment puis-je vous aider ?</p>
+      <p class="text-[13px] text-gray-500 leading-relaxed">
+        Posez-moi une question sur nos produits,<br>vos commandes ou la livraison.
+      </p>
+    </div>
+
+    <!-- Messages list -->
+    <div *ngFor="let msg of messages">
+      <!-- User message row -->
+      <div *ngIf="msg.role === 'user'" class="px-5 py-5">
+        <div class="flex gap-3">
+          <div class="w-7 h-7 rounded-full bg-gray-200 flex-shrink-0 flex items-center justify-center mt-0.5">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0" />
+            </svg>
+          </div>
+          <div class="flex-1 min-w-0">
+            <p class="text-[12px] font-semibold text-gray-900 mb-1">Vous</p>
+            <p class="text-[14px] text-gray-800 leading-relaxed whitespace-pre-wrap">{{ msg.content }}</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Assistant message row -->
+      <div *ngIf="msg.role === 'assistant'" class="px-5 py-5 bg-gray-50">
+        <div class="flex gap-3">
+          <div class="w-7 h-7 rounded-full bg-outlander-700 flex-shrink-0 flex items-center justify-center mt-0.5">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z" />
+            </svg>
+          </div>
+          <div class="flex-1 min-w-0">
+            <p class="text-[12px] font-semibold text-gray-900 mb-1">Copilote</p>
+            <p class="text-[14px] text-gray-700 leading-relaxed whitespace-pre-wrap">{{ msg.content }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Input area -->
+  <div class="p-4 border-t border-gray-200/80">
+    <div class="relative flex items-end bg-white border border-gray-300 rounded-xl shadow-sm focus-within:border-gray-400 focus-within:shadow-md transition-all">
+      <textarea
+        [(ngModel)]="userMessage"
+        (keyup.enter)="sendMessage()"
+        placeholder="Envoyer un message…"
+        rows="1"
+        class="flex-1 resize-none px-4 py-3 text-[14px] text-gray-800 placeholder-gray-400 bg-transparent focus:outline-none max-h-32 rounded-xl"
+      ></textarea>
+      <button
+        (click)="sendMessage()"
+        class="m-1.5 w-8 h-8 flex items-center justify-center rounded-lg transition-all duration-150"
+        [ngClass]="userMessage.trim() ? 'bg-outlander-700 text-white hover:bg-outlander-800' : 'bg-gray-100 text-gray-300 cursor-default'"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M3.478 2.405a.75.75 0 00-.926.94l2.432 7.905H13.5a.75.75 0 010 1.5H4.984l-2.432 7.905a.75.75 0 00.926.94 60.519 60.519 0 0018.445-8.986.75.75 0 000-1.218A60.517 60.517 0 003.478 2.405z" />
+        </svg>
+      </button>
+    </div>
+    <p class="text-[11px] text-gray-400 text-center mt-2">Le copilote peut faire des erreurs.</p>
+  </div>
+</div>
