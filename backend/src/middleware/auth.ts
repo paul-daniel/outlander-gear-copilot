@@ -1,6 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
 import jwt from 'jsonwebtoken';
 import { JwtPayload } from '../types';
+import { env } from '../config/env';
 
 declare global {
   namespace Express {
@@ -9,8 +10,6 @@ declare global {
     }
   }
 }
-
-const JWT_SECRET = process.env.JWT_SECRET || 'fallback-secret';
 
 export function authenticate(req: Request, res: Response, next: NextFunction): void {
   const header = req.headers.authorization;
@@ -23,7 +22,7 @@ export function authenticate(req: Request, res: Response, next: NextFunction): v
   const token = header.split(' ')[1];
 
   try {
-    const decoded = jwt.verify(token, JWT_SECRET) as JwtPayload;
+    const decoded = jwt.verify(token, env.jwtSecret) as JwtPayload;
     req.user = decoded;
     next();
   } catch {

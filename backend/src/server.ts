@@ -1,10 +1,9 @@
 import express from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
+import compression from 'compression';
 import rateLimit from 'express-rate-limit';
-import dotenv from 'dotenv';
-
-dotenv.config();
+import { env } from './config/env';
 
 import authRoutes from './routes/auth';
 import productRoutes from './routes/products';
@@ -13,14 +12,14 @@ import cartRoutes from './routes/cart';
 import orderRoutes from './routes/orders';
 import reviewRoutes from './routes/reviews';
 import { errorHandler, notFound } from './middleware/errorHandler';
+import pool from './config/database';
 
 const app = express();
-const PORT = process.env.PORT || 3000;
 
 // ===================== Security =====================
 app.use(helmet());
 app.use(cors({
-  origin: ['http://localhost:4200', 'http://localhost:4000'],
+  origin: env.corsOrigins,
   credentials: true,
 }));
 
@@ -31,7 +30,8 @@ const limiter = rateLimit({
 });
 app.use('/api/', limiter);
 
-// ===================== Body parsing =====================
+// ===================== Body parsing & compression =====================
+app.use(compression());
 app.use(express.json({ limit: '10kb' }));
 app.use(express.urlencoded({ extended: true }));
 
@@ -65,9 +65,26 @@ app.use(notFound);
 app.use(errorHandler);
 
 // ===================== Start =====================
-app.listen(PORT, () => {
-  console.log(`🚀 Outlander Gear Co. API v2.0 — http://localhost:${PORT}`);
+const server = app.listen(env.port, () => {
+  console.log(`🚀 Outlander Gear Co. API v2.0 — http://localhost:${env.port}`);
   console.log(`📦 Endpoints: /api/products, /api/categories, /api/auth, /api/cart, /api/orders, /api/reviews`);
+});
+
+// ===================== Graceful shutdown =====================
+function shutdown(signal: string) {
+  console.log(`\n⏹️  ${signal} received — shutting down gracefully`);
+  server.close(() => {
+    pool.end().then(() => {
+      console.log('✅ Database pool closed');
+      process.exit(0);
+    });
+  });
+}
+
+process.on('SIGTERM', () => shutdown('SIGTERM'));
+process.on('SIGINT', () => shutdown('SIGINT'));
+process.on('unhandledRejection', (reason) => {
+  console.error('❌ Unhandled rejection:', reason);
 });
 
 export default app;

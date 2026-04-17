@@ -18,6 +18,10 @@ export const cartItemSchema = z.object({
   quantity: z.number().int().min(1, 'Quantité minimum : 1'),
 });
 
+export const updateCartItemSchema = z.object({
+  quantity: z.number().int().min(1, 'Quantité minimum : 1'),
+});
+
 export const createOrderSchema = z.object({
   shipping_address: z.string().min(5, 'Adresse requise'),
   payment_method: z.string().optional(),
