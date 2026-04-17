@@ -1,62 +1,142 @@
-# Outlander Gear Co. — E-Commerce Outdoor
+# Outlander Gear Co. AI Product Data Copilot
 
-Application e-commerce complète pour la vente d'équipements de plein air.  
-**Stack** : PostgreSQL · Node.js/Express (TypeScript) · Angular 19 · TailwindCSS
+This repository supports the Outlander Gear Co. team scenario from the AI developer project.  
+Goal: build and deploy an AI Product Data Copilot that helps customers quickly access product details, pricing, and comparisons.
+
+Current stack in this repository:
+- PostgreSQL
+- Node.js and Express with TypeScript
+- Angular 19 and Tailwind CSS
+
+The web platform and APIs in this repo provide the business and product data foundation that the copilot will query and use.
 
 ---
 
-## Prérequis à installer
+## Project Introduction
+
+In this project, you step into the role of an AI developer to build a copilot tailored to a real business context.
+
+Selected team:
+- Outlander Gear Co. (Product and Retail)
+
+Mission for this team:
+- Build a Product Data Copilot that improves the shopping experience through instant access to product information, pricing, and product comparisons.
+
+---
+
+## Project Summary
+
+You will build, test, and deploy a copilot that retrieves relevant information from indexed data and returns accurate, real-time responses.
+
+High-level workflow:
+1. Create an AI Studio project and deploy a model to power the copilot.
+2. Upload and index relevant data for retrieval.
+3. Build a chat copilot flow with Azure AI Foundry Prompt Flow.
+4. Test with realistic questions to validate quality and usefulness.
+5. Evaluate with manual and automated assessments.
+6. Deploy for real usage by customers or internal users.
+
+---
+
+## Azure Architecture
+
+### Diagram
+
+Add the final infrastructure image at:
+- docs/azure-architecture-diagram.png
+
+When the file is added, it renders here:
+
+![Outlander Gear Copilot Azure Architecture](docs/azure-architecture-diagram.png)
+
+If the image is not available yet, keep the placeholder note in:
+- docs/architecture-diagram-placeholder.md
+
+### Architecture Explanation
+
+The diagram represents a Retrieval-Augmented Generation (RAG) and workflow architecture centered on Azure AI Foundry and Azure AI Search.
+
+1. Data ingestion for RAG
+- Product knowledge enters from multiple sources such as blob storage, Azure Cosmos DB, and Azure SQL Database.
+- Azure AI Search acts as the indexing and retrieval hub.
+- A text embedding model is used during indexing to vectorize content and enable semantic retrieval.
+
+2. Query-time retrieval path
+- At runtime, user queries are vectorized with the same embedding approach.
+- The vectorized query is sent to Azure AI Search.
+- Azure AI Search returns relevant chunks from the index to ground the response.
+
+3. Prompt Flow orchestration
+- Azure Prompt Flow orchestrates the full response pipeline.
+- It combines retrieved context from search with model reasoning from a conversational model.
+- It also supports evaluation through Azure AI Foundry evaluator components.
+
+4. Database call tool and guardrails
+- A dedicated database tool is available for controlled DB access.
+- Guardrails are applied to limit what the AI can query and how much it can return.
+- This protects reliability, performance, and data safety.
+
+5. Delivery to user interface
+- Prompt Flow exposes an API endpoint.
+- The frontend copilot UI (web app or app service endpoint) calls that API.
+- The end user interacts with a grounded, domain-specific assistant for product questions.
+
+---
+
+## Local Setup Prerequisites
 
 ### 1. Node.js (v18+)
 
-**macOS (avec Homebrew) :**
+macOS with Homebrew:
 ```bash
 brew install node
 ```
 
-**Sans Homebrew — installer Homebrew d'abord :**
+If Homebrew is not installed:
 ```bash
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 brew install node
 ```
 
-**Vérifier l'installation :**
+Verify:
 ```bash
-node --version    # doit afficher v18.x ou plus
-npm --version     # doit afficher 9.x ou plus
+node --version
+npm --version
 ```
 
 ---
 
 ### 2. PostgreSQL
 
-**macOS (avec Homebrew) :**
+macOS with Homebrew:
 ```bash
 brew install postgresql@16
 ```
 
-Après l'installation, Homebrew affiche un chemin. Ajouter PostgreSQL au PATH :
+Add PostgreSQL to PATH:
 ```bash
 echo 'export PATH="/opt/homebrew/opt/postgresql@16/bin:$PATH"' >> ~/.zshrc
 source ~/.zshrc
 ```
 
-**Démarrer le service PostgreSQL :**
+Start PostgreSQL:
 ```bash
 brew services start postgresql@16
 ```
 
-**Vérifier :**
+Verify:
 ```bash
-psql --version     # doit afficher psql (PostgreSQL) 16.x
-createdb --version # doit afficher createdb (PostgreSQL) 16.x
+psql --version
+createdb --version
 ```
 
-> **Alternative sans Homebrew :** Télécharger l'installateur depuis [postgresql.org/download/macosx](https://www.postgresql.org/download/macosx/) ou utiliser [Postgres.app](https://postgresapp.com/) (glisser-déposer, zéro config).
+Alternative without Homebrew:
+- https://www.postgresql.org/download/macosx/
+- https://postgresapp.com/
 
 ---
 
-### 3. Angular CLI (optionnel mais recommandé)
+### 3. Angular CLI (optional but recommended)
 
 ```bash
 npm install -g @angular/cli
@@ -64,211 +144,163 @@ npm install -g @angular/cli
 
 ---
 
-## Installation du projet
+## Project Installation and Run Steps
 
-### Étape 1 — Créer la base de données
+### Step 1: Create and seed the database
 
 ```bash
-# Ouvrir un terminal dans le dossier du projet
 cd website
 
-# Créer la base de données
 createdb outlander_gear
-
-# Exécuter le schéma (crée les tables)
 psql -d outlander_gear -f database/schema.sql
-
-# Insérer les données de test
 psql -d outlander_gear -f database/seed.sql
 ```
 
-> **Si `createdb` échoue avec "role does not exist"**, c'est que votre utilisateur macOS n'a pas de rôle PostgreSQL. Créer le rôle :
-> ```bash
-> psql postgres -c "CREATE ROLE $(whoami) WITH LOGIN SUPERUSER;"
-> ```
-> Puis relancer les commandes ci-dessus.
+If createdb fails with role does not exist:
+```bash
+psql postgres -c "CREATE ROLE $(whoami) WITH LOGIN SUPERUSER;"
+```
 
-**Vérifier que les données sont bien chargées :**
+Verify data load:
 ```bash
 psql -d outlander_gear -c "SELECT count(*) FROM products;"
-# Doit afficher 21
 ```
+
+Expected products count: 21
 
 ---
 
-### Étape 2 — Configurer et lancer le Backend
+### Step 2: Configure and run backend
 
 ```bash
 cd backend
-
-# Installer les dépendances
 npm install
 ```
 
-**Configurer le fichier `.env` :**  
-Ouvrir `backend/.env` et ajuster les identifiants PostgreSQL :
+Update backend/.env:
 
 ```env
 DB_HOST=localhost
 DB_PORT=5432
-DB_USER=votre_nom_utilisateur_mac    # résultat de : whoami
-DB_PASSWORD=                          # vide par défaut sur macOS avec Homebrew
+DB_USER=your_macos_username
+DB_PASSWORD=
 DB_NAME=outlander_gear
 PORT=3000
 JWT_SECRET=outlander-gear-dev-secret-change-me
 JWT_EXPIRES_IN=7d
 ```
 
-> **Astuce :** Sur macOS avec Homebrew/Postgres.app, le mot de passe est souvent vide et l'utilisateur est votre nom macOS. Tapez `whoami` dans le terminal pour le trouver.
-
-**Lancer le serveur :**
+Run backend:
 ```bash
 npm run dev
 ```
 
-Vous devriez voir :
-```
-🚀 Outlander Gear Co. API v2.0 — http://localhost:3000
-```
-
-**Tester l'API :**
+Test API quickly:
 ```bash
-# Dans un autre terminal
 curl http://localhost:3000/api/products | head -c 200
 ```
 
 ---
 
-### Étape 3 — Lancer le Frontend
+### Step 3: Run frontend
 
 ```bash
-# Ouvrir un nouveau terminal
 cd frontend
-
-# Installer les dépendances
 npm install
-
-# Lancer le serveur de développement Angular
 npx ng serve
 ```
 
-> La première compilation peut prendre 30-60 secondes.
-
-Ouvrir le navigateur à : **http://localhost:4200**
-
----
-
-## Comptes de test
-
-| Rôle     | Email                      | Mot de passe |
-|----------|----------------------------|--------------|
-| Admin    | admin@outlander-gear.co    | Admin1234!   |
-| Client   | marie.dupont@email.com     | Test1234!    |
+Open:
+- http://localhost:4200
 
 ---
 
-## Structure du projet
+## Test Accounts
 
-```
+| Role   | Email                    | Password   |
+|--------|--------------------------|------------|
+| Admin  | admin@outlander-gear.co  | Admin1234! |
+| Client | marie.dupont@email.com   | Test1234!  |
+
+---
+
+## Repository Structure
+
+```text
 website/
 ├── README.md
 ├── database/
-│   ├── schema.sql              ← 8 tables (products, users, orders, cart, reviews…)
-│   └── seed.sql                ← 21 produits, 7 catégories, 2 users, 5 avis
-│
-├── backend/                    ← API Node.js/Express en TypeScript
-│   ├── .env                    ← Configuration locale (à modifier)
+│   ├── schema.sql
+│   └── seed.sql
+├── backend/
 │   ├── package.json
 │   ├── tsconfig.json
 │   └── src/
-│       ├── server.ts           ← Point d'entrée (Express + middleware)
-│       ├── config/database.ts  ← Pool de connexion PostgreSQL
+│       ├── server.ts
+│       ├── config/database.ts
 │       ├── middleware/
-│       │   ├── auth.ts         ← JWT authenticate + adminOnly
-│       │   └── errorHandler.ts
 │       ├── routes/
-│       │   ├── auth.ts         ← POST /register, /login, GET /me
-│       │   ├── products.ts     ← GET list (filtres, tri, pagination) + /featured + /:slug
-│       │   ├── categories.ts   ← GET list + /:slug
-│       │   ├── cart.ts         ← GET/POST/PUT/DELETE (auth required)
-│       │   ├── orders.ts       ← GET/POST (transactionnel)
-│       │   └── reviews.ts     ← GET/POST par produit
-│       ├── types/index.ts      ← Interfaces TypeScript
-│       └── validators/index.ts ← Schémas Zod
-│
-└── frontend/                   ← Angular 19 + TailwindCSS
+│       ├── types/
+│       └── validators/
+└── frontend/
     ├── package.json
     ├── angular.json
-    ├── tailwind.config.js
-    └── src/
-        └── app/
-            ├── app.component.*         ← Shell (navbar, footer)
-            ├── app.config.ts           ← Providers + interceptor
-            ├── app.routes.ts           ← Routing
-            ├── interceptors/
-            │   └── auth.interceptor.ts ← Auto-inject JWT
-            ├── models/
-            │   └── product.model.ts    ← Toutes les interfaces
-            ├── services/
-            │   ├── product.service.ts  ← API produits/catégories
-            │   ├── cart.service.ts     ← Panier réactif
-            │   └── auth.service.ts     ← Login/register/logout
-            └── components/
-                ├── product-list/       ← Accueil : hero, featured, grille, filtres
-                ├── product-detail/     ← Fiche produit + avis + produits liés
-                ├── cart/               ← Page panier
-                ├── login/              ← Login/Inscription
-                └── chat-copilot/       ← Widget chat IA (prêt pour intégration)
+    └── src/app/
+        ├── components/
+        │   └── chat-copilot/
+        ├── services/
+        ├── models/
+        └── app.routes.ts
 ```
 
 ---
 
-## Endpoints API
+## API Endpoints
 
-| Méthode | Route                         | Auth ? | Description                          |
-|---------|-------------------------------|--------|--------------------------------------|
-| GET     | /api/products                 | Non    | Liste avec filtres, tri, pagination  |
-| GET     | /api/products/featured        | Non    | Produits mis en avant                |
-| GET     | /api/products/:slug           | Non    | Détail + avis + produits liés        |
-| GET     | /api/categories               | Non    | Toutes les catégories                |
-| GET     | /api/categories/:slug         | Non    | Catégorie + ses produits             |
-| POST    | /api/auth/register            | Non    | Créer un compte                     |
-| POST    | /api/auth/login               | Non    | Se connecter (retourne JWT)          |
-| GET     | /api/auth/me                  | Oui    | Profil utilisateur                   |
-| GET     | /api/cart                     | Oui    | Voir son panier                     |
-| POST    | /api/cart                     | Oui    | Ajouter un article                  |
-| PUT     | /api/cart/:productId          | Oui    | Modifier la quantité                |
-| DELETE  | /api/cart/:productId          | Oui    | Retirer un article                  |
-| DELETE  | /api/cart                     | Oui    | Vider le panier                     |
-| GET     | /api/orders                   | Oui    | Mes commandes                       |
-| POST    | /api/orders                   | Oui    | Passer commande (depuis le panier)  |
-| GET     | /api/orders/:id               | Oui    | Détail d'une commande               |
-| GET     | /api/reviews/product/:id      | Non    | Avis d'un produit                   |
-| POST    | /api/reviews/product/:id      | Oui    | Laisser un avis                     |
+| Method | Route                    | Auth | Description                         |
+|--------|--------------------------|------|-------------------------------------|
+| GET    | /api/products            | No   | Product list with filters and paging |
+| GET    | /api/products/featured   | No   | Featured products                   |
+| GET    | /api/products/:slug      | No   | Product details                     |
+| GET    | /api/categories          | No   | Categories list                     |
+| GET    | /api/categories/:slug    | No   | Category details                    |
+| POST   | /api/auth/register       | No   | Register user                       |
+| POST   | /api/auth/login          | No   | Login and receive JWT               |
+| GET    | /api/auth/me             | Yes  | Current user profile                |
+| GET    | /api/cart                | Yes  | Read cart                           |
+| POST   | /api/cart                | Yes  | Add cart item                       |
+| PUT    | /api/cart/:productId     | Yes  | Update cart item quantity           |
+| DELETE | /api/cart/:productId     | Yes  | Remove cart item                    |
+| DELETE | /api/cart                | Yes  | Clear cart                          |
+| GET    | /api/orders              | Yes  | List user orders                    |
+| POST   | /api/orders              | Yes  | Create order from cart              |
+| GET    | /api/orders/:id          | Yes  | Order details                       |
+| GET    | /api/reviews/product/:id | No   | Product reviews                     |
+| POST   | /api/reviews/product/:id | Yes  | Create review                       |
 
 ---
 
-## Dépannage
+## Troubleshooting
 
-### `command not found: psql`
-PostgreSQL n'est pas dans votre PATH. Voir la section "PostgreSQL" ci-dessus.
+If psql command is not found:
+- PostgreSQL is not in your PATH. Re-check the PostgreSQL prerequisite section.
 
-### `FATAL: role "xxx" does not exist`
+If FATAL role does not exist:
 ```bash
 psql postgres -c "CREATE ROLE $(whoami) WITH LOGIN SUPERUSER;"
 ```
 
-### `ECONNREFUSED` au démarrage du backend
-PostgreSQL n'est pas lancé :
+If backend starts with ECONNREFUSED:
+- PostgreSQL is likely not running.
 ```bash
 brew services start postgresql@16
 ```
 
-### Le frontend ne charge aucun produit
-- Vérifier que le backend tourne (`curl http://localhost:3000/api/products`)
-- Vérifier que CORS autorise `localhost:4200` (c'est configuré par défaut)
+If frontend does not load products:
+- Check backend availability with curl http://localhost:3000/api/products
+- Check CORS allows localhost:4200 (enabled by default in this project)
 
-### `Error: Module not found` dans le frontend
+If frontend shows Error: Module not found:
 ```bash
 cd frontend && npm install
 ```
