@@ -108,6 +108,7 @@
     "you": "You",
     "copilot": "Copilot",
     "inputPlaceholder": "Send a message…",
+    "loadOlder": "Load older messages",
     "disclaimer": "The copilot can make mistakes.",
     "demoResponse": "Thank you for your message! I'm the Outlander Copilot. I'm currently in demo mode, but soon I'll be able to help you find the perfect gear."
   },
