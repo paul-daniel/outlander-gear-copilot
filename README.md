@@ -42,15 +42,7 @@ High-level workflow:
 
 ### Diagram
 
-Add the final infrastructure image at:
-- docs/azure-architecture-diagram.png
-
-When the file is added, it renders here:
-
 ![Outlander Gear Copilot Azure Architecture](docs/azure-architecture-diagram.png)
-
-If the image is not available yet, keep the placeholder note in:
-- docs/architecture-diagram-placeholder.md
 
 ### Architecture Explanation
 
