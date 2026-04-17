@@ -1,0 +1,99 @@
+Outlander Gear Co. — Shipping, Returns, and Order Policies
+
+Shipping Policy
+
+At Outlander Gear Co., we want to get your gear to you quickly and safely so you can start your next adventure without delay. Here is everything you need to know about our shipping process.
+
+Free Shipping Threshold:
+Orders totaling €100 or more qualify for free standard shipping. This applies to all deliveries within metropolitan France and the European Union. For orders under €100, a flat-rate shipping fee is calculated at checkout based on the delivery destination and package weight.
+
+Shipping Methods and Estimated Delivery Times:
+
+Standard Shipping (Colissimo / DPD):
+- Metropolitan France: 3–5 business days
+- European Union (Belgium, Germany, Spain, Italy, etc.): 5–8 business days
+- Cost: Free for orders over €100. Otherwise, starting from €5.95 for France and €8.95 for EU countries.
+
+Express Shipping (Chronopost / DHL Express):
+- Metropolitan France: 1–2 business days
+- European Union: 2–4 business days
+- Cost: Starting from €12.95 for France and €19.95 for EU destinations.
+
+Relay Point Pickup (Mondial Relay):
+- Available for metropolitan France only
+- Delivery in 4–6 business days
+- Cost: Starting from €3.95 (free for orders over €100)
+
+Order Processing:
+All orders placed before 2:00 PM CET on business days (Monday through Friday, excluding French public holidays) are processed and dispatched the same day. Orders placed after 2:00 PM CET or on weekends and holidays are processed on the next business day.
+
+Order Tracking:
+Once your order has been dispatched, you will receive a confirmation email with a tracking number and a direct link to track your package. You can also monitor the status of your order by logging into your Outlander Gear Co. account and navigating to the order history section.
+
+Order Statuses Explained:
+- Pending — Your order has been received and is awaiting processing.
+- Confirmed — Payment has been verified and the order is confirmed.
+- Processing — Your order is being prepared and packed at our warehouse.
+- Shipped — Your order has left our warehouse and is on its way to you. A tracking number is available.
+- Delivered — Your package has been delivered to the specified address or pickup point.
+- Cancelled — The order has been cancelled (either by you or due to a payment issue).
+
+International Shipping:
+Currently, Outlander Gear Co. ships to metropolitan France and the European Union. We are working on expanding our shipping destinations to include Switzerland, the United Kingdom, Norway, and select international destinations. If your country is not currently served, please contact our support team and we will do our best to find a solution.
+
+Returns and Exchange Policy
+
+We want you to be 100% satisfied with your purchase. If for any reason a product does not meet your expectations, we offer a simple and hassle-free returns process.
+
+Return Window:
+You have 30 days from the date of delivery to return any item for a full refund or exchange. The 30-day window applies to the date the package was delivered (or picked up from a relay point), not the order date.
+
+Conditions for Returns:
+To be eligible for a return, items must meet the following conditions:
+1. The product must be unused, unworn, and in its original condition.
+2. All original tags, labels, and packaging must be intact.
+3. The item must be returned in its original packaging (or equivalent protective packaging).
+4. Items that have been used, worn, washed, altered, or damaged by the customer are not eligible for return.
+
+Exceptions — Items Not Eligible for Return:
+For hygiene and safety reasons, the following items cannot be returned once opened or used:
+- Water filters and hydration bladders that have been used with water
+- Undergarments and base layers that have been worn
+- Items marked as "Final Sale" on the product page
+
+How to Initiate a Return:
+1. Log into your Outlander Gear Co. account.
+2. Navigate to your order history and select the order containing the item you wish to return.
+3. Click "Request Return" and follow the instructions.
+4. Print the prepaid return shipping label (for France; EU customers may need to cover return shipping costs).
+5. Pack the item securely and drop it off at the specified carrier pickup point or post office.
+
+Alternatively, you can contact our customer support team at support@outlander-gear.co or through the Outlander Copilot chat assistant for help with your return.
+
+Refund Processing:
+Once we receive and inspect your returned item, we will process your refund within 5–7 business days. The refund will be credited to the original payment method used at checkout. Please note that your bank or credit card provider may take an additional 3–5 business days to reflect the refund on your statement.
+
+Exchanges:
+If you would like to exchange an item for a different size, color, or product, please initiate a return for the original item and place a new order for the desired item. This ensures the fastest possible processing, as we ship new orders daily.
+
+Damaged or Defective Items:
+If you receive a damaged, defective, or incorrect item, please contact us within 48 hours of delivery. Include photos of the damage and your order number. We will arrange a free return and send a replacement (or issue a full refund) at no additional cost to you.
+
+Payment Methods
+
+Outlander Gear Co. accepts the following payment methods:
+- Credit and debit cards (Visa, Mastercard, American Express, Carte Bancaire)
+- PayPal
+- Apple Pay and Google Pay
+- Bank transfer (for orders over €500)
+
+All transactions are secured with SSL encryption (TLS 1.3) and processed through our PCI-DSS compliant payment gateway. We never store your full card details on our servers.
+
+Customer Support
+
+Our customer support team is available to help you with any questions about your order:
+- Email: support@outlander-gear.co
+- AI Copilot: Available 24/7 on our website for instant answers about products, orders, shipping, and returns
+- Response time: We aim to respond to all email inquiries within 24 hours on business days.
+
+Outlander Gear Co. — Your satisfaction is our priority.

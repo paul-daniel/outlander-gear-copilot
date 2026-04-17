@@ -1,15 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, DestroyRef, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { ChatCopilotComponent } from './components/chat-copilot/chat-copilot.component';
-import { AuthService } from './services/auth.service';
-import { CartService } from './services/cart.service';
-import { User, Cart } from './models/product.model';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { TranslocoModule, TranslocoService } from '@jsverse/transloco';
+import { ChatCopilotComponent } from '@components/chat-copilot/chat-copilot.component';
+import { AuthService } from '@services/auth.service';
+import { CartService } from '@services/cart.service';
+import { User, Cart } from '@models';
 
+/**
+ * Root shell component — renders the navigation bar, main router outlet,
+ * chat copilot panel, and footer.
+ */
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterModule, ChatCopilotComponent],
+  imports: [CommonModule, RouterModule, TranslocoModule, ChatCopilotComponent],
   templateUrl: './app.component.html',
 })
 export class AppComponent implements OnInit {
@@ -20,22 +26,35 @@ export class AppComponent implements OnInit {
   copilotOpen = false;
   copilotUnread = 0;
 
+  private readonly destroyRef = inject(DestroyRef);
+  private readonly translocoService = inject(TranslocoService);
+
+  /** Current active language code. */
+  get activeLang(): string {
+    return this.translocoService.getActiveLang();
+  }
+
   constructor(
-    private authService: AuthService,
-    private cartService: CartService,
+    private readonly authService: AuthService,
+    private readonly cartService: CartService,
   ) {}
 
   ngOnInit(): void {
-    this.authService.user$.subscribe((u) => {
-      const wasLoggedIn = !!this.user;
-      this.user = u;
-      if (u) {
-        this.cartService.loadCart();
-      } else if (wasLoggedIn) {
-        this.cartService.resetLocal();
-      }
-    });
-    this.cartService.cart$.subscribe((c) => (this.cart = c));
+    this.authService.user$
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe((u) => {
+        const wasLoggedIn = !!this.user;
+        this.user = u;
+        if (u) {
+          this.cartService.loadCart();
+        } else if (wasLoggedIn) {
+          this.cartService.resetLocal();
+        }
+      });
+
+    this.cartService.cart$
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe((c) => (this.cart = c));
   }
 
   logout(): void {
@@ -57,5 +76,9 @@ export class AppComponent implements OnInit {
     if (!this.copilotOpen) {
       this.copilotUnread++;
     }
+  }
+
+  switchLang(lang: string): void {
+    this.translocoService.setActiveLang(lang);
   }
 }

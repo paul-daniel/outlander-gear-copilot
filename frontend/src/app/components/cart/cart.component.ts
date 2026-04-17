@@ -1,32 +1,34 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, DestroyRef, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Router, RouterModule } from '@angular/router';
-import { CartService } from '../../services/cart.service';
-import { AuthService } from '../../services/auth.service';
-import { Cart } from '../../models/product.model';
+import { RouterModule } from '@angular/router';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { TranslocoModule, TranslocoService } from '@jsverse/transloco';
+import { CartService } from '@services/cart.service';
+import { Cart } from '@models';
 
+/**
+ * Shopping cart page displaying line items, quantities, totals,
+ * and checkout actions. Protected by {@link authGuard}.
+ */
 @Component({
   selector: 'app-cart',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, TranslocoModule],
   templateUrl: './cart.component.html',
 })
 export class CartComponent implements OnInit {
   cart: Cart = { items: [], total: 0, count: 0 };
 
-  constructor(
-    private cartService: CartService,
-    private authService: AuthService,
-    private router: Router,
-  ) {}
+  private readonly destroyRef = inject(DestroyRef);
+  private readonly translocoService = inject(TranslocoService);
+
+  constructor(private readonly cartService: CartService) {}
 
   ngOnInit(): void {
-    if (!this.authService.isLoggedIn) {
-      this.router.navigate(['/login']);
-      return;
-    }
     this.cartService.loadCart();
-    this.cartService.cart$.subscribe((cart) => (this.cart = cart));
+    this.cartService.cart$
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe((cart) => (this.cart = cart));
   }
 
   updateQuantity(productId: number, quantity: number): void {
@@ -39,7 +41,7 @@ export class CartComponent implements OnInit {
   }
 
   clearCart(): void {
-    if (confirm('Vider le panier ?')) {
+    if (confirm(this.translocoService.translate('cart.clearCartConfirm'))) {
       this.cartService.clearCart().subscribe();
     }
   }

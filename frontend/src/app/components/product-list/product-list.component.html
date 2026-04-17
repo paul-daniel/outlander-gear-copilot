@@ -1,14 +1,13 @@
+<ng-container *transloco="let t">
 <!-- ===================== HERO ===================== -->
 <section class="relative overflow-hidden mb-16">
   <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1200')] bg-cover bg-center"></div>
   <div class="absolute inset-0 bg-outlander-950/50"></div>
   <div class="relative z-10 px-8 py-24 sm:px-16 sm:py-32 max-w-7xl mx-auto">
-    <p class="text-[11px] uppercase tracking-[0.25em] text-white/70 mb-6">Collection 2026</p>
-    <h1 class="text-4xl sm:text-6xl font-light text-white leading-[1.1] mb-6 max-w-2xl">
-      L'aventure commence<br>avec le bon équipement.
-    </h1>
+    <p class="text-[11px] uppercase tracking-[0.25em] text-white/70 mb-6">{{ t('hero.subtitle') }}</p>
+    <h1 class="text-4xl sm:text-6xl font-light text-white leading-[1.1] mb-6 max-w-2xl" [innerHTML]="t('hero.title')"></h1>
     <a href="#products" class="inline-block text-[13px] uppercase tracking-[0.15em] text-white border-b border-white/50 pb-1 hover:border-white transition-colors">
-      Découvrir
+      {{ t('hero.cta') }}
     </a>
   </div>
 </section>
@@ -17,7 +16,7 @@
 
   <!-- ===================== FEATURED ===================== -->
   <section *ngIf="featuredProducts.length > 0" class="mb-20">
-    <h2 class="text-[11px] uppercase tracking-[0.25em] text-gray-400 mb-8">Sélection</h2>
+    <h2 class="text-[11px] uppercase tracking-[0.25em] text-gray-400 mb-8">{{ t('products.featured') }}</h2>
     <div class="flex gap-5 overflow-x-auto pb-4 -mx-2 px-2 snap-x snap-mandatory scrollbar-hide">
       <a
         *ngFor="let p of featuredProducts"
@@ -48,7 +47,7 @@
         class="text-[12px] uppercase tracking-[0.15em] pb-1 transition-colors"
         [ngClass]="selectedCategory === '' ? 'text-gray-900 border-b border-gray-900' : 'text-gray-400 hover:text-gray-600'"
       >
-        Tous
+        {{ t('products.all') }}
       </button>
       <button
         *ngFor="let cat of categories"
@@ -71,7 +70,7 @@
         type="text"
         [(ngModel)]="searchQuery"
         (keyup.enter)="onSearch()"
-        placeholder="Rechercher…"
+        [placeholder]="t('products.searchPlaceholder')"
         class="w-full pl-11 pr-4 py-3 border-b border-gray-200 focus:border-gray-900 focus:outline-none text-[13px] bg-transparent transition-colors"
       />
     </div>
@@ -80,13 +79,13 @@
       (change)="onSortChange()"
       class="px-4 py-3 border-b border-gray-200 bg-transparent text-[13px] text-gray-600 focus:outline-none focus:border-gray-900 transition-colors appearance-none cursor-pointer"
     >
-      <option value="newest">Plus récents</option>
-      <option value="price_asc">Prix croissant</option>
-      <option value="price_desc">Prix décroissant</option>
-      <option value="name">Nom A-Z</option>
-      <option value="rating">Meilleures notes</option>
+      <option value="newest">{{ t('products.sortNewest') }}</option>
+      <option value="price_asc">{{ t('products.sortPriceAsc') }}</option>
+      <option value="price_desc">{{ t('products.sortPriceDesc') }}</option>
+      <option value="name">{{ t('products.sortName') }}</option>
+      <option value="rating">{{ t('products.sortRating') }}</option>
     </select>
-    <span class="text-[12px] text-gray-400 tracking-wide">{{ pagination.total }} produit{{ pagination.total > 1 ? 's' : '' }}</span>
+    <span class="text-[12px] text-gray-400 tracking-wide">{{ pagination.total > 1 ? t('products.productCountPlural', { count: pagination.total }) : t('products.productCount', { count: pagination.total }) }}</span>
   </section>
 
   <!-- ===================== LOADER ===================== -->
@@ -122,7 +121,7 @@
             ? 'text-gray-900 hover:bg-gray-900 hover:text-white'
             : 'text-gray-400 cursor-not-allowed'"
         >
-          {{ product.stock_quantity > 0 ? 'Ajouter au panier' : 'Rupture de stock' }}
+          {{ product.stock_quantity > 0 ? t('products.addToCart') : t('products.outOfStock') }}
         </button>
       </a>
 
@@ -137,7 +136,7 @@
           <span *ngIf="product.compare_price" class="text-[13px] text-gray-400 line-through">{{ product.compare_price | number:'1.2-2' }} €</span>
         </div>
         <div *ngIf="product.stock_quantity > 0 && product.stock_quantity <= 10" class="mt-1">
-          <span class="text-[11px] text-amber-600">Plus que {{ product.stock_quantity }} en stock</span>
+          <span class="text-[11px] text-amber-600">{{ t('products.onlyLeftInStock', { count: product.stock_quantity }) }}</span>
         </div>
       </div>
     </div>
@@ -145,8 +144,8 @@
 
   <!-- ===================== EMPTY STATE ===================== -->
   <div *ngIf="!loading && !error && products.length === 0" class="text-center py-24">
-    <p class="text-[15px] text-gray-900 mb-2">Aucun produit trouvé</p>
-    <p class="text-[13px] text-gray-400">Essayez de modifier vos filtres ou votre recherche.</p>
+    <p class="text-[15px] text-gray-900 mb-2">{{ t('products.noProductsFound') }}</p>
+    <p class="text-[13px] text-gray-400">{{ t('products.noProductsHint') }}</p>
   </div>
 
   <!-- ===================== PAGINATION ===================== -->
@@ -157,7 +156,7 @@
       class="text-[12px] uppercase tracking-[0.1em] transition-colors px-3 py-2"
       [ngClass]="pagination.page === 1 ? 'text-gray-300 cursor-not-allowed' : 'text-gray-600 hover:text-gray-900'"
     >
-      Précédent
+      {{ t('products.previous') }}
     </button>
     <ng-container *ngFor="let p of [].constructor(pagination.total_pages); let i = index">
       <button
@@ -174,8 +173,9 @@
       class="text-[12px] uppercase tracking-[0.1em] transition-colors px-3 py-2"
       [ngClass]="pagination.page === pagination.total_pages ? 'text-gray-300 cursor-not-allowed' : 'text-gray-600 hover:text-gray-900'"
     >
-      Suivant
+      {{ t('products.next') }}
     </button>
   </nav>
 
 </div>
+</ng-container>

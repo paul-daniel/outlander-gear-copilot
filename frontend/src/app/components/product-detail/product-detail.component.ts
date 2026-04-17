@@ -1,15 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, DestroyRef, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
-import { ProductService } from '../../services/product.service';
-import { CartService } from '../../services/cart.service';
-import { AuthService } from '../../services/auth.service';
-import { Product } from '../../models/product.model';
+import { TranslocoModule, TranslocoService } from '@jsverse/transloco';
+import { ProductService } from '@services/product.service';
+import { CartService } from '@services/cart.service';
+import { AuthService } from '@services/auth.service';
+import { Product } from '@models';
+import { getDiscount, getStars } from '@shared/utils/product.utils';
 
+/**
+ * Full product detail page — image, pricing, reviews, quantity picker,
+ * add-to-cart action, and related product suggestions.
+ */
 @Component({
   selector: 'app-product-detail',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, TranslocoModule],
   templateUrl: './product-detail.component.html',
 })
 export class ProductDetailComponent implements OnInit {
@@ -19,13 +25,25 @@ export class ProductDetailComponent implements OnInit {
   quantity = 1;
   addedToCart = false;
 
+  /** Expose shared utilities to the template. */
+  readonly getDiscount = getDiscount;
+  readonly getStars = getStars;
+
+  private addedTimer: ReturnType<typeof setTimeout> | null = null;
+  private readonly destroyRef = inject(DestroyRef);
+  private readonly translocoService = inject(TranslocoService);
+
   constructor(
-    private route: ActivatedRoute,
-    private router: Router,
-    private productService: ProductService,
-    private cartService: CartService,
-    private authService: AuthService,
-  ) {}
+    private readonly route: ActivatedRoute,
+    private readonly router: Router,
+    private readonly productService: ProductService,
+    private readonly cartService: CartService,
+    private readonly authService: AuthService,
+  ) {
+    this.destroyRef.onDestroy(() => {
+      if (this.addedTimer) clearTimeout(this.addedTimer);
+    });
+  }
 
   ngOnInit(): void {
     const slug = this.route.snapshot.paramMap.get('slug');
@@ -36,7 +54,7 @@ export class ProductDetailComponent implements OnInit {
           this.loading = false;
         },
         error: () => {
-          this.error = 'Produit introuvable.';
+          this.error = this.translocoService.translate('detail.notFound');
           this.loading = false;
         },
       });
@@ -60,18 +78,9 @@ export class ProductDetailComponent implements OnInit {
     this.cartService.addToCart(this.product.id, this.quantity).subscribe({
       next: () => {
         this.addedToCart = true;
-        setTimeout(() => (this.addedToCart = false), 3000);
+        this.addedTimer = setTimeout(() => (this.addedToCart = false), 3000);
       },
       error: (err) => alert(err.error?.error || 'Erreur'),
     });
-  }
-
-  getDiscount(): number {
-    if (!this.product?.compare_price) return 0;
-    return Math.round((1 - this.product.price / this.product.compare_price) * 100);
-  }
-
-  getStars(rating: number): number[] {
-    return Array(5).fill(0).map((_, i) => i < Math.round(rating) ? 1 : 0);
   }
 }

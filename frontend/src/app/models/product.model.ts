@@ -1,3 +1,6 @@
+import { Review } from './review.model';
+
+/** Core product returned from the API product list. */
 export interface Product {
   id: number;
   name: string;
@@ -21,6 +24,7 @@ export interface Product {
   related_products?: ProductSummary[];
 }
 
+/** Lightweight product summary used in related-products and cards. */
 export interface ProductSummary {
   id: number;
   name: string;
@@ -31,65 +35,16 @@ export interface ProductSummary {
   rating_avg: number;
 }
 
+/** Paginated product response from the API. */
 export interface ProductResponse {
   products: Product[];
   pagination: Pagination;
 }
 
+/** Pagination metadata returned alongside product lists. */
 export interface Pagination {
   page: number;
   limit: number;
   total: number;
   total_pages: number;
-}
-
-export interface Category {
-  id: number;
-  name: string;
-  slug: string;
-  description: string;
-  image_url: string;
-  product_count: number;
-}
-
-export interface Review {
-  id: number;
-  product_id: number;
-  user_id: number;
-  rating: number;
-  title: string;
-  comment: string;
-  first_name: string;
-  last_name: string;
-  created_at: string;
-}
-
-export interface CartItem {
-  id: number;
-  product_id: number;
-  quantity: number;
-  name: string;
-  slug: string;
-  price: number;
-  image_url: string;
-  stock_quantity: number;
-}
-
-export interface Cart {
-  items: CartItem[];
-  total: number;
-  count: number;
-}
-
-export interface User {
-  id: number;
-  email: string;
-  first_name: string;
-  last_name: string;
-  role: string;
-}
-
-export interface AuthResponse {
-  user: User;
-  token: string;
 }

@@ -1,13 +1,14 @@
+<ng-container *transloco="let t">
 <div class="min-h-[70vh] flex items-center justify-center px-6">
   <div class="w-full max-w-sm">
 
     <!-- Header -->
     <div class="text-center mb-10">
       <h1 class="text-2xl font-light text-gray-900 mb-2">
-        {{ isRegister ? 'Créer un compte' : 'Connexion' }}
+        {{ isRegister ? t('login.createAccount') : t('login.signIn') }}
       </h1>
       <p class="text-[13px] text-gray-400">
-        {{ isRegister ? 'Rejoignez l\'aventure Outlander' : 'Accédez à votre espace personnel' }}
+        {{ isRegister ? t('login.joinAdventure') : t('login.accessAccount') }}
       </p>
     </div>
 
@@ -21,29 +22,29 @@
       <!-- Register fields -->
       <div *ngIf="isRegister" class="grid grid-cols-2 gap-4">
         <div>
-          <label class="block text-[11px] uppercase tracking-[0.15em] text-gray-400 mb-2">Prénom</label>
+          <label class="block text-[11px] uppercase tracking-[0.15em] text-gray-400 mb-2">{{ t('login.firstName') }}</label>
           <input type="text" [(ngModel)]="firstName" name="firstName" required
                  class="w-full px-4 py-3 border-b border-gray-200 focus:border-gray-900 focus:outline-none text-[14px] bg-transparent transition-colors" />
         </div>
         <div>
-          <label class="block text-[11px] uppercase tracking-[0.15em] text-gray-400 mb-2">Nom</label>
+          <label class="block text-[11px] uppercase tracking-[0.15em] text-gray-400 mb-2">{{ t('login.lastName') }}</label>
           <input type="text" [(ngModel)]="lastName" name="lastName" required
                  class="w-full px-4 py-3 border-b border-gray-200 focus:border-gray-900 focus:outline-none text-[14px] bg-transparent transition-colors" />
         </div>
       </div>
 
       <div>
-        <label class="block text-[11px] uppercase tracking-[0.15em] text-gray-400 mb-2">Email</label>
+        <label class="block text-[11px] uppercase tracking-[0.15em] text-gray-400 mb-2">{{ t('login.email') }}</label>
         <input type="email" [(ngModel)]="email" name="email" required
                class="w-full px-4 py-3 border-b border-gray-200 focus:border-gray-900 focus:outline-none text-[14px] bg-transparent transition-colors"
-               placeholder="vous@email.com" />
+               [placeholder]="t('login.emailPlaceholder')" />
       </div>
 
       <div>
-        <label class="block text-[11px] uppercase tracking-[0.15em] text-gray-400 mb-2">Mot de passe</label>
+        <label class="block text-[11px] uppercase tracking-[0.15em] text-gray-400 mb-2">{{ t('login.password') }}</label>
         <input type="password" [(ngModel)]="password" name="password" required minlength="8"
                class="w-full px-4 py-3 border-b border-gray-200 focus:border-gray-900 focus:outline-none text-[14px] bg-transparent transition-colors"
-               placeholder="8 caractères minimum" />
+               [placeholder]="t('login.passwordPlaceholder')" />
       </div>
 
       <button
@@ -51,22 +52,23 @@
         [disabled]="loading"
         class="w-full bg-gray-900 hover:bg-gray-800 disabled:bg-gray-300 text-white text-[13px] uppercase tracking-[0.15em] py-4 transition-colors mt-2"
       >
-        {{ loading ? 'Chargement…' : (isRegister ? 'S\'inscrire' : 'Se connecter') }}
+        {{ loading ? t('login.loading') : (isRegister ? t('login.signUp') : t('login.signIn')) }}
       </button>
     </form>
 
     <!-- Toggle -->
     <p class="text-center text-[13px] text-gray-400 mt-8">
-      {{ isRegister ? 'Déjà un compte ?' : 'Pas encore de compte ?' }}
+      {{ isRegister ? t('login.alreadyHaveAccount') : t('login.noAccount') }}
       <button (click)="toggleMode()" class="text-gray-900 hover:underline ml-1">
-        {{ isRegister ? 'Se connecter' : 'S\'inscrire' }}
+        {{ isRegister ? t('login.signIn') : t('login.signUp') }}
       </button>
     </p>
 
     <!-- Demo account -->
     <div *ngIf="!isRegister" class="mt-8 pt-6 border-t border-gray-100 text-center">
-      <p class="text-[11px] uppercase tracking-[0.15em] text-gray-400 mb-2">Compte démo</p>
+      <p class="text-[11px] uppercase tracking-[0.15em] text-gray-400 mb-2">{{ t('login.demoAccount') }}</p>
       <p class="text-[13px] text-gray-500">marie.dupont&#64;email.com · Test1234!</p>
     </div>
   </div>
 </div>
+</ng-container>

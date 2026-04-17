@@ -1,13 +1,15 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
-import { AuthService } from '../../services/auth.service';
+import { TranslocoModule, TranslocoService } from '@jsverse/transloco';
+import { AuthService } from '@services/auth.service';
 
+/** Login / registration page with togglable form mode. */
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [CommonModule, FormsModule, RouterModule],
+  imports: [CommonModule, FormsModule, RouterModule, TranslocoModule],
   templateUrl: './login.component.html',
 })
 export class LoginComponent {
@@ -18,6 +20,8 @@ export class LoginComponent {
   lastName = '';
   error = '';
   loading = false;
+
+  private readonly translocoService = inject(TranslocoService);
 
   constructor(private authService: AuthService, private router: Router) {}
 
@@ -43,7 +47,7 @@ export class LoginComponent {
         },
         error: (err) => {
           this.loading = false;
-          this.error = err.error?.error || 'Erreur lors de l\'inscription';
+          this.error = err.error?.error || this.translocoService.translate('login.registerError');
         },
       });
     } else {
@@ -54,7 +58,7 @@ export class LoginComponent {
         },
         error: (err) => {
           this.loading = false;
-          this.error = err.error?.error || 'Identifiants incorrects';
+          this.error = err.error?.error || this.translocoService.translate('login.loginError');
         },
       });
     }

@@ -1,8 +1,9 @@
+<ng-container *transloco="let t">
 <!-- ===================== NAVBAR ===================== -->
 <header class="bg-white border-b border-gray-100 sticky top-0 z-40">
   <!-- Top bar -->
   <div class="bg-outlander-900 text-white/80 text-[11px] tracking-wider text-center py-1.5 uppercase">
-    Livraison offerte dès 100 € d'achat
+    {{ t('nav.promoBanner') }}
   </div>
 
   <div class="max-w-screen-xl mx-auto px-6 lg:px-10">
@@ -18,9 +19,9 @@
       <!-- Left nav (desktop) -->
       <nav class="hidden md:flex items-center gap-8 text-[13px] tracking-wide uppercase text-gray-700">
         <a routerLink="/" routerLinkActive="text-black font-medium" [routerLinkActiveOptions]="{exact: true}"
-           class="hover:text-black transition-colors py-1">Accueil</a>
+           class="hover:text-black transition-colors py-1">{{ t('nav.home') }}</a>
         <a routerLink="/products" routerLinkActive="text-black font-medium"
-           class="hover:text-black transition-colors py-1">Collection</a>
+           class="hover:text-black transition-colors py-1">{{ t('nav.collection') }}</a>
       </nav>
 
       <!-- Logo (center) -->
@@ -31,13 +32,20 @@
 
       <!-- Right icons -->
       <div class="flex items-center gap-4">
+        <!-- Language switcher -->
+        <div class="flex items-center gap-1 text-[11px] uppercase tracking-wider text-gray-400">
+          <button (click)="switchLang('en')" class="px-1 py-0.5 transition-colors" [ngClass]="activeLang === 'en' ? 'text-gray-900 font-medium' : 'hover:text-gray-600'">EN</button>
+          <span class="text-gray-300">|</span>
+          <button (click)="switchLang('fr')" class="px-1 py-0.5 transition-colors" [ngClass]="activeLang === 'fr' ? 'text-gray-900 font-medium' : 'hover:text-gray-600'">FR</button>
+        </div>
+
         <!-- Copilot toggle -->
-        <button (click)="toggleCopilot()" class="relative group flex items-center gap-1.5 bg-gradient-to-r from-outlander-700 to-outlander-600 hover:from-outlander-800 hover:to-outlander-700 text-white text-[11px] uppercase tracking-[0.1em] font-medium px-3 py-1.5 rounded-full transition-all duration-200 shadow-sm hover:shadow-md" title="Assistant IA">
+        <button (click)="toggleCopilot()" class="relative group flex items-center gap-1.5 bg-gradient-to-r from-outlander-700 to-outlander-600 hover:from-outlander-800 hover:to-outlander-700 text-white text-[11px] uppercase tracking-[0.1em] font-medium px-3 py-1.5 rounded-full transition-all duration-200 shadow-sm hover:shadow-md" [title]="t('nav.aiAssistant')">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
             <path stroke-linecap="round" stroke-linejoin="round"
               d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z" />
           </svg>
-          <span class="hidden sm:inline">Copilote</span>
+          <span class="hidden sm:inline">{{ t('nav.copilot') }}</span>
           <span *ngIf="copilotUnread > 0"
                 class="absolute -top-1.5 -right-1.5 bg-red-500 text-white text-[10px] font-bold min-w-[18px] h-[18px] flex items-center justify-center rounded-full px-1 ring-2 ring-white">
             {{ copilotUnread }}
@@ -49,12 +57,12 @@
           <div class="hidden md:flex items-center gap-3 text-[13px] text-gray-600">
             <span class="tracking-wide">{{ user.first_name }}</span>
             <button (click)="logout()" class="hover:text-black transition-colors underline underline-offset-4 decoration-gray-300">
-              Déconnexion
+              {{ t('nav.logout') }}
             </button>
           </div>
         </ng-container>
         <ng-template #loginIcon>
-          <a routerLink="/login" class="text-gray-600 hover:text-black transition-colors p-1" title="Se connecter">
+          <a routerLink="/login" class="text-gray-600 hover:text-black transition-colors p-1" [title]="t('nav.login')">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
               <path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
             </svg>
@@ -62,7 +70,7 @@
         </ng-template>
 
         <!-- Cart -->
-        <a routerLink="/cart" class="relative text-gray-600 hover:text-black transition-colors p-1" title="Panier">
+        <a routerLink="/cart" class="relative text-gray-600 hover:text-black transition-colors p-1" [title]="t('nav.cart')">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
             <path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
           </svg>
@@ -77,13 +85,19 @@
 
   <!-- Mobile menu -->
   <div *ngIf="mobileMenuOpen" class="md:hidden border-t border-gray-100 px-6 py-6 space-y-4 bg-white">
-    <a routerLink="/" (click)="mobileMenuOpen = false" class="block text-[13px] tracking-wide uppercase text-gray-700 hover:text-black">Accueil</a>
-    <a routerLink="/products" (click)="mobileMenuOpen = false" class="block text-[13px] tracking-wide uppercase text-gray-700 hover:text-black">Collection</a>
+    <a routerLink="/" (click)="mobileMenuOpen = false" class="block text-[13px] tracking-wide uppercase text-gray-700 hover:text-black">{{ t('nav.home') }}</a>
+    <a routerLink="/products" (click)="mobileMenuOpen = false" class="block text-[13px] tracking-wide uppercase text-gray-700 hover:text-black">{{ t('nav.collection') }}</a>
     <a routerLink="/cart" (click)="mobileMenuOpen = false" class="block text-[13px] tracking-wide uppercase text-gray-700 hover:text-black">
-      Panier <span *ngIf="cart.count > 0" class="text-outlander-700">({{ cart.count }})</span>
+      {{ t('nav.cart') }} <span *ngIf="cart.count > 0" class="text-outlander-700">({{ cart.count }})</span>
     </a>
-    <a *ngIf="!user" routerLink="/login" (click)="mobileMenuOpen = false" class="block text-[13px] tracking-wide uppercase text-gray-700 hover:text-black">Connexion</a>
-    <button *ngIf="user" (click)="logout(); mobileMenuOpen = false" class="text-[13px] tracking-wide uppercase text-gray-700 hover:text-black">Déconnexion</button>
+    <a *ngIf="!user" routerLink="/login" (click)="mobileMenuOpen = false" class="block text-[13px] tracking-wide uppercase text-gray-700 hover:text-black">{{ t('nav.login') }}</a>
+    <button *ngIf="user" (click)="logout(); mobileMenuOpen = false" class="text-[13px] tracking-wide uppercase text-gray-700 hover:text-black">{{ t('nav.logout') }}</button>
+    <!-- Mobile language switcher -->
+    <div class="flex items-center gap-2 pt-2 border-t border-gray-100 text-[12px] uppercase tracking-wider text-gray-400">
+      <button (click)="switchLang('en')" [ngClass]="activeLang === 'en' ? 'text-gray-900 font-medium' : ''">EN</button>
+      <span>|</span>
+      <button (click)="switchLang('fr')" [ngClass]="activeLang === 'fr' ? 'text-gray-900 font-medium' : ''">FR</button>
+    </div>
   </div>
 </header>
 
@@ -102,35 +116,35 @@
           <span class="text-white text-sm font-semibold tracking-[0.15em] uppercase">Outlander</span>
           <span class="text-gray-500 text-[10px] tracking-[0.3em] uppercase ml-1">Gear Co.</span>
         </div>
-        <p class="text-[13px] leading-relaxed text-gray-500">Équipements outdoor pour les passionnés d'aventure et de grands espaces.</p>
+        <p class="text-[13px] leading-relaxed text-gray-500">{{ t('footer.tagline') }}</p>
       </div>
 
       <!-- Links -->
       <div>
-        <h3 class="text-white text-[11px] font-medium tracking-[0.2em] uppercase mb-5">Boutique</h3>
+        <h3 class="text-white text-[11px] font-medium tracking-[0.2em] uppercase mb-5">{{ t('footer.shop') }}</h3>
         <ul class="space-y-3 text-[13px]">
-          <li><a routerLink="/products" class="hover:text-white transition-colors">Toute la collection</a></li>
-          <li><a routerLink="/" class="hover:text-white transition-colors">Nouveautés</a></li>
-          <li><a routerLink="/" class="hover:text-white transition-colors">Promotions</a></li>
+          <li><a routerLink="/products" class="hover:text-white transition-colors">{{ t('footer.fullCollection') }}</a></li>
+          <li><a routerLink="/" class="hover:text-white transition-colors">{{ t('footer.newArrivals') }}</a></li>
+          <li><a routerLink="/" class="hover:text-white transition-colors">{{ t('footer.sales') }}</a></li>
         </ul>
       </div>
 
       <!-- Help -->
       <div>
-        <h3 class="text-white text-[11px] font-medium tracking-[0.2em] uppercase mb-5">Aide</h3>
+        <h3 class="text-white text-[11px] font-medium tracking-[0.2em] uppercase mb-5">{{ t('footer.help') }}</h3>
         <ul class="space-y-3 text-[13px]">
-          <li><a href="#" class="hover:text-white transition-colors">FAQ</a></li>
-          <li><a href="#" class="hover:text-white transition-colors">Livraison & Retours</a></li>
-          <li><a href="#" class="hover:text-white transition-colors">Contact</a></li>
+          <li><a href="#" class="hover:text-white transition-colors">{{ t('footer.faq') }}</a></li>
+          <li><a href="#" class="hover:text-white transition-colors">{{ t('footer.shippingReturns') }}</a></li>
+          <li><a href="#" class="hover:text-white transition-colors">{{ t('footer.contact') }}</a></li>
         </ul>
       </div>
 
       <!-- Newsletter -->
       <div>
-        <h3 class="text-white text-[11px] font-medium tracking-[0.2em] uppercase mb-5">Newsletter</h3>
-        <p class="text-[13px] mb-4 text-gray-500">Recevez nos offres et inspirations.</p>
+        <h3 class="text-white text-[11px] font-medium tracking-[0.2em] uppercase mb-5">{{ t('footer.newsletter') }}</h3>
+        <p class="text-[13px] mb-4 text-gray-500">{{ t('footer.newsletterText') }}</p>
         <div class="flex border-b border-gray-700">
-          <input type="email" placeholder="votre@email.com"
+          <input type="email" [placeholder]="t('footer.emailPlaceholder')"
                  class="flex-grow bg-transparent text-[13px] text-gray-300 py-2 focus:outline-none placeholder-gray-600" />
           <button class="text-[11px] tracking-wider uppercase text-gray-400 hover:text-white transition-colors px-2 py-2">
             OK
@@ -140,10 +154,11 @@
     </div>
 
     <div class="border-t border-gray-800/50 mt-12 pt-6 text-center text-[11px] text-gray-600 tracking-wide">
-      &copy; 2026 Outlander Gear Co.
+      {{ t('footer.copyright') }}
     </div>
   </div>
 </footer>
 
 <!-- ===================== CHAT COPILOT (slide panel) ===================== -->
 <app-chat-copilot [isOpen]="copilotOpen" (closed)="copilotOpen = false" (newAssistantMessage)="onCopilotNewMessage()"></app-chat-copilot>
+</ng-container>

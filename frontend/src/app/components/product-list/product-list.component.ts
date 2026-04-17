@@ -1,16 +1,22 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
-import { ProductService } from '../../services/product.service';
-import { CartService } from '../../services/cart.service';
-import { AuthService } from '../../services/auth.service';
-import { Product, Category, Pagination } from '../../models/product.model';
+import { TranslocoModule, TranslocoService } from '@jsverse/transloco';
+import { ProductService } from '@services/product.service';
+import { CartService } from '@services/cart.service';
+import { AuthService } from '@services/auth.service';
+import { Product, Category, Pagination } from '@models';
+import { getDiscount, getStars } from '@shared/utils/product.utils';
 
+/**
+ * Browsable product catalogue with hero banner, featured picks,
+ * category/search/sort filters, and pagination.
+ */
 @Component({
   selector: 'app-product-list',
   standalone: true,
-  imports: [CommonModule, FormsModule, RouterModule],
+  imports: [CommonModule, FormsModule, RouterModule, TranslocoModule],
   templateUrl: './product-list.component.html',
 })
 export class ProductListComponent implements OnInit {
@@ -21,17 +27,22 @@ export class ProductListComponent implements OnInit {
   loading = true;
   error = '';
 
-  // Filters
   selectedCategory = '';
   searchQuery = '';
   sortBy = 'newest';
   showFilters = false;
 
+  /** Expose shared utilities to the template. */
+  readonly getDiscount = getDiscount;
+  readonly getStars = getStars;
+
+  private readonly translocoService = inject(TranslocoService);
+
   constructor(
-    private productService: ProductService,
-    private cartService: CartService,
-    private authService: AuthService,
-    private router: Router,
+    private readonly productService: ProductService,
+    private readonly cartService: CartService,
+    private readonly authService: AuthService,
+    private readonly router: Router,
   ) {}
 
   ngOnInit(): void {
@@ -69,7 +80,7 @@ export class ProductListComponent implements OnInit {
           this.loading = false;
         },
         error: () => {
-          this.error = 'Impossible de charger les produits.';
+          this.error = this.translocoService.translate('products.loadError');
           this.loading = false;
         },
       });
@@ -106,14 +117,5 @@ export class ProductListComponent implements OnInit {
     this.cartService.addToCart(product.id).subscribe({
       error: (err) => alert(err.error?.error || 'Erreur'),
     });
-  }
-
-  getDiscount(product: Product): number {
-    if (!product.compare_price) return 0;
-    return Math.round((1 - product.price / product.compare_price) * 100);
-  }
-
-  getStars(rating: number): number[] {
-    return Array(5).fill(0).map((_, i) => i < Math.round(rating) ? 1 : 0);
   }
 }

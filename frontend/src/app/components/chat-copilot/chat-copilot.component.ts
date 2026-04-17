@@ -1,34 +1,38 @@
-import { Component, Input, Output, EventEmitter, OnDestroy } from '@angular/core';
+import { Component, DestroyRef, EventEmitter, inject, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router, NavigationStart } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { TranslocoModule, TranslocoService } from '@jsverse/transloco';
+import { filter } from 'rxjs';
 
+/** Slide-over AI chat assistant panel. */
 @Component({
   selector: 'app-chat-copilot',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, TranslocoModule],
   templateUrl: './chat-copilot.component.html',
 })
-export class ChatCopilotComponent implements OnDestroy {
+export class ChatCopilotComponent {
   @Input() isOpen = false;
   @Output() closed = new EventEmitter<void>();
   @Output() newAssistantMessage = new EventEmitter<void>();
 
   userMessage = '';
   messages: { role: 'user' | 'assistant'; content: string; read: boolean }[] = [];
-  private routerSub: Subscription;
 
-  constructor(private router: Router) {
-    this.routerSub = this.router.events.subscribe((event) => {
-      if (event instanceof NavigationStart && this.isOpen) {
-        this.close();
-      }
-    });
-  }
+  private readonly translocoService = inject(TranslocoService);
 
-  ngOnDestroy(): void {
-    this.routerSub.unsubscribe();
+  constructor(private readonly router: Router) {
+    const destroyRef = inject(DestroyRef);
+    this.router.events
+      .pipe(
+        filter((event) => event instanceof NavigationStart),
+        takeUntilDestroyed(destroyRef),
+      )
+      .subscribe(() => {
+        if (this.isOpen) this.close();
+      });
   }
 
   close(): void {
@@ -46,7 +50,7 @@ export class ChatCopilotComponent implements OnDestroy {
     setTimeout(() => {
       this.messages.push({
         role: 'assistant',
-        content: `Merci pour votre message ! Je suis le copilote Outlander. Pour l'instant je suis en mode démo, mais bientôt je pourrai vous aider à trouver l'équipement parfait.`,
+        content: this.translocoService.translate('copilot.demoResponse'),
         read: this.isOpen,
       });
       this.newAssistantMessage.emit();

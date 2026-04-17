@@ -20,7 +20,15 @@
     "useDefineForClassFields": false,
     "lib": ["ES2022", "dom"],
     "baseUrl": "./",
-    "paths": {}
+    "paths": {
+      "@env": ["src/environments/environment"],
+      "@models": ["src/app/models/index"],
+      "@models/*": ["src/app/models/*"],
+      "@services/*": ["src/app/services/*"],
+      "@shared/*": ["src/app/shared/*"],
+      "@guards/*": ["src/app/guards/*"],
+      "@components/*": ["src/app/components/*"]
+    }
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,

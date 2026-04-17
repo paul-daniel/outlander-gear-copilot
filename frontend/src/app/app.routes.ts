@@ -1,14 +1,32 @@
 import { Routes } from '@angular/router';
-import { ProductListComponent } from './components/product-list/product-list.component';
-import { ProductDetailComponent } from './components/product-detail/product-detail.component';
-import { CartComponent } from './components/cart/cart.component';
-import { LoginComponent } from './components/login/login.component';
+import { authGuard } from '@guards/auth.guard';
 
 export const routes: Routes = [
-  { path: '', component: ProductListComponent },
-  { path: 'products', component: ProductListComponent },
-  { path: 'products/:slug', component: ProductDetailComponent },
-  { path: 'cart', component: CartComponent },
-  { path: 'login', component: LoginComponent },
+  {
+    path: '',
+    loadComponent: () =>
+      import('./components/product-list/product-list.component').then((m) => m.ProductListComponent),
+  },
+  {
+    path: 'products',
+    loadComponent: () =>
+      import('./components/product-list/product-list.component').then((m) => m.ProductListComponent),
+  },
+  {
+    path: 'products/:slug',
+    loadComponent: () =>
+      import('./components/product-detail/product-detail.component').then((m) => m.ProductDetailComponent),
+  },
+  {
+    path: 'cart',
+    loadComponent: () =>
+      import('./components/cart/cart.component').then((m) => m.CartComponent),
+    canActivate: [authGuard],
+  },
+  {
+    path: 'login',
+    loadComponent: () =>
+      import('./components/login/login.component').then((m) => m.LoginComponent),
+  },
   { path: '**', redirectTo: '' },
 ];
