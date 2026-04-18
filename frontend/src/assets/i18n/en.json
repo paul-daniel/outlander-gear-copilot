@@ -110,6 +110,17 @@
     "inputPlaceholder": "Send a message…",
     "loadOlder": "Load older messages",
     "disclaimer": "The copilot can make mistakes.",
+    "newChat": "New chat",
+    "history": "Chat history",
+    "clearChat": "Clear chat",
+    "chatHistory": "Chat History",
+    "chat": "chat",
+    "chats": "chats",
+    "message": "message",
+    "messages": "messages",
+    "noHistory": "No previous chats",
+    "noHistoryHint": "Your conversations will appear here.",
+    "backToChat": "Back to chat",
     "demoResponse": "Thank you for your message! I'm the Outlander Copilot. I'm currently in demo mode, but soon I'll be able to help you find the perfect gear."
   },
   "common": {

@@ -1,7 +1,7 @@
 <ng-container *transloco="let t">
 <!-- Loader -->
 <div *ngIf="loading" class="flex justify-center items-center h-96">
-  <div class="animate-spin rounded-full h-8 w-8 border-t border-b border-gray-900"></div>
+  <div class="animate-spin rounded-full h-8 w-8 border-t border-b border-gray-900 dark:border-white"></div>
 </div>
 
 <!-- Error -->
@@ -11,53 +11,53 @@
 <div *ngIf="product && !loading" class="max-w-7xl mx-auto px-6 sm:px-10">
 
   <!-- Breadcrumb -->
-  <nav class="text-[12px] text-gray-400 flex items-center gap-2 py-6 uppercase tracking-[0.1em]">
-    <a routerLink="/" class="hover:text-gray-900 transition-colors">{{ t('detail.home') }}</a>
+  <nav class="text-[12px] text-gray-400 dark:text-gray-500 flex items-center gap-2 py-6 uppercase tracking-[0.1em]">
+    <a routerLink="/" class="hover:text-gray-900 dark:hover:text-white transition-colors">{{ t('detail.home') }}</a>
     <span>/</span>
-    <a routerLink="/" class="hover:text-gray-900 transition-colors">{{ product.category_name }}</a>
+    <a routerLink="/" class="hover:text-gray-900 dark:hover:text-white transition-colors">{{ product.category_name }}</a>
     <span>/</span>
-    <span class="text-gray-600">{{ product.name }}</span>
+    <span class="text-gray-600 dark:text-gray-300">{{ product.name }}</span>
   </nav>
 
   <!-- Main section -->
   <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 mb-20">
     <!-- Image -->
-    <div class="relative bg-gray-100 aspect-[3/4] overflow-hidden">
+    <div class="relative bg-gray-100 dark:bg-gray-800 aspect-[3/4] overflow-hidden">
       <img [src]="product.image_url" [alt]="product.name" class="w-full h-full object-cover" />
       <span *ngIf="product.compare_price"
-            class="absolute top-5 left-5 text-[11px] uppercase tracking-wider text-red-600 bg-white px-3 py-1">
+            class="absolute top-5 left-5 text-[11px] uppercase tracking-wider text-red-600 bg-white dark:bg-gray-900 px-3 py-1">
         -{{ getDiscount(product) }}%
       </span>
     </div>
 
     <!-- Info -->
     <div class="flex flex-col justify-center lg:py-10">
-      <p class="text-[11px] uppercase tracking-[0.25em] text-gray-400 mb-4">{{ product.category_name }}</p>
-      <h1 class="text-3xl sm:text-4xl font-light text-gray-900 mb-4 leading-tight">{{ product.name }}</h1>
+      <p class="text-[11px] uppercase tracking-[0.25em] text-gray-400 dark:text-gray-500 mb-4">{{ product.category_name }}</p>
+      <h1 class="text-3xl sm:text-4xl font-light text-gray-900 dark:text-white mb-4 leading-tight">{{ product.name }}</h1>
 
       <!-- Rating -->
       <div class="flex items-center gap-2 mb-6">
         <div class="flex gap-0.5">
           <span *ngFor="let s of getStars(product.rating_avg)"
-                class="text-sm" [ngClass]="s === 1 ? 'text-amber-400' : 'text-gray-300'">★</span>
+                class="text-sm" [ngClass]="s === 1 ? 'text-amber-400' : 'text-gray-300 dark:text-gray-600'">★</span>
         </div>
-        <span class="text-[12px] text-gray-400">{{ product.rating_avg }}/5 · {{ product.rating_count }} {{ t('detail.reviews') }}</span>
+        <span class="text-[12px] text-gray-400 dark:text-gray-500">{{ product.rating_avg }}/5 · {{ product.rating_count }} {{ t('detail.reviews') }}</span>
       </div>
 
       <!-- Price -->
-      <div class="flex items-baseline gap-3 mb-8 pb-8 border-b border-gray-100">
-        <span class="text-2xl text-gray-900">{{ product.price | number:'1.2-2' }} €</span>
-        <span *ngIf="product.compare_price" class="text-[15px] text-gray-400 line-through">{{ product.compare_price | number:'1.2-2' }} €</span>
+      <div class="flex items-baseline gap-3 mb-8 pb-8 border-b border-gray-100 dark:border-gray-800">
+        <span class="text-2xl text-gray-900 dark:text-white">{{ product.price | number:'1.2-2' }} €</span>
+        <span *ngIf="product.compare_price" class="text-[15px] text-gray-400 dark:text-gray-500 line-through">{{ product.compare_price | number:'1.2-2' }} €</span>
       </div>
 
       <!-- Short desc -->
-      <p class="text-[14px] text-gray-500 leading-relaxed mb-8">{{ product.short_desc }}</p>
+      <p class="text-[14px] text-gray-500 dark:text-gray-400 leading-relaxed mb-8">{{ product.short_desc }}</p>
 
       <!-- Stock -->
       <div class="mb-8">
         <span class="text-[12px] uppercase tracking-[0.1em]"
               [ngClass]="{
-                'text-gray-600': product.stock_quantity > 10,
+                'text-gray-600 dark:text-gray-400': product.stock_quantity > 10,
                 'text-amber-600': product.stock_quantity > 0 && product.stock_quantity <= 10,
                 'text-red-500': product.stock_quantity === 0
               }">
@@ -67,81 +67,81 @@
 
       <!-- Quantity + Add to cart -->
       <div *ngIf="product.stock_quantity > 0" class="flex items-center gap-4 mb-6">
-        <div class="flex items-center border border-gray-200">
-          <button (click)="changeQuantity(-1)" class="px-5 py-3 text-gray-600 hover:bg-gray-50 transition-colors text-[14px]">−</button>
-          <span class="px-5 py-3 text-[14px] text-gray-900 min-w-[3rem] text-center border-x border-gray-200">{{ quantity }}</span>
-          <button (click)="changeQuantity(1)" class="px-5 py-3 text-gray-600 hover:bg-gray-50 transition-colors text-[14px]">+</button>
+        <div class="flex items-center border border-gray-200 dark:border-gray-700">
+          <button (click)="changeQuantity(-1)" class="px-5 py-3 text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors text-[14px]">−</button>
+          <span class="px-5 py-3 text-[14px] text-gray-900 dark:text-white min-w-[3rem] text-center border-x border-gray-200 dark:border-gray-700">{{ quantity }}</span>
+          <button (click)="changeQuantity(1)" class="px-5 py-3 text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors text-[14px]">+</button>
         </div>
         <button
           (click)="addToCart()"
-          class="flex-grow bg-gray-900 hover:bg-gray-800 text-white text-[13px] uppercase tracking-[0.15em] py-4 px-8 transition-colors flex items-center justify-center gap-3"
+          class="flex-grow bg-gray-900 hover:bg-gray-800 dark:bg-white dark:hover:bg-gray-200 text-white dark:text-gray-900 text-[13px] uppercase tracking-[0.15em] py-4 px-8 transition-colors flex items-center justify-center gap-3"
         >
           {{ t('detail.addToCart') }}
         </button>
       </div>
 
       <!-- Success message -->
-      <div *ngIf="addedToCart" class="text-[13px] text-gray-600 border-l-2 border-gray-900 pl-4 mb-6">
+      <div *ngIf="addedToCart" class="text-[13px] text-gray-600 dark:text-gray-300 border-l-2 border-gray-900 dark:border-white pl-4 mb-6">
         {{ t('detail.addedToCart') }}
       </div>
 
       <!-- Specs -->
-      <div class="border-t border-gray-100 pt-8 space-y-4 text-[13px]">
+      <div class="border-t border-gray-100 dark:border-gray-800 pt-8 space-y-4 text-[13px]">
         <div *ngIf="product.weight_kg" class="flex gap-2">
-          <span class="text-gray-400 w-28 uppercase tracking-[0.1em]">{{ t('detail.weight') }}</span>
-          <span class="text-gray-700">{{ product.weight_kg }} kg</span>
+          <span class="text-gray-400 dark:text-gray-500 w-28 uppercase tracking-[0.1em]">{{ t('detail.weight') }}</span>
+          <span class="text-gray-700 dark:text-gray-200">{{ product.weight_kg }} kg</span>
         </div>
         <div class="flex gap-2">
-          <span class="text-gray-400 w-28 uppercase tracking-[0.1em]">{{ t('detail.category') }}</span>
-          <span class="text-gray-700">{{ product.category_name }}</span>
+          <span class="text-gray-400 dark:text-gray-500 w-28 uppercase tracking-[0.1em]">{{ t('detail.category') }}</span>
+          <span class="text-gray-700 dark:text-gray-200">{{ product.category_name }}</span>
         </div>
         <div class="flex gap-2">
-          <span class="text-gray-400 w-28 uppercase tracking-[0.1em]">{{ t('detail.reference') }}</span>
-          <span class="text-gray-400 uppercase">{{ product.slug }}</span>
+          <span class="text-gray-400 dark:text-gray-500 w-28 uppercase tracking-[0.1em]">{{ t('detail.reference') }}</span>
+          <span class="text-gray-400 dark:text-gray-500 uppercase">{{ product.slug }}</span>
         </div>
       </div>
     </div>
   </div>
 
   <!-- Full description -->
-  <section class="py-16 border-t border-gray-100">
-    <h2 class="text-[11px] uppercase tracking-[0.25em] text-gray-400 mb-6">{{ t('detail.description') }}</h2>
-    <p class="text-[14px] text-gray-600 leading-relaxed whitespace-pre-line max-w-3xl">{{ product.description }}</p>
+  <section class="py-16 border-t border-gray-100 dark:border-gray-800">
+    <h2 class="text-[11px] uppercase tracking-[0.25em] text-gray-400 dark:text-gray-500 mb-6">{{ t('detail.description') }}</h2>
+    <p class="text-[14px] text-gray-600 dark:text-gray-400 leading-relaxed whitespace-pre-line max-w-3xl">{{ product.description }}</p>
   </section>
 
   <!-- Reviews -->
-  <section *ngIf="product.reviews && product.reviews.length > 0" class="py-16 border-t border-gray-100">
-    <h2 class="text-[11px] uppercase tracking-[0.25em] text-gray-400 mb-8">{{ t('detail.customerReviews', { count: product.reviews.length }) }}</h2>
+  <section *ngIf="product.reviews && product.reviews.length > 0" class="py-16 border-t border-gray-100 dark:border-gray-800">
+    <h2 class="text-[11px] uppercase tracking-[0.25em] text-gray-400 dark:text-gray-500 mb-8">{{ t('detail.customerReviews', { count: product.reviews.length }) }}</h2>
     <div class="space-y-8 max-w-3xl">
-      <div *ngFor="let review of product.reviews" class="pb-8 border-b border-gray-100 last:border-0">
+      <div *ngFor="let review of product.reviews" class="pb-8 border-b border-gray-100 dark:border-gray-800 last:border-0">
         <div class="flex items-center justify-between mb-3">
           <div>
-            <span class="text-[14px] text-gray-900">{{ review.first_name }} {{ review.last_name?.charAt(0) }}.</span>
+            <span class="text-[14px] text-gray-900 dark:text-white">{{ review.first_name }} {{ review.last_name?.charAt(0) }}.</span>
             <div class="flex gap-0.5 mt-1">
               <span *ngFor="let s of getStars(review.rating)"
-                    class="text-[12px]" [ngClass]="s === 1 ? 'text-amber-400' : 'text-gray-300'">★</span>
+                    class="text-[12px]" [ngClass]="s === 1 ? 'text-amber-400' : 'text-gray-300 dark:text-gray-600'">★</span>
             </div>
           </div>
-          <span class="text-[12px] text-gray-400">{{ review.created_at | date:'dd/MM/yyyy' }}</span>
+          <span class="text-[12px] text-gray-400 dark:text-gray-500">{{ review.created_at | date:'dd/MM/yyyy' }}</span>
         </div>
-        <p *ngIf="review.title" class="text-[14px] text-gray-800 mb-1">{{ review.title }}</p>
-        <p class="text-[13px] text-gray-500 leading-relaxed">{{ review.comment }}</p>
+        <p *ngIf="review.title" class="text-[14px] text-gray-800 dark:text-gray-100 mb-1">{{ review.title }}</p>
+        <p class="text-[13px] text-gray-500 dark:text-gray-400 leading-relaxed">{{ review.comment }}</p>
       </div>
     </div>
   </section>
 
   <!-- Related products -->
-  <section *ngIf="product.related_products && product.related_products.length > 0" class="py-16 border-t border-gray-100">
-    <h2 class="text-[11px] uppercase tracking-[0.25em] text-gray-400 mb-8">{{ t('detail.youMayAlsoLike') }}</h2>
+  <section *ngIf="product.related_products && product.related_products.length > 0" class="py-16 border-t border-gray-100 dark:border-gray-800">
+    <h2 class="text-[11px] uppercase tracking-[0.25em] text-gray-400 dark:text-gray-500 mb-8">{{ t('detail.youMayAlsoLike') }}</h2>
     <div class="grid grid-cols-2 sm:grid-cols-4 gap-5">
       <a *ngFor="let rp of product.related_products"
          [routerLink]="['/products', rp.slug]"
          class="group">
-        <div class="bg-gray-100 aspect-[3/4] overflow-hidden mb-3">
+        <div class="bg-gray-100 dark:bg-gray-800 aspect-[3/4] overflow-hidden mb-3">
           <img [src]="rp.image_url" [alt]="rp.name" class="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-500" />
         </div>
-        <p class="text-[14px] text-gray-900 line-clamp-1">{{ rp.name }}</p>
-        <p class="text-[14px] text-gray-900 mt-1">{{ rp.price | number:'1.2-2' }} €</p>
+        <p class="text-[14px] text-gray-900 dark:text-white line-clamp-1">{{ rp.name }}</p>
+        <p class="text-[14px] text-gray-900 dark:text-white mt-1">{{ rp.price | number:'1.2-2' }} €</p>
       </a>
     </div>
   </section>

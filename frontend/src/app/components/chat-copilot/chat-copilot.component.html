@@ -3,90 +3,179 @@
 <div
   *ngIf="isOpen"
   (click)="close()"
-  class="fixed inset-0 bg-black/20 z-40 transition-opacity"
+  class="fixed inset-0 bg-black/20 dark:bg-black/40 z-40 transition-opacity"
 ></div>
 
-<!-- Slide panel -->
+<!-- Slide panel (wider: 480px) -->
 <div
-  class="fixed top-0 right-0 z-50 h-full w-full sm:w-[420px] bg-white flex flex-col transition-transform duration-300 ease-out shadow-2xl"
+  class="fixed top-0 right-0 z-50 h-full w-full sm:w-[480px] bg-white dark:bg-gray-950 flex flex-col transition-transform duration-300 ease-out shadow-2xl"
   [class.translate-x-0]="isOpen"
   [class.translate-x-full]="!isOpen"
 >
   <!-- Header -->
-  <div class="flex items-center justify-between px-5 py-3.5 border-b border-gray-200/80">
+  <div class="flex items-center justify-between px-4 py-3 border-b border-gray-200/80 dark:border-gray-800">
     <div class="flex items-center gap-2.5">
       <div class="w-7 h-7 rounded-full bg-outlander-700 flex items-center justify-center">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
           <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.455 2.456L21.75 6l-1.036.259a3.375 3.375 0 00-2.455 2.456z" />
         </svg>
       </div>
-      <span class="text-[14px] font-semibold text-gray-900">{{ t('copilot.title') }}</span>
+      <span class="text-[14px] font-semibold text-gray-900 dark:text-white">{{ t('copilot.title') }}</span>
     </div>
-    <button (click)="close()" class="w-8 h-8 flex items-center justify-center rounded-lg text-gray-400 hover:text-gray-600 hover:bg-gray-100 transition-colors">
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-      </svg>
-    </button>
+
+    <!-- Header actions -->
+    <div class="flex items-center gap-1">
+      <!-- New chat -->
+      <button (click)="newChat()" class="w-8 h-8 flex items-center justify-center rounded-lg text-gray-400 dark:text-gray-500 hover:text-gray-600 dark:hover:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" [title]="t('copilot.newChat')">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
+        </svg>
+      </button>
+      <!-- History toggle -->
+      <button (click)="toggleHistory()" class="w-8 h-8 flex items-center justify-center rounded-lg transition-colors" [ngClass]="historyOpen ? 'text-outlander-700 bg-outlander-50 dark:bg-outlander-900/30' : 'text-gray-400 dark:text-gray-500 hover:text-gray-600 dark:hover:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800'" [title]="t('copilot.history')">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+      </button>
+      <!-- Clear chat -->
+      <button (click)="clearChat()" *ngIf="messages.length > 0" class="w-8 h-8 flex items-center justify-center rounded-lg text-gray-400 dark:text-gray-500 hover:text-red-500 dark:hover:text-red-400 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" [title]="t('copilot.clearChat')">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0" />
+        </svg>
+      </button>
+      <!-- Close -->
+      <button (click)="close()" class="w-8 h-8 flex items-center justify-center rounded-lg text-gray-400 dark:text-gray-500 hover:text-gray-600 dark:hover:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
   </div>
 
-  <!-- Messages area -->
-  <div
-    #messagesContainer
-    (scroll)="onScroll($event)"
-    class="flex-1 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-transparent hover:scrollbar-thumb-gray-400"
-  >
+  <!-- Content area (messages or history) -->
+  <div class="flex-1 relative overflow-hidden">
 
-    <!-- Load older messages -->
-    <button
-      *ngIf="hasOlderMessages"
-      (click)="loadOlderMessages()"
-      class="w-full py-3 text-[12px] text-gray-400 hover:text-gray-600 transition-colors text-center border-b border-gray-100"
-    >
-      {{ t('copilot.loadOlder') }}
-    </button>
-
-    <!-- Empty state -->
+    <!-- ========== HISTORY PANEL (overlay) ========== -->
     <div
-      *ngIf="messages.length === 0"
-      class="h-full flex flex-col items-center justify-center px-10 text-center"
+      class="absolute inset-0 z-10 bg-white dark:bg-gray-950 flex flex-col transition-all duration-200"
+      [ngClass]="historyOpen ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-full pointer-events-none'"
     >
-      <div class="w-12 h-12 rounded-full bg-outlander-700 flex items-center justify-center mb-5">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.455 2.456L21.75 6l-1.036.259a3.375 3.375 0 00-2.455 2.456z" />
-        </svg>
+      <!-- History header -->
+      <div class="px-5 pt-5 pb-3 flex items-center justify-between">
+        <h3 class="text-[13px] font-semibold text-gray-900 dark:text-white uppercase tracking-[0.1em]">{{ t('copilot.chatHistory') }}</h3>
+        <span class="text-[11px] text-gray-400 dark:text-gray-500">{{ chatHistory.length }} {{ chatHistory.length === 1 ? t('copilot.chat') : t('copilot.chats') }}</span>
       </div>
-      <p class="text-[15px] font-semibold text-gray-900 mb-1">{{ t('copilot.emptyTitle') }}</p>
-      <p class="text-[13px] text-gray-500 leading-relaxed" [innerHTML]="t('copilot.emptyHint')"></p>
-    </div>
 
-    <!-- Messages list (windowed) -->
-    <div *ngFor="let msg of visibleMessages; trackBy: trackByIndex">
-      <!-- User message row -->
-      <div *ngIf="msg.role === 'user'" class="px-5 py-5">
-        <div class="flex gap-3">
-          <div class="w-7 h-7 rounded-full bg-gray-200 flex-shrink-0 flex items-center justify-center mt-0.5">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0" />
-            </svg>
-          </div>
+      <!-- History list -->
+      <div class="flex-1 overflow-y-auto px-3 pb-3 scrollbar-thin scrollbar-thumb-gray-300 dark:scrollbar-thumb-gray-700 scrollbar-track-transparent">
+        <!-- Empty history -->
+        <div *ngIf="chatHistory.length === 0" class="flex flex-col items-center justify-center h-full text-center px-6">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-gray-200 dark:text-gray-700 mb-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M20.25 8.511c.884.284 1.5 1.128 1.5 2.097v4.286c0 1.136-.847 2.1-1.98 2.193-.34.027-.68.052-1.02.072v3.091l-3-3c-1.354 0-2.694-.055-4.02-.163a2.115 2.115 0 01-.825-.242m9.345-8.334a2.126 2.126 0 00-.476-.095 48.64 48.64 0 00-8.048 0c-1.131.094-1.976 1.057-1.976 2.192v4.286c0 .837.46 1.58 1.155 1.951m9.345-8.334V6.637c0-1.621-1.152-3.026-2.76-3.235A48.455 48.455 0 0011.25 3c-2.115 0-4.198.137-6.24.402-1.608.209-2.76 1.614-2.76 3.235v6.226c0 1.621 1.152 3.026 2.76 3.235.577.075 1.157.14 1.74.194V21l4.155-4.155" />
+          </svg>
+          <p class="text-[13px] text-gray-400 dark:text-gray-500">{{ t('copilot.noHistory') }}</p>
+          <p class="text-[12px] text-gray-300 dark:text-gray-600 mt-1">{{ t('copilot.noHistoryHint') }}</p>
+        </div>
+
+        <!-- History items -->
+        <div *ngFor="let session of chatHistory"
+             (click)="loadSession(session)"
+             class="group flex items-center gap-3 px-3 py-3 rounded-lg cursor-pointer transition-colors mb-0.5"
+             [ngClass]="activeSessionId === session.id
+               ? 'bg-outlander-50 dark:bg-outlander-900/20 text-outlander-800 dark:text-outlander-300'
+               : 'hover:bg-gray-50 dark:hover:bg-gray-900/50 text-gray-700 dark:text-gray-300'"
+        >
+          <!-- Chat icon -->
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 flex-shrink-0 text-gray-400 dark:text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M7.5 8.25h9m-9 3H12m-9.75 1.51c0 1.6 1.123 2.994 2.707 3.227 1.129.166 2.27.293 3.423.379.35.026.67.21.865.501L12 21l2.755-4.133a1.14 1.14 0 01.865-.501 48.172 48.172 0 003.423-.379c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z" />
+          </svg>
+          <!-- Title & date -->
           <div class="flex-1 min-w-0">
-            <p class="text-[12px] font-semibold text-gray-900 mb-1">{{ t('copilot.you') }}</p>
-            <p class="text-[14px] text-gray-800 leading-relaxed whitespace-pre-wrap">{{ msg.content }}</p>
+            <p class="text-[13px] truncate">{{ session.title }}</p>
+            <p class="text-[11px] text-gray-400 dark:text-gray-500 mt-0.5">{{ session.messages.length }} {{ session.messages.length === 1 ? t('copilot.message') : t('copilot.messages') }}</p>
           </div>
+          <!-- Delete button -->
+          <button
+            (click)="deleteSession(session, $event)"
+            class="w-7 h-7 flex items-center justify-center rounded-md text-gray-300 dark:text-gray-600 opacity-0 group-hover:opacity-100 hover:text-red-500 dark:hover:text-red-400 hover:bg-gray-100 dark:hover:bg-gray-800 transition-all"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
         </div>
       </div>
 
-      <!-- Assistant message row -->
-      <div *ngIf="msg.role === 'assistant'" class="px-5 py-5 bg-gray-50">
-        <div class="flex gap-3">
-          <div class="w-7 h-7 rounded-full bg-outlander-700 flex-shrink-0 flex items-center justify-center mt-0.5">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z" />
-            </svg>
+      <!-- Back to chat button -->
+      <div class="px-4 py-3 border-t border-gray-100 dark:border-gray-800">
+        <button (click)="toggleHistory()" class="w-full text-[12px] uppercase tracking-[0.1em] text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 py-2 transition-colors flex items-center justify-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 15L3 9m0 0l6-6M3 9h12a6 6 0 010 12h-3" />
+          </svg>
+          {{ t('copilot.backToChat') }}
+        </button>
+      </div>
+    </div>
+
+    <!-- ========== MESSAGES AREA ========== -->
+    <div
+      #messagesContainer
+      (scroll)="onScroll($event)"
+      class="h-full overflow-y-auto scrollbar-thin scrollbar-thumb-gray-300 dark:scrollbar-thumb-gray-700 scrollbar-track-transparent hover:scrollbar-thumb-gray-400 dark:hover:scrollbar-thumb-gray-600"
+    >
+
+      <!-- Load older messages -->
+      <button
+        *ngIf="hasOlderMessages"
+        (click)="loadOlderMessages()"
+        class="w-full py-3 text-[12px] text-gray-400 dark:text-gray-500 hover:text-gray-600 dark:hover:text-gray-300 transition-colors text-center border-b border-gray-100 dark:border-gray-800"
+      >
+        {{ t('copilot.loadOlder') }}
+      </button>
+
+      <!-- Empty state -->
+      <div
+        *ngIf="messages.length === 0"
+        class="h-full flex flex-col items-center justify-center px-10 text-center"
+      >
+        <div class="w-12 h-12 rounded-full bg-outlander-700 flex items-center justify-center mb-5">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.455 2.456L21.75 6l-1.036.259a3.375 3.375 0 00-2.455 2.456z" />
+          </svg>
+        </div>
+        <p class="text-[15px] font-semibold text-gray-900 dark:text-white mb-1">{{ t('copilot.emptyTitle') }}</p>
+        <p class="text-[13px] text-gray-500 dark:text-gray-400 leading-relaxed" [innerHTML]="t('copilot.emptyHint')"></p>
+      </div>
+
+      <!-- Messages list (windowed) -->
+      <div *ngFor="let msg of visibleMessages; trackBy: trackByIndex">
+        <!-- User message row -->
+        <div *ngIf="msg.role === 'user'" class="px-5 py-5">
+          <div class="flex gap-3">
+            <div class="w-7 h-7 rounded-full bg-gray-200 dark:bg-gray-700 flex-shrink-0 flex items-center justify-center mt-0.5">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 text-gray-500 dark:text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0" />
+              </svg>
+            </div>
+            <div class="flex-1 min-w-0">
+              <p class="text-[12px] font-semibold text-gray-900 dark:text-white mb-1">{{ t('copilot.you') }}</p>
+              <p class="text-[14px] text-gray-800 dark:text-gray-200 leading-relaxed whitespace-pre-wrap">{{ msg.content }}</p>
+            </div>
           </div>
-          <div class="flex-1 min-w-0">
-            <p class="text-[12px] font-semibold text-gray-900 mb-1">{{ t('copilot.copilot') }}</p>
-            <p class="text-[14px] text-gray-700 leading-relaxed whitespace-pre-wrap">{{ msg.displayedContent }}<span *ngIf="msg.typing" class="inline-block w-[2px] h-[14px] bg-gray-400 ml-0.5 animate-pulse align-text-bottom"></span></p>
+        </div>
+
+        <!-- Assistant message row -->
+        <div *ngIf="msg.role === 'assistant'" class="px-5 py-5 bg-gray-50 dark:bg-gray-900/50">
+          <div class="flex gap-3">
+            <div class="w-7 h-7 rounded-full bg-outlander-700 flex-shrink-0 flex items-center justify-center mt-0.5">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z" />
+              </svg>
+            </div>
+            <div class="flex-1 min-w-0">
+              <p class="text-[12px] font-semibold text-gray-900 dark:text-white mb-1">{{ t('copilot.copilot') }}</p>
+              <p class="text-[14px] text-gray-700 dark:text-gray-300 leading-relaxed whitespace-pre-wrap">{{ msg.displayedContent }}<span *ngIf="msg.typing" class="inline-block w-[2px] h-[14px] bg-gray-400 dark:bg-gray-500 ml-0.5 animate-pulse align-text-bottom"></span></p>
+            </div>
           </div>
         </div>
       </div>
@@ -94,8 +183,8 @@
   </div>
 
   <!-- Input area -->
-  <div class="p-4 border-t border-gray-200/80">
-    <div class="relative flex items-end bg-white border border-gray-300 rounded-xl shadow-sm focus-within:border-gray-400 focus-within:shadow-md transition-all">
+  <div class="p-4 border-t border-gray-200/80 dark:border-gray-800">
+    <div class="relative flex items-end bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-700 rounded-xl shadow-sm focus-within:border-gray-400 dark:focus-within:border-gray-500 focus-within:shadow-md transition-all">
       <textarea
         #messageInput
         [(ngModel)]="userMessage"
@@ -103,19 +192,19 @@
         (input)="adjustTextareaHeight($event)"
         [placeholder]="t('copilot.inputPlaceholder')"
         rows="1"
-        class="flex-1 resize-none px-4 py-3 text-[14px] text-gray-800 placeholder-gray-400 bg-transparent focus:outline-none max-h-32 rounded-xl leading-relaxed whitespace-pre-wrap break-words"
+        class="flex-1 resize-none px-4 py-3 text-[14px] text-gray-800 dark:text-gray-200 placeholder-gray-400 dark:placeholder-gray-500 bg-transparent focus:outline-none max-h-32 rounded-xl leading-relaxed whitespace-pre-wrap break-words"
       ></textarea>
       <button
         (click)="sendMessage()"
         class="m-1.5 w-8 h-8 flex items-center justify-center rounded-lg transition-all duration-150 flex-shrink-0"
-        [ngClass]="userMessage.trim() ? 'bg-outlander-700 text-white hover:bg-outlander-800' : 'bg-gray-100 text-gray-300 cursor-default'"
+        [ngClass]="userMessage.trim() ? 'bg-outlander-700 text-white hover:bg-outlander-800' : 'bg-gray-100 dark:bg-gray-800 text-gray-300 dark:text-gray-600 cursor-default'"
       >
         <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor">
           <path d="M3.478 2.405a.75.75 0 00-.926.94l2.432 7.905H13.5a.75.75 0 010 1.5H4.984l-2.432 7.905a.75.75 0 00.926.94 60.519 60.519 0 0018.445-8.986.75.75 0 000-1.218A60.517 60.517 0 003.478 2.405z" />
         </svg>
       </button>
     </div>
-    <p class="text-[11px] text-gray-400 text-center mt-2">{{ t('copilot.disclaimer') }}</p>
+    <p class="text-[11px] text-gray-400 dark:text-gray-500 text-center mt-2">{{ t('copilot.disclaimer') }}</p>
   </div>
 </div>
 </ng-container>

@@ -110,6 +110,17 @@
     "inputPlaceholder": "Envoyer un message…",
     "loadOlder": "Charger les messages précédents",
     "disclaimer": "Le copilote peut faire des erreurs.",
+    "newChat": "Nouvelle discussion",
+    "history": "Historique",
+    "clearChat": "Effacer la discussion",
+    "chatHistory": "Historique",
+    "chat": "discussion",
+    "chats": "discussions",
+    "message": "message",
+    "messages": "messages",
+    "noHistory": "Aucune discussion",
+    "noHistoryHint": "Vos conversations apparaîtront ici.",
+    "backToChat": "Retour au chat",
     "demoResponse": "Merci pour votre message ! Je suis le copilote Outlander. Pour l'instant je suis en mode démo, mais bientôt je pourrai vous aider à trouver l'équipement parfait."
   },
   "common": {

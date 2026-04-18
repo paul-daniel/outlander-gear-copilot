@@ -6,6 +6,7 @@ import { TranslocoModule, TranslocoService } from '@jsverse/transloco';
 import { ChatCopilotComponent } from '@components/chat-copilot/chat-copilot.component';
 import { AuthService } from '@services/auth.service';
 import { CartService } from '@services/cart.service';
+import { ThemeService } from '@services/theme.service';
 import { User, Cart } from '@models';
 
 /**
@@ -28,6 +29,7 @@ export class AppComponent implements OnInit {
 
   private readonly destroyRef = inject(DestroyRef);
   private readonly translocoService = inject(TranslocoService);
+  readonly themeService = inject(ThemeService);
 
   /** Current active language code. */
   get activeLang(): string {

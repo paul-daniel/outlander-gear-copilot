@@ -8,6 +8,12 @@ body {
   color: #1a1a1a;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.dark body {
+  background-color: #111111;
+  color: #e5e5e5;
 }
 
 ::selection {

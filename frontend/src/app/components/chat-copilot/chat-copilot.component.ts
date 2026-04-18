@@ -25,6 +25,13 @@ interface ChatMessage {
   typing: boolean;
 }
 
+interface ChatSession {
+  id: string;
+  title: string;
+  messages: ChatMessage[];
+  createdAt: Date;
+}
+
 const MESSAGES_PAGE_SIZE = 50;
 const TYPEWRITER_CHAR_DELAY = 18;
 
@@ -45,6 +52,11 @@ export class ChatCopilotComponent implements AfterViewChecked {
 
   userMessage = '';
   messages: ChatMessage[] = [];
+
+  /** Chat history */
+  chatHistory: ChatSession[] = [];
+  activeSessionId: string | null = null;
+  historyOpen = false;
 
   /** Number of messages rendered from the end of the array. */
   renderedCount = MESSAGES_PAGE_SIZE;
@@ -84,7 +96,49 @@ export class ChatCopilotComponent implements AfterViewChecked {
   }
 
   close(): void {
+    this.historyOpen = false;
     this.closed.emit();
+  }
+
+  toggleHistory(): void {
+    this.historyOpen = !this.historyOpen;
+  }
+
+  /** Start a new chat, archiving the current one if it has messages. */
+  newChat(): void {
+    this.archiveCurrentSession();
+    this.messages = [];
+    this.activeSessionId = null;
+    this.renderedCount = MESSAGES_PAGE_SIZE;
+    this.historyOpen = false;
+    this.stopTypewriter();
+  }
+
+  /** Clear all messages from the current chat without archiving. */
+  clearChat(): void {
+    this.stopTypewriter();
+    this.messages = [];
+    this.renderedCount = MESSAGES_PAGE_SIZE;
+  }
+
+  /** Load a previous chat session. */
+  loadSession(session: ChatSession): void {
+    this.archiveCurrentSession();
+    this.messages = session.messages;
+    this.activeSessionId = session.id;
+    this.renderedCount = MESSAGES_PAGE_SIZE;
+    this.historyOpen = false;
+    this.shouldScrollToBottom = true;
+  }
+
+  /** Delete a chat session from history. */
+  deleteSession(session: ChatSession, event: Event): void {
+    event.stopPropagation();
+    this.chatHistory = this.chatHistory.filter(s => s.id !== session.id);
+    if (this.activeSessionId === session.id) {
+      this.messages = [];
+      this.activeSessionId = null;
+    }
   }
 
   loadOlderMessages(): void {
@@ -96,7 +150,6 @@ export class ChatCopilotComponent implements AfterViewChecked {
     if (el.scrollTop === 0 && this.hasOlderMessages) {
       const prevHeight = el.scrollHeight;
       this.loadOlderMessages();
-      // Preserve scroll position after prepending older messages
       requestAnimationFrame(() => {
         el.scrollTop = el.scrollHeight - prevHeight;
       });
@@ -105,6 +158,11 @@ export class ChatCopilotComponent implements AfterViewChecked {
 
   sendMessage(): void {
     if (!this.userMessage.trim()) return;
+
+    // Auto-create session on first message
+    if (!this.activeSessionId && this.messages.length === 0) {
+      this.activeSessionId = this.generateId();
+    }
 
     this.messages.push({
       role: 'user',
@@ -118,7 +176,6 @@ export class ChatCopilotComponent implements AfterViewChecked {
     this.shouldScrollToBottom = true;
     this.resetTextareaHeight();
 
-    // Simulated AI response for demo
     setTimeout(() => {
       const fullText = this.translocoService.translate('copilot.demoResponse');
       const msg: ChatMessage = {
@@ -135,14 +192,12 @@ export class ChatCopilotComponent implements AfterViewChecked {
     }, 800);
   }
 
-  /** Auto-resize textarea to fit content. */
   adjustTextareaHeight(event: Event): void {
     const textarea = event.target as HTMLTextAreaElement;
     textarea.style.height = 'auto';
     textarea.style.height = Math.min(textarea.scrollHeight, 128) + 'px';
   }
 
-  /** Send on Enter, allow Shift+Enter for newlines. */
   onKeydown(event: KeyboardEvent): void {
     if (event.key === 'Enter' && !event.shiftKey) {
       event.preventDefault();
@@ -154,10 +209,42 @@ export class ChatCopilotComponent implements AfterViewChecked {
     return index;
   }
 
-  private startTypewriter(msg: ChatMessage): void {
+  /** Archive current messages into history if non-empty. */
+  private archiveCurrentSession(): void {
+    if (this.messages.length === 0) return;
+
+    const existingIdx = this.chatHistory.findIndex(s => s.id === this.activeSessionId);
+    const firstUserMsg = this.messages.find(m => m.role === 'user');
+    const title = firstUserMsg
+      ? firstUserMsg.content.slice(0, 50) + (firstUserMsg.content.length > 50 ? '…' : '')
+      : 'Chat';
+
+    if (existingIdx >= 0) {
+      this.chatHistory[existingIdx].messages = [...this.messages];
+      this.chatHistory[existingIdx].title = title;
+    } else {
+      this.chatHistory.unshift({
+        id: this.activeSessionId || this.generateId(),
+        title,
+        messages: [...this.messages],
+        createdAt: new Date(),
+      });
+    }
+  }
+
+  private generateId(): string {
+    return Date.now().toString(36) + Math.random().toString(36).slice(2, 8);
+  }
+
+  private stopTypewriter(): void {
     if (this.typewriterTimer) {
       clearInterval(this.typewriterTimer);
+      this.typewriterTimer = null;
     }
+  }
+
+  private startTypewriter(msg: ChatMessage): void {
+    this.stopTypewriter();
     let charIndex = 0;
     this.zone.runOutsideAngular(() => {
       this.typewriterTimer = setInterval(() => {
@@ -171,7 +258,6 @@ export class ChatCopilotComponent implements AfterViewChecked {
           });
           return;
         }
-        // Update in batches of ~3 chars for smoother perf
         const end = Math.min(charIndex + 2, msg.content.length);
         charIndex = end;
         this.zone.run(() => {
