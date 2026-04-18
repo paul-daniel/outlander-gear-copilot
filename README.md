@@ -221,28 +221,71 @@ Open:
 ```text
 website/
 ├── README.md
+├── docs/
+│   └── azure-architecture-diagram.png
 ├── database/
 │   ├── schema.sql
 │   └── seed.sql
+├── rag-data/
 ├── backend/
 │   ├── package.json
 │   ├── tsconfig.json
+│   ├── .env
 │   └── src/
 │       ├── server.ts
-│       ├── config/database.ts
+│       ├── config/
+│       │   ├── database.ts
+│       │   └── env.ts
 │       ├── middleware/
+│       │   ├── asyncHandler.ts
+│       │   ├── auth.ts
+│       │   └── errorHandler.ts
 │       ├── routes/
+│       │   ├── auth.ts
+│       │   ├── cart.ts
+│       │   ├── categories.ts
+│       │   ├── orders.ts
+│       │   ├── products.ts
+│       │   └── reviews.ts
 │       ├── types/
+│       │   └── index.ts
 │       └── validators/
+│           └── index.ts
 └── frontend/
     ├── package.json
     ├── angular.json
-    └── src/app/
-        ├── components/
-        │   └── chat-copilot/
-        ├── services/
-        ├── models/
-        └── app.routes.ts
+    ├── tailwind.config.js
+    └── src/
+        ├── assets/
+        │   └── i18n/
+        │       ├── en.json
+        │       └── fr.json
+        ├── environments/
+        ├── app/
+        │   ├── app.component.ts
+        │   ├── app.component.html
+        │   ├── app.routes.ts
+        │   ├── app.config.ts
+        │   ├── transloco-loader.ts
+        │   ├── components/
+        │   │   ├── product-list/
+        │   │   ├── product-detail/
+        │   │   ├── cart/
+        │   │   ├── login/
+        │   │   └── chat-copilot/
+        │   ├── services/
+        │   │   ├── auth.service.ts
+        │   │   ├── cart.service.ts
+        │   │   ├── product.service.ts
+        │   │   └── theme.service.ts
+        │   ├── models/
+        │   ├── guards/
+        │   ├── interceptors/
+        │   └── shared/
+        │       └── utils/
+        ├── styles.css
+        ├── index.html
+        └── main.ts
 ```
 
 ---
