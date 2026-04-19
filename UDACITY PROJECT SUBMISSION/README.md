@@ -1,16 +1,27 @@
-# Outlander Gear Co. — AI Copilot Project Submission
+# Outlander Gear Co. — AI Copilot Project Submission  
+> **🎬 Start here →** Watch the [full demo walkthrough](#demo-videos) to see GuideLander in action before diving into the details.
 
 ## Project Overview
 
-**Outlander Gear Co.** is an outdoor equipment e-commerce platform featuring **GuideLander**, an AI-powered shopping assistant built with Azure AI Foundry, PromptFlow, and a RAG (Retrieval-Augmented Generation) pipeline. The assistant helps customers compare products, get recommendations, and find answers about shipping, returns, and product care — all grounded in real catalog data.
+**Outlander Gear Co.** is a full-stack outdoor equipment e-commerce platform built **entirely from scratch** — frontend, backend, database, infrastructure, and AI — featuring **GuideLander**, an AI-powered shopping assistant.
 
----
-
-## Demo Videos
+## Integration Demo Videos 
 
 - https://github.com/user-attachments/assets/110e0119-6736-481e-9f60-8f68370ef1b8
 
 - https://github.com/user-attachments/assets/b0b37cca-c473-4c80-8088-a5042f8e438b
+
+
+Everything was hand-crafted for this project:
+- **Frontend** — Angular 19 SPA with Tailwind CSS, dark mode, i18n (EN/FR), responsive design
+- **Backend** — RESTful API in TypeScript/Express with JWT auth, PostgreSQL, and a copilot proxy route
+- **Database** — Custom schema with 31 products, categories, reviews, specs, and seed data
+- **AI Pipeline** — PromptFlow RAG orchestration on Azure AI Foundry with GPT-4o and Azure AI Search
+- **RAG Data** — 13 hand-written knowledge documents (product catalog, comparison guides, policies, FAQ, care guides)
+- **Deployment** — Azure ML managed endpoint with real-time inference
+- **Evaluation** — 16-query evaluation dataset with ground truth, tested against coherence, groundedness, fluency, and relevance
+
+---
 
 
 ---
@@ -80,3 +91,71 @@ The evaluation dataset ([`evaluation_set/sample.jsonl`](evaluation_set/sample.js
 | AI/ML | Azure AI Foundry, GPT-4o, PromptFlow |
 | RAG | Azure AI Search, text-embedding-3-large |
 | Deployment | Azure ML Managed Endpoint |
+
+---
+
+## 📸 Deliverables Gallery
+
+Everything below is scrollable inline — no need to open separate folders.
+
+---
+
+### 1. Deployment Confirmation
+
+Azure ML managed endpoint successfully deployed and serving real-time inference.
+
+![Deployment confirmation 1](deployment_confirmation/screenshot1.png)
+
+![Deployment confirmation 2](deployment_confirmation/screenshot2.png)
+
+---
+
+### 2. PromptFlow Setup
+
+The RAG pipeline orchestrated with Azure AI Foundry PromptFlow — query rewriting, vector lookup, and grounded chat completion.
+
+![PromptFlow setup 1](prompflow_setup/screen1.png)
+
+![PromptFlow setup 2](prompflow_setup/screen2.png)
+
+![PromptFlow setup 3](prompflow_setup/screen3.png)
+
+![PromptFlow setup 4](prompflow_setup/screen4.png)
+
+![PromptFlow setup 5](prompflow_setup/screen5.png)
+
+---
+
+### 3. Evaluation Report
+
+Evaluation metrics across coherence, groundedness, fluency, and relevance on the 16-query test set.
+
+![Evaluation metrics overview](evaluation_report/evaluation_metrics.png)
+
+![Evaluation metrics detailed](evaluation_report/evaluation_metrics_detailed.png)
+
+The full evaluation output tables are available as CSV:
+- [`evaluation_outlander_co_copilot_eval_001_Output_Table_04-19-2026-18-53.csv`](evaluation_report/evaluation_outlander_co_copilot_eval_001_Output_Table_04-19-2026-18-53.csv)
+- [`evaluation_outlander_co_copilot_eval_001_Output_Table_04-19-2026-18-55.csv`](evaluation_report/evaluation_outlander_co_copilot_eval_001_Output_Table_04-19-2026-18-55.csv)
+
+---
+
+### 4. Sample Interactions with the Copilot
+
+Real conversations with GuideLander — product comparisons, recommendations, policy questions, and guardrail enforcement.
+
+![Interaction 1](interactions_with_copilot/screen1.png)
+
+![Interaction 2](interactions_with_copilot/screen2.png)
+
+![Interaction 3](interactions_with_copilot/screen3.png)
+
+![Interaction 4](interactions_with_copilot/screen4.png)
+
+![Interaction 5](interactions_with_copilot/screen5.png)
+
+---
+
+### 5. Evaluation Dataset
+
+The JSONL evaluation set is at [`evaluation_set/sample.jsonl`](evaluation_set/sample.jsonl) — 16 queries with `query`, `ground_truth`, and `context` fields ready for automated evaluation.
