@@ -8,23 +8,7 @@
 
 ## Demo Videos
 
-<!-- 
-  HOW TO EMBED GOOGLE DRIVE VIDEOS
-  ─────────────────────────────────
-  1. Open your video in Google Drive
-  2. Click ⋮ → Share → Change to "Anyone with the link"
-  3. Copy the file ID from the share URL:
-     https://drive.google.com/file/d/<FILE_ID>/view
-  4. Replace YOUR_FILE_ID below with that ID
-
-  Note: Markdown doesn't support <iframe> on GitHub/most renderers.
-  The approach below provides a clickable thumbnail that opens the video.
--->
-
-### Full Demo Walkthrough
 [![Watch the demo 1](https://drive.google.com/file/d/1wkD0fRiMGZ094KB41MZ55JPgyxhKY8Ti/view?usp=sharing)
-
-### AI Copilot Interaction Demo
 [![Watch the demo 2](https://drive.google.com/file/d/1NJoM4BIu9RvTp_a-HNSocLr7EWKfgwLa/view?usp=sharing)
 
 ---
