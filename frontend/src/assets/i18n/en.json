@@ -152,7 +152,8 @@
     "backToChat": "Back to chat",
     "demoResponse": "Thank you for your message! I'm the Outlander Copilot. I'm currently in demo mode, but soon I'll be able to help you find the perfect gear.",
     "timeoutTitle": "No response received",
-    "timeoutMessage": "The assistant is taking longer than expected. Please try again later."
+    "timeoutMessage": "The assistant is taking longer than expected. Please try again later.",
+    "expandedTable": "Table view"
   },
   "faq": {
     "subtitle": "Help center",

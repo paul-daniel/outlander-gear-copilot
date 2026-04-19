@@ -46,3 +46,205 @@ body {
 .scrollbar-thin:hover::-webkit-scrollbar-thumb:hover {
   background: #9ca3af;
 }
+
+/* ============================================================
+   Copilot Markdown — rendered markdown inside the chat panel
+   ============================================================ */
+
+/* --- Base typography --- */
+.copilot-markdown h1,
+.copilot-markdown h2,
+.copilot-markdown h3,
+.copilot-markdown h4 {
+  font-weight: 600;
+  color: #111827;
+  margin-top: 1em;
+  margin-bottom: 0.4em;
+  line-height: 1.3;
+}
+.dark .copilot-markdown h1,
+.dark .copilot-markdown h2,
+.dark .copilot-markdown h3,
+.dark .copilot-markdown h4 {
+  color: #f3f4f6;
+}
+.copilot-markdown h3 { font-size: 0.9375rem; }
+.copilot-markdown h4 { font-size: 0.875rem; }
+.copilot-markdown h1:first-child,
+.copilot-markdown h2:first-child,
+.copilot-markdown h3:first-child,
+.copilot-markdown h4:first-child {
+  margin-top: 0;
+}
+
+.copilot-markdown p {
+  margin: 0.5em 0;
+}
+.copilot-markdown p:first-child {
+  margin-top: 0;
+}
+.copilot-markdown p:last-child {
+  margin-bottom: 0;
+}
+
+/* --- Bold & italic --- */
+.copilot-markdown strong {
+  font-weight: 600;
+  color: #1f2937;
+}
+.dark .copilot-markdown strong {
+  color: #e5e7eb;
+}
+
+/* --- Lists --- */
+.copilot-markdown ul,
+.copilot-markdown ol {
+  margin: 0.5em 0;
+  padding-left: 1.25em;
+}
+.copilot-markdown ul { list-style: disc; }
+.copilot-markdown ol { list-style: decimal; }
+.copilot-markdown li {
+  margin: 0.25em 0;
+}
+.copilot-markdown li::marker {
+  color: #9ca3af;
+}
+.dark .copilot-markdown li::marker {
+  color: #6b7280;
+}
+
+/* --- Horizontal rules --- */
+.copilot-markdown hr {
+  border: none;
+  border-top: 1px solid #e5e7eb;
+  margin: 1em 0;
+}
+.dark .copilot-markdown hr {
+  border-top-color: #374151;
+}
+
+/* --- Code --- */
+.copilot-markdown code {
+  font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', monospace;
+  font-size: 0.8125rem;
+  background: #f3f4f6;
+  color: #c2410c;
+  padding: 0.125em 0.35em;
+  border-radius: 0.25rem;
+}
+.dark .copilot-markdown code {
+  background: #1f2937;
+  color: #fb923c;
+}
+
+/* --- Table wrapper --- */
+.copilot-table-wrap {
+  margin: 0.75em 0;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+.dark .copilot-table-wrap {
+  border-color: #374151;
+}
+
+.copilot-table-scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: #d1d5db transparent;
+}
+.dark .copilot-table-scroll {
+  scrollbar-color: #4b5563 transparent;
+}
+.copilot-table-scroll::-webkit-scrollbar {
+  height: 5px;
+}
+.copilot-table-scroll::-webkit-scrollbar-thumb {
+  background: #d1d5db;
+  border-radius: 3px;
+}
+.dark .copilot-table-scroll::-webkit-scrollbar-thumb {
+  background: #4b5563;
+}
+
+/* --- Table --- */
+.copilot-markdown table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.8125rem;
+  line-height: 1.4;
+  white-space: nowrap;
+}
+.copilot-markdown th {
+  background: #f9fafb;
+  font-weight: 600;
+  text-align: left;
+  color: #374151;
+  padding: 0.5rem 0.75rem;
+  border-bottom: 2px solid #e5e7eb;
+}
+.dark .copilot-markdown th {
+  background: #111827;
+  color: #d1d5db;
+  border-bottom-color: #374151;
+}
+.copilot-markdown td {
+  padding: 0.4rem 0.75rem;
+  border-bottom: 1px solid #f3f4f6;
+  color: #4b5563;
+}
+.dark .copilot-markdown td {
+  border-bottom-color: #1f2937;
+  color: #9ca3af;
+}
+.copilot-markdown tr:last-child td {
+  border-bottom: none;
+}
+.copilot-markdown tbody tr:hover td {
+  background: #f9fafb;
+}
+.dark .copilot-markdown tbody tr:hover td {
+  background: #111827;
+}
+
+/* --- Expand button below table --- */
+.copilot-table-expand-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  width: 100%;
+  padding: 0.35rem 0.75rem;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: #6b7280;
+  background: #f9fafb;
+  border-top: 1px solid #e5e7eb;
+  cursor: pointer;
+  transition: color 0.15s, background 0.15s;
+}
+.copilot-table-expand-btn:hover {
+  color: #374151;
+  background: #f3f4f6;
+}
+.dark .copilot-table-expand-btn {
+  color: #6b7280;
+  background: #0d0d0c;
+  border-top-color: #374151;
+}
+.dark .copilot-table-expand-btn:hover {
+  color: #d1d5db;
+  background: #111827;
+}
+
+/* --- Expanded (modal) variant — relax nowrap for wide view --- */
+.copilot-markdown--expanded table {
+  white-space: normal;
+}
+.copilot-markdown--expanded th,
+.copilot-markdown--expanded td {
+  padding: 0.6rem 1rem;
+}

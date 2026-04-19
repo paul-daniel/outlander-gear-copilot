@@ -17,6 +17,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { TranslocoModule, TranslocoService } from '@jsverse/transloco';
 import { filter, Subscription } from 'rxjs';
 import { CopilotService, CopilotHistoryEntry } from '@services/copilot.service';
+import { MarkdownPipe } from './markdown.pipe';
 
 interface ChatMessage {
   role: 'user' | 'assistant';
@@ -41,7 +42,7 @@ const RESPONSE_TIMEOUT_MS = 30_000;
 @Component({
   selector: 'app-chat-copilot',
   standalone: true,
-  imports: [CommonModule, FormsModule, TranslocoModule],
+  imports: [CommonModule, FormsModule, TranslocoModule, MarkdownPipe],
   templateUrl: './chat-copilot.component.html',
 })
 export class ChatCopilotComponent implements AfterViewChecked {
@@ -56,6 +57,9 @@ export class ChatCopilotComponent implements AfterViewChecked {
   messages: ChatMessage[] = [];
   waiting = false;
   timedOut = false;
+
+  /** Expanded table modal */
+  expandedTableHtml: string | null = null;
 
   /** Chat history */
   chatHistory: ChatSession[] = [];
@@ -231,6 +235,23 @@ export class ChatCopilotComponent implements AfterViewChecked {
 
   dismissTimeout(): void {
     this.timedOut = false;
+  }
+
+  /** Handle clicks inside rendered markdown (e.g. table expand buttons). */
+  onMessageClick(event: Event): void {
+    const target = event.target as HTMLElement;
+    const btn = target.closest('.copilot-table-expand-btn');
+    if (btn) {
+      const wrap = btn.closest('.copilot-table-wrap');
+      const table = wrap?.querySelector('table');
+      if (table) {
+        this.expandedTableHtml = table.outerHTML;
+      }
+    }
+  }
+
+  closeExpandedTable(): void {
+    this.expandedTableHtml = null;
   }
 
   adjustTextareaHeight(event: Event): void {

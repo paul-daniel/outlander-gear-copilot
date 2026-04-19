@@ -152,7 +152,8 @@
     "backToChat": "Retour au chat",
     "demoResponse": "Merci pour votre message ! Je suis le copilote Outlander. Pour l'instant je suis en mode démo, mais bientôt je pourrai vous aider à trouver l'équipement parfait.",
     "timeoutTitle": "Aucune réponse reçue",
-    "timeoutMessage": "L'assistant met plus de temps que prévu. Veuillez réessayer plus tard."
+    "timeoutMessage": "L'assistant met plus de temps que prévu. Veuillez réessayer plus tard.",
+    "expandedTable": "Vue tableau"
   },
   "faq": {
     "subtitle": "Centre d'aide",
