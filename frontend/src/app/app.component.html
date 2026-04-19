@@ -22,6 +22,8 @@
            class="hover:text-black dark:hover:text-white transition-colors py-1">{{ t('nav.home') }}</a>
         <a routerLink="/products" routerLinkActive="text-black dark:text-white font-medium"
            class="hover:text-black dark:hover:text-white transition-colors py-1">{{ t('nav.collection') }}</a>
+        <a routerLink="/faq" routerLinkActive="text-black dark:text-white font-medium"
+           class="hover:text-black dark:hover:text-white transition-colors py-1">{{ t('footer.faq') }}</a>
       </nav>
 
       <!-- Logo (center) -->
@@ -99,6 +101,7 @@
   <div *ngIf="mobileMenuOpen" class="md:hidden border-t border-gray-100 dark:border-gray-800 px-6 py-6 space-y-4 bg-white dark:bg-gray-950">
     <a routerLink="/" (click)="mobileMenuOpen = false" class="block text-[13px] tracking-wide uppercase text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white">{{ t('nav.home') }}</a>
     <a routerLink="/products" (click)="mobileMenuOpen = false" class="block text-[13px] tracking-wide uppercase text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white">{{ t('nav.collection') }}</a>
+    <a routerLink="/faq" (click)="mobileMenuOpen = false" class="block text-[13px] tracking-wide uppercase text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white">{{ t('footer.faq') }}</a>
     <a routerLink="/cart" (click)="mobileMenuOpen = false" class="block text-[13px] tracking-wide uppercase text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white">
       {{ t('nav.cart') }} <span *ngIf="cart.count > 0" class="text-outlander-700 dark:text-outlander-400">({{ cart.count }})</span>
     </a>
@@ -145,9 +148,9 @@
       <div>
         <h3 class="text-white text-[11px] font-medium tracking-[0.2em] uppercase mb-5">{{ t('footer.help') }}</h3>
         <ul class="space-y-3 text-[13px]">
-          <li><a href="#" class="hover:text-white transition-colors">{{ t('footer.faq') }}</a></li>
-          <li><a href="#" class="hover:text-white transition-colors">{{ t('footer.shippingReturns') }}</a></li>
-          <li><a href="#" class="hover:text-white transition-colors">{{ t('footer.contact') }}</a></li>
+          <li><a routerLink="/faq" class="hover:text-white transition-colors">{{ t('footer.faq') }}</a></li>
+          <li><a routerLink="/faq" class="hover:text-white transition-colors">{{ t('footer.shippingReturns') }}</a></li>
+          <li><a href="mailto:support@outlandergear.com" class="hover:text-white transition-colors">{{ t('footer.contact') }}</a></li>
         </ul>
       </div>
 

@@ -1,0 +1,25 @@
+<ng-container *transloco="let t">
+<section class="max-w-7xl mx-auto px-6 sm:px-10 py-20">
+  <div class="text-center mb-12">
+    <p class="text-[11px] uppercase tracking-[0.3em] text-outlander-500 dark:text-outlander-400 mb-3">{{ t('home.categoriesSubtitle') }}</p>
+    <h2 class="text-3xl sm:text-4xl font-light text-gray-900 dark:text-white">{{ t('home.categoriesTitle') }}</h2>
+  </div>
+
+  <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+    <a
+      *ngFor="let cat of categories"
+      [routerLink]="['/products']"
+      [queryParams]="{ category: cat.slug }"
+      class="group relative overflow-hidden bg-gray-100 dark:bg-gray-800 aspect-square flex items-end"
+    >
+      <img *ngIf="cat.image_url" [src]="cat.image_url" [alt]="cat.name"
+           class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+      <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
+      <div class="relative z-10 p-5 w-full">
+        <p class="text-white text-[14px] font-medium tracking-wide">{{ cat.name }}</p>
+        <p class="text-white/60 text-[12px] mt-0.5">{{ cat.product_count }} {{ cat.product_count === 1 ? t('home.product') : t('home.products') }}</p>
+      </div>
+    </a>
+  </div>
+</section>
+</ng-container>

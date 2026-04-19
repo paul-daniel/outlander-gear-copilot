@@ -1,146 +1,119 @@
-Outlander Gear Co. — Climbing Gear Safety and Selection Guide
+OUTLANDER GEAR CO. — CLIMBING GEAR SAFETY AND SELECTION GUIDE
+===============================================================
 
-Climbing gear is life-safety equipment. Choosing the right harness, rope, and accessories — and knowing how to inspect and use them — is critically important. This guide covers everything you need to know about selecting and using the climbing gear available at Outlander Gear Co.
+Safety is non-negotiable in climbing. Every piece of gear between you and the ground must be rated, inspected, and properly used. This guide covers our climbing products and essential safety practices.
 
-IMPORTANT SAFETY NOTICE: Climbing is an inherently dangerous activity. Improper use of climbing equipment can result in serious injury or death. Always receive proper training from a certified instructor before climbing. Never use equipment you do not understand. Inspect all gear before every use. Follow all manufacturer guidelines.
+OUR CLIMBING PRODUCTS
+-----------------------
+| Product              | Price    | Weight  | Certification         |
+|----------------------|----------|---------|-----------------------|
+| ComfortPro Harness   | €79.95   | 0.38 kg | EN 12277 / UIAA       |
+| Dynamic Rope 70 m    | €189.00  | 4.20 kg | EN 892 / UIAA         |
+| Climbing Helmet      | €69.00   | 0.25 kg | EN 12492 / UIAA       |
 
-Part 1: Climbing Harnesses
+COMFORTPRO HARNESS (€79.95)
+-----------------------------
+An all-round sport climbing and trad harness with padded leg loops and a wide waistbelt for extended hanging belays.
 
-A climbing harness is the essential link between you and the rope. It distributes the force of a fall across your hips and thighs, keeping you secure and relatively comfortable.
+Specifications:
+- Type: Sit harness (all-around)
+- Waist range: 68–120 cm (adjustable)
+- Leg loops: Adjustable, padded
+- Gear loops: 4
+- Tie-in points: 2 (hard points rated to 15 kN)
+- Weight: 380 g (size M)
+- Certification: EN 12277 Type C, UIAA certified
 
-Our Product: ConfortPro Climbing Harness
-- 4 gear loops for organizing quickdraws, carabiners, slings, and other equipment
-- Adjustable leg loops with padded construction for comfort during long routes and hanging belays
-- Wide, padded waistbelt for even weight distribution
-- Certified to CE EN 12277 — the European standard for climbing harnesses
-- Weight: 380g
-- Price: €79.95 (compare at €99.00)
+Safety notes:
+- Always double-back the waist buckle. Modern buckles auto-lock, but visually verify.
+- The belay loop is the rated attachment point for belay devices and carabiners — NEVER clip directly into the tie-in points for belaying.
+- Inspect before every climb: check stitching, buckle function, wear on the belay loop and tie-in points. If the belay loop shows core (white) fibers, retire the harness immediately.
 
-Types of Climbing Harnesses:
-1. Sport Climbing Harnesses: Lightweight with fixed or minimally adjustable leg loops. Designed for single-pitch sport climbing where you are moving fast and do not need to adjust the harness over multiple clothing layers.
-2. All-Around Harnesses: Adjustable leg loops, moderate padding, 4 gear loops. Versatile enough for sport, trad, multi-pitch, and gym climbing. Our ConfortPro falls into this category — it is the most versatile choice for most climbers.
-3. Alpine/Mountaineering Harnesses: Fully adjustable (including drop-seat buckles on leg loops to allow removal without taking off crampons or skis). Lighter padding. Designed to fit over bulky winter layers.
-4. Big Wall Harnesses: Maximum padding and gear capacity (5–6 gear loops). Designed for spending hours or days hanging on a vertical wall.
+DYNAMIC ROPE 70 M (€189.00)
+------------------------------
+A workhorse single rope for sport, trad, and multi-pitch climbing. The 9.8 mm diameter balances durability with handling, and the dry-treated sheath sheds moisture in damp conditions.
 
-How to Fit a Harness:
-1. The waistbelt should sit on your iliac crest (hipbones), NOT on your natural waist. If the harness rides up to your ribs during a fall, it can constrict your diaphragm and cause suspension trauma.
-2. Tighten the waistbelt until it is snug but not uncomfortably tight. You should be able to fit a flat hand between the belt and your body.
-3. The belay loop should hang centered in front, roughly at your navel.
-4. Leg loops should be snug against your thighs without cutting off circulation. You should be able to fit two fingers between the loop and your leg.
-5. After putting on the harness, double-back all buckles (pass the webbing through the buckle a second time). Many modern harnesses have auto-locking buckles, but always verify.
+Specifications:
+- Type: Single rope
+- Diameter: 9.8 mm
+- Length: 70 m
+- Treatment: Dry-treated sheath
+- Falls held (UIAA): 7+
+- Impact force: 8.4 kN
+- Static elongation: 8.2%
+- Dynamic elongation: 32%
+- Weight: 62 g/m (4.20 kg total)
+- Sheath slippage: 0 mm
+- Certification: EN 892, UIAA
 
-When to Retire a Harness:
-- After any fall factor 2 fall (a fall where the fall distance equals or exceeds twice the rope length between climber and belayer), inspect the harness carefully and consider retirement.
-- After visible damage: frayed webbing, cut stitching, bent buckles, UV discoloration (fabric fading).
-- Based on age: 3–5 years with regular use, 7–10 years with occasional use, regardless of visible condition. Nylon degrades from UV exposure, body oils, sweat, and chemical contamination.
-- If you are unsure, retire it. A new harness costs €80. Your life is priceless.
+Why 70 meters? Modern sport routes are often bolted for 35 m pitches. A 70 m rope lets you lower from any 35 m pitch and still reach the ground. Always tie a knot in the free end of your rope when lowering.
 
-Part 2: Climbing Ropes
+Rope care:
+- Store loosely coiled or in a rope bag — never hang it from a single point for extended periods.
+- Flake the rope before each climb to remove twists.
+- Wash in lukewarm water with mild soap; air-dry in shade.
+- Retire after: a significant fall on a sharp edge, visible core damage, 5 years of regular weekend use, or 10 years regardless of use.
 
-The rope is your lifeline. Understanding rope specifications is essential for safe climbing.
+CLIMBING HELMET (€69.00)
+--------------------------
+Protects against rockfall from above and impacts from falls. Our hybrid-construction helmet combines a hard ABS shell with an EPS foam liner for the best mix of durability and shock absorption.
 
-Our Product: Dynamic Rope 70m × 9.5mm
-- Length: 70 meters — the modern standard for sport climbing, allowing 35m pitches (half the rope length)
-- Diameter: 9.5mm — a versatile diameter that balances weight, durability, and handling
-- Dynamic construction: Stretches under load to absorb the energy of a fall, reducing the impact force on the climber, belayer, and protection
-- Dry treatment: The fibers are treated with a hydrophobic coating that reduces water absorption by up to 50%. This is critical for ice climbing, mixed climbing, and any wet conditions where a waterlogged rope becomes dangerously heavy and less dynamic.
-- UIAA Fall Rating: 8 — the rope has been tested to withstand 8 factor-1.77 falls with an 80 kg weight before failure. In real-world climbing, ropes almost never experience falls this severe.
-- Weight: 4.20 kg for 70m (approximately 60g per meter)
-- Price: €189.00
+Specifications:
+- Construction: Hybrid (ABS shell + EPS foam)
+- Weight: 250 g
+- Ventilation: 8 vents with mesh covers
+- Headlamp clips: 4 (front + rear)
+- Size range: 52–62 cm (adjustable dial)
+- Certification: EN 12492, UIAA
 
-Understanding Rope Specifications:
+When to wear a helmet:
+- Sport climbing outdoors (ALWAYS — rockfall can happen on any crag)
+- Trad and multi-pitch climbing
+- Via ferrata
+- Ice climbing
+- Top-rope climbing at outdoor crags
 
-Dynamic vs. Static Ropes:
-- Dynamic ropes stretch 25–35% under load. This stretch is what absorbs the energy of a leader fall. ALL lead climbing ropes must be dynamic. Our 70m rope is dynamic.
-- Static ropes stretch very little (less than 5%). They are used for rappelling, hauling, caving, and rescue — NEVER for lead climbing. A factor 2 fall on a static rope generates enough force to break anchors, harnesses, or the climber's body.
+You can skip a helmet only in a fully controlled indoor gym environment where there is no rockfall risk.
 
-Diameter:
-- 8.5–9.2mm: Thin ropes for experienced climbers. Lighter and pack smaller but wear faster and require more skill to belay.
-- 9.2–9.8mm: The sweet spot for most climbers. Our 9.5mm rope is in this range — it handles well, works with all belay devices, and offers a good balance of weight and durability.
-- 10.0mm+: Thick ropes for top-roping, gym climbing, and beginners. More durable and easier to catch falls on, but heavier.
+CLIMBING SAFETY CHECKLIST
+---------------------------
+Before every climb, perform the buddy check:
+1. HARNESS: Waist buckle doubled back, leg loops secure, belay loop intact.
+2. KNOT: Figure-eight follow-through tied correctly and dressed. Tail at least 15 cm long.
+3. CARABINER: Belay carabiner locked. Gate facing opposite direction of potential load.
+4. BELAY DEVICE: Rope loaded correctly (bight through device, clipped to belay loop).
+5. HELMET: On, chinstrap fastened.
+6. ROPE: Knot in the free end when sport climbing outdoors.
 
-Single, Half, and Twin Ratings:
-- Single: Designed to be used as a single strand. Our 70m rope is single-rated. This is the standard for sport climbing and most trad climbing.
-- Half (Double): Two ropes used together, each clipped to alternating pieces of protection. Reduces rope drag on wandering routes.
-- Twin: Two thin ropes used together, both clipped to every piece. Lightest system but less versatile.
+RETIREMENT GUIDELINES
+-----------------------
+| Equipment           | Retire After                                            |
+|---------------------|---------------------------------------------------------|
+| Harness             | 5–7 years from first use, or visible damage             |
+| Dynamic Rope        | 5 years regular use, 10 years max, or any core damage   |
+| Helmet              | 5–10 years, or after any significant impact              |
+| Carabiners          | When gate doesn't close/lock, or after a major fall      |
 
-Rope Care and Inspection:
-- Before each climb: Run the entire rope through your hands, feeling for flat spots, lumps, or a mushy/stiff section. These indicate core damage and the rope must be retired immediately.
-- After each use: Flake the rope loosely into a rope bag or butterfly coil. Never store a rope tightly coiled, as this creates kinks.
-- Washing: Hand wash or front-load machine wash with lukewarm water and rope-specific soap. Hang dry in the shade.
-- Storage: Cool, dry, dark location. Away from chemicals (battery acid, bleach, solvents), concrete (alkaline), and UV light.
-- Retirement: A rope with a damaged sheath that exposes the core must be retired immediately. Even without visible damage, retire climbing ropes after 2–5 years of regular use or 10 years maximum regardless of use.
+Note: These are general guidelines. Always follow the manufacturer's specific retirement recommendations printed on the product label.
 
-Part 3: Essential Climbing Accessories
+CHOOSING THE RIGHT CLIMBING GEAR SET
+--------------------------------------
+Sport climbing starter set:
+- ComfortPro Harness .............. €79.95
+- Dynamic Rope 70 m ............... €189.00
+- Climbing Helmet ................. €69.00
+  Base gear total: €337.95
+  (Add carabiners, quickdraws, and a belay device — not currently in our catalog.)
 
-While Outlander Gear Co. focuses on harnesses and ropes, here is what else you need for a complete climbing setup:
+Multi-pitch / trad climbing:
+All of the above, plus additional protection gear, slings, and a larger rack. Our 70 m rope is ideal for multi-pitch with pitch lengths up to 35 m.
 
-Carabiners:
-- Locking carabiners: Required for belaying, rappelling, and anchors. Look for screwgate or auto-locking mechanisms.
-- Non-locking (sport) carabiners: Used in quickdraws for clipping bolts on sport routes.
-- Always use CE/UIAA certified carabiners. Check the strength rating stamped on the spine (typically 20–28 kN along the major axis).
+FALL FACTORS EXPLAINED
+-----------------------
+Fall Factor = Fall Distance ÷ Rope Length Out
 
-Belay Device:
-- Tubular devices (ATC-style): Simple, lightweight, versatile. Work with a wide range of rope diameters.
-- Assisted-braking devices (GriGri-style): Add a camming mechanism that pinches the rope if the belayer's hand is pulled off the brake strand. Adds a safety margin but does NOT replace proper belay technique.
-- Always match your belay device to your rope diameter. Our 9.5mm rope works with virtually all modern belay devices.
+- Fall Factor 0: You fall with slack below you but the rope catches immediately (e.g., top-rope). Low force.
+- Fall Factor 1: You fall the distance of rope between you and the anchor (e.g., falling from anchor level). Moderate force.
+- Fall Factor 2: You fall twice the length of rope out (e.g., leading above the belay with no intermediate clips). Maximum force on a single rope — this is the worst-case scenario.
 
-Helmet:
-- Essential for outdoor climbing (both rock and ice). Protects against rockfall from above and impacts during a fall.
-- Look for CE EN 12492 certification. Modern helmets weigh 200–350g and are barely noticeable once climbing.
-
-Climbing Shoes:
-- Snug-fitting shoes with sticky rubber soles designed for maximum grip on rock.
-- Different styles for different climbing: all-around, aggressive (overhangs), slab (low-angle).
-
-Quickdraws:
-- Sets of two carabiners connected by a sewn sling (dogbone). Used to clip protection (bolts or trad gear) to the rope.
-- A typical sport climbing load is 12–15 quickdraws for a single pitch.
-
-Chalk and Chalk Bag:
-- Climbing chalk (magnesium carbonate) absorbs hand sweat and improves grip.
-- Chalk bags attach to your harness for easy access while climbing.
-
-Part 4: Climbing Safety Fundamentals
-
-Belaying:
-The belayer is responsible for managing the rope and catching the climber in the event of a fall. This is a critical skill that must be learned from a certified instructor and practiced extensively before outdoor climbing.
-
-Key principles:
-- Never take your brake hand off the rope.
-- Keep appropriate slack — not too much (long fall), not too tight (pulls the climber off the wall).
-- Communicate clearly with your climbing partner using standardized commands.
-- Position yourself correctly relative to the first bolt/piece of protection.
-
-Fall Factors:
-The fall factor is the severity of a fall, calculated as: Fall Distance ÷ Length of Rope Out.
-- Factor 0: Falling on a top rope (rope is above you). Low force.
-- Factor 1: Falling the full length of rope between you and your belayer (e.g., falling from 10m above the belayer with 10m of rope out).
-- Factor 2: The worst case — falling before clipping the first piece above your belayer (e.g., climbing 5m above the belayer with 5m of rope out, falling 10m). The rope absorbs maximum force.
-
-Our dynamic rope is designed to handle multiple factor-1.77 falls (UIAA test standard). However, minimizing fall factors through proper clipping and protection placement is always the goal.
-
-Anchor Building:
-In multi-pitch and trad climbing, you must build anchors at belay stations. The acronym SERENE/ERNEST is commonly used:
-- Solid/Strong: Each individual anchor point must be bomber.
-- Equalized: The load should be distributed among multiple points.
-- Redundant: If one point fails, others hold.
-- Efficient: Build the anchor without wasting time.
-- No Extension: If one point fails, the system should not suddenly shock-load the remaining points.
-
-Part 5: Getting Started with Climbing
-
-If you are new to climbing, here is a recommended progression:
-1. Indoor Gym: Learn the basics of belaying, knot tying, and movement in a controlled environment.
-2. Guided Outdoor Climbing: Hire a certified guide or take a course for your first outdoor climbs.
-3. Lead Climbing Course: Learn to lead clip bolts (sport) or place protection (trad).
-4. Build Experience Gradually: Climb within your ability and slowly push your limits.
-
-Recommended Starter Setup from Outlander Gear Co.:
-- ConfortPro Climbing Harness (€79.95) — versatile 4-loop harness
-- Dynamic Rope 70m 9.5mm (€189.00) — perfect diameter for learning and progression
-- Total for rope + harness: €268.95
-
-Add a helmet, belay device, shoes, and chalk, and you have a complete personal climbing kit.
-
-Outlander Gear Co. — Safety first, summit second. Always.
+Our Dynamic Rope 70 m is tested to survive 7+ factor-2 falls in lab conditions. In real climbing, ropes rarely experience factor-2 falls due to intermediate protection points.

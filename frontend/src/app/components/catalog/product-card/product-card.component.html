@@ -1,0 +1,41 @@
+<ng-container *transloco="let t">
+<div class="flex flex-col group">
+  <!-- Image -->
+  <a [routerLink]="['/products', product.slug]" class="relative overflow-hidden bg-gray-100 dark:bg-gray-800 aspect-[3/4] mb-4">
+    <img
+      [src]="product.image_url"
+      [alt]="product.name"
+      class="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-500"
+    />
+    <span *ngIf="product.compare_price" class="absolute top-3 left-3 text-[11px] uppercase tracking-wider text-red-600 bg-white dark:bg-gray-900 px-3 py-1">
+      -{{ getDiscount(product) }}%
+    </span>
+    <!-- Quick add overlay -->
+    <button
+      (click)="addToCart.emit(product); $event.preventDefault()"
+      [disabled]="product.stock_quantity === 0"
+      class="absolute bottom-0 left-0 right-0 bg-white/95 dark:bg-gray-900/95 text-center py-3 text-[12px] uppercase tracking-[0.12em] translate-y-full group-hover:translate-y-0 transition-transform duration-300"
+      [ngClass]="product.stock_quantity > 0
+        ? 'text-gray-900 dark:text-white hover:bg-gray-900 hover:text-white dark:hover:bg-white dark:hover:text-gray-900'
+        : 'text-gray-400 dark:text-gray-500 cursor-not-allowed'"
+    >
+      {{ product.stock_quantity > 0 ? t('products.addToCart') : t('products.outOfStock') }}
+    </button>
+  </a>
+
+  <!-- Content -->
+  <div class="flex flex-col">
+    <p class="text-[11px] uppercase tracking-[0.15em] text-gray-400 dark:text-gray-500 mb-1">{{ product.category_name }}</p>
+    <a [routerLink]="['/products', product.slug]" class="text-[14px] text-gray-900 dark:text-white mb-1 hover:underline line-clamp-1">
+      {{ product.name }}
+    </a>
+    <div class="flex items-center gap-2 mt-1">
+      <span class="text-[14px] font-medium text-gray-900 dark:text-white">{{ product.price | number:'1.2-2' }} €</span>
+      <span *ngIf="product.compare_price" class="text-[13px] text-gray-400 dark:text-gray-500 line-through">{{ product.compare_price | number:'1.2-2' }} €</span>
+    </div>
+    <div *ngIf="product.stock_quantity > 0 && product.stock_quantity <= 10" class="mt-1">
+      <span class="text-[11px] text-amber-600">{{ t('products.onlyLeftInStock', { count: product.stock_quantity }) }}</span>
+    </div>
+  </div>
+</div>
+</ng-container>

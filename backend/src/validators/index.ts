@@ -40,6 +40,7 @@ export const productQuerySchema = z.object({
   min_price: z.coerce.number().min(0).optional(),
   max_price: z.coerce.number().min(0).optional(),
   featured: z.coerce.boolean().optional(),
+  tags: z.string().optional(),
   sort: z.enum(['price_asc', 'price_desc', 'name', 'newest', 'rating']).optional(),
   page: z.coerce.number().int().min(1).default(1),
   limit: z.coerce.number().int().min(1).max(100).default(20),

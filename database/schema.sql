@@ -116,6 +116,31 @@ CREATE TABLE IF NOT EXISTS reviews (
 
 CREATE INDEX idx_reviews_product ON reviews(product_id);
 
+-- ===================== PRODUCT SPECIFICATIONS =====================
+CREATE TABLE IF NOT EXISTS product_specifications (
+    id          SERIAL PRIMARY KEY,
+    product_id  INTEGER      NOT NULL REFERENCES products(id) ON DELETE CASCADE,
+    spec_key    VARCHAR(100) NOT NULL,
+    spec_value  VARCHAR(255) NOT NULL,
+    spec_unit   VARCHAR(50),
+    spec_group  VARCHAR(50)  NOT NULL DEFAULT 'general',
+    UNIQUE(product_id, spec_key)
+);
+
+CREATE INDEX idx_product_specs_product ON product_specifications(product_id);
+CREATE INDEX idx_product_specs_group   ON product_specifications(spec_group);
+
+-- ===================== PRODUCT TAGS =====================
+CREATE TABLE IF NOT EXISTS product_tags (
+    id          SERIAL PRIMARY KEY,
+    product_id  INTEGER     NOT NULL REFERENCES products(id) ON DELETE CASCADE,
+    tag         VARCHAR(50) NOT NULL,
+    UNIQUE(product_id, tag)
+);
+
+CREATE INDEX idx_product_tags_product ON product_tags(product_id);
+CREATE INDEX idx_product_tags_tag     ON product_tags(tag);
+
 -- ===================== WISHLIST =====================
 CREATE TABLE IF NOT EXISTS wishlists (
     id          SERIAL PRIMARY KEY,

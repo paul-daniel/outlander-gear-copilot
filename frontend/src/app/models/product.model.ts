@@ -1,5 +1,14 @@
 import { Review } from './review.model';
 
+/** A single key-value specification for a product. */
+export interface ProductSpecification {
+  id: number;
+  spec_key: string;
+  spec_value: string;
+  spec_unit: string | null;
+  spec_group: string | null;
+}
+
 /** Core product returned from the API product list. */
 export interface Product {
   id: number;
@@ -22,6 +31,8 @@ export interface Product {
   created_at: string;
   reviews?: Review[];
   related_products?: ProductSummary[];
+  specifications?: ProductSpecification[];
+  tags?: string[];
 }
 
 /** Lightweight product summary used in related-products and cards. */

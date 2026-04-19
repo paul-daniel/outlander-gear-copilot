@@ -1,162 +1,110 @@
-Outlander Gear Co. — Footwear Selection, Sizing, and Fit Guide
+OUTLANDER GEAR CO. — FOOTWEAR SELECTION AND SIZING GUIDE
+==========================================================
 
-Your feet are your most important equipment in the outdoors. Choosing the right footwear — and getting the fit right — can make or break your adventure. This guide covers how to choose between trail runners, hiking boots, and mountaineering boots, plus detailed sizing advice for every shoe we sell at Outlander Gear Co.
+Choosing the right outdoor footwear is crucial. Ill-fitting shoes cause blisters, black toenails, and joint pain. This guide covers our footwear line-up and helps you find the perfect fit.
 
-Part 1: Types of Outdoor Footwear
+OUR FOOTWEAR LINE-UP
+----------------------
+| Product              | Price    | Weight (pair) | Type           | Best For                     |
+|----------------------|----------|---------------|----------------|-------------------------------|
+| Trail Grip X         | €159.99  | 0.62 kg       | Trail shoe     | Day hikes, trail running      |
+| Mid Hiking Boots     | €169.00  | 0.92 kg       | Mid-cut boot   | Day hikes, light backpacking  |
+| Alpinist Boots       | €389.00  | 1.45 kg       | Mountaineering | Winter, crampons, glaciers    |
+| Recovery Sandals     | €39.95   | 0.22 kg       | Sandal         | Post-hike camp recovery       |
 
-Trail Running Shoes:
-Trail runners are lightweight, flexible shoes designed for running or fast hiking on maintained trails and moderate terrain. They provide agility, breathability, and ground feel.
+TRAIL GRIP X (€159.99)
+-----------------------
+Our most versatile trail shoe, combining trail running performance with hiking-ready protection. A Vibram Megagrip outsole with 4 mm lugs bites into mud, gravel, and wet rock. The EVA midsole cushions on long days without feeling mushy.
 
-Our Trail Grip X shoes are a premium trail runner with:
-- Vibram Megagrip outsole — one of the stickiest and most durable rubber compounds available, providing exceptional traction on wet rock, dry dirt, and loose gravel.
-- Waterproof membrane — keeps feet dry during stream crossings and rain.
-- Reinforced toe cap — protects against rock strikes on technical terrain.
-- 8mm drop (heel-to-toe height difference) — a moderate drop that suits most runners and hikers.
-- Weight: 680g per pair.
-- Price: €159.99.
+Specifications:
+- Upper: Ripstop mesh with TPU overlays
+- Midsole: Dual-density EVA (20 mm stack height)
+- Outsole: Vibram Megagrip, 4 mm lugs
+- Drop: 8 mm heel-to-toe
+- Waterproof: No (quick-dry design)
+- Weight: 310 g per shoe (US M9)
+- Sizes: EU 38–48
 
-Best for: Trail running, fast day hiking, light backpacking on maintained trails, speed-oriented trekking where agility matters more than ankle support.
+Best for: Trail running (distances up to 80 km), day hikes on established trails, fastpacking, hikers who prefer low-cut agility over ankle support.
 
-Not ideal for: Heavy loads (30+ kg packs), rocky scrambling requiring stiff soles, snow/ice requiring crampons.
+Not ideal for: Heavy loads (>12 kg), crampon-compatible terrain, deep snow.
 
-Hiking Boots (Mid-Cut):
-Mid-cut hiking boots provide more ankle support than trail runners, a stiffer sole for better foot protection on rocky terrain, and generally more durable construction. They are the classic choice for day hiking and lightweight backpacking.
+MID HIKING BOOTS (€169.00)
+----------------------------
+A mid-cut boot that gives ankle support without the weight of a full mountaineering boot. The Nubuck leather upper resists abrasion, and the built-in waterproof membrane keeps feet dry in rain and stream crossings.
 
-Best for: Day hiking with a light pack, moderate trails with some rocky sections, hikers who prefer ankle support.
+Specifications:
+- Upper: Nubuck leather + waterproof membrane
+- Midsole: PU (polyurethane, durable and supportive)
+- Outsole: Vibram outsole, 5 mm lugs
+- Drop: 10 mm heel-to-toe
+- Ankle: Mid-cut (padded collar)
+- Weight: 460 g per shoe (US M9)
+- Sizes: EU 36–48
 
-Mountaineering Boots:
-Stiff, insulated, high-cut boots designed for alpine climbing, glacier travel, and winter conditions. Our Alpinist High Mountain Boots are:
-- Compatible with automatic (step-in) crampons — the sole has front and rear welts for secure crampon attachment.
-- Insulated with Thinsulate 400g — rated for temperatures well below freezing.
-- Gore-Tex Insulated membrane — waterproof and warm.
-- Rigid sole — necessary for front-pointing on steep ice and for comfort on long approaches with a heavy pack.
-- Weight: 1.90 kg per pair (relatively light for a full mountaineering boot).
-- Price: €389.00 (compare at €449.00).
+Best for: Day hikes with moderate loads, hut-to-hut treks, shoulder-season conditions, hikers who want ankle support without bulk.
 
-Best for: Alpinism, glacier travel, winter mountaineering, via ferrata, any situation requiring crampons.
+Break-in tip: Wear them around the house for 2–3 hours before your first hike. Nubuck softens quickly with body heat.
 
-Not ideal for: General hiking (too heavy, too stiff), trail running, warm-weather walks.
+ALPINIST BOOTS (€389.00)
+--------------------------
+Our most technical boot, built for alpine mountaineering, glacier travel, and winter ascents. The B2-rated sole is compatible with semi-automatic and strap-on crampons. The insulated, fully waterproof construction handles sub-zero temperatures.
 
-Recovery Sandals:
-After a long day on the trail, your feet deserve a break. Our Camp Recovery Sandals feature:
-- EVA cushioning sole — absorbs impact and provides arch support for tired feet.
-- Quick-drying material — can be worn through streams or in camp showers.
-- Ultra-lightweight at just 220g per pair.
-- Price: €39.95.
+Specifications:
+- Upper: Synthetic + rubber rand (full wrap)
+- Insulation: PrimaLoft 200 g
+- Midsole: TPU shank (B2 crampon compatible)
+- Outsole: Vibram Montagna, 6 mm lugs
+- Waterproof: Yes (Gore-Tex lined)
+- Weight: 725 g per boot (US M9)
+- Sizes: EU 38–47
 
-These are not hiking shoes — they are designed exclusively for wearing around camp, in huts, or at trailheads before and after your hike. Many experienced hikers consider camp shoes an underrated luxury.
+Best for: Alpine mountaineering, glacier crossings, winter hiking with crampons, via ferrata with heavy exposure, Scottish winter climbing.
 
-Part 2: How to Choose the Right Footwear
+Crampon compatibility:
+- Strap-on crampons: YES
+- Semi-automatic crampons: YES (rear welt)
+- Step-in crampons: NO (no front welt; choose a B3 boot for those)
 
-Decision Factors:
+RECOVERY SANDALS (€39.95)
+---------------------------
+After a long day on the trail, your feet deserve a break. These EVA foam sandals have a thick 20 mm midsole that cushions sore arches and lets swollen feet breathe.
 
-1. Activity Type:
-- Day hiking on maintained trails → Trail runners or light hiking boots
-- Multi-day backpacking with 15–25 kg pack → Mid-cut hiking boots
-- Technical scrambling or via ferrata → Approach shoes or stiff hiking boots
-- Alpine climbing / glacier travel → Mountaineering boots (Alpinist)
-- Trail running / ultralight fast packing → Trail runners (Trail Grip X)
+Specifications:
+- Material: Injection-molded EVA
+- Midsole: 20 mm cushioned
+- Weight: 110 g per sandal (US M9)
+- Sizes: EU 36–48
 
-2. Terrain:
-- Smooth dirt trails → Almost anything works; trail runners are most enjoyable.
-- Rocky, uneven terrain → A stiffer sole and more robust construction protect your feet from bruising on sharp rocks. Hiking boots or stiff trail runners.
-- Snow, ice, and glaciers → Mountaineering boots with crampon compatibility (Alpinist).
-- Wet, muddy trails → Waterproof membrane (Gore-Tex or equivalent) is highly recommended. Both our Trail Grip X and Alpinist boots are waterproof.
+Best for: Camp, showers, post-hike relaxation, travel days between treks. Not for hiking.
 
-3. Pack Weight:
-The heavier your pack, the more support and stiffness you need from your footwear. Carrying 25+ kg in trail runners on rough terrain is a recipe for rolled ankles and sore feet. Match your shoes to your load.
+HOW TO SIZE YOUR OUTDOOR FOOTWEAR
+-----------------------------------
+1. Measure both feet in the afternoon (feet swell during the day).
+2. Wear the socks you plan to hike in (e.g., our merino blend socks).
+3. Stand up and slide your index finger behind your heel — there should be roughly one finger width of space between your longest toe and the front of the boot.
+4. Walk downhill (use a ramp or stairs). Your toes should NOT hit the front of the boot. If they do, go up half a size.
+5. For mountaineering boots like the Alpinist Boots, size for thicker socks and slightly more room.
 
-4. Personal Preference:
-Some hikers swear by the freedom and speed of trail runners even for multi-day treks with moderate loads. Others prefer the security and protection of boots. There is no single right answer — what matters is that your shoes fit well and match your terrain and load.
+Common sizing mistakes:
+- Buying shoes too small → black toenails on descents
+- Buying boots too large → heel lift → blisters on the back of the heel
+- Ignoring width → pressure points on the sides of the foot
 
-Part 3: Sizing Guide
+FOOTWEAR DECISION MATRIX
+--------------------------
+| Scenario                         | Recommended Footwear   |
+|----------------------------------|------------------------|
+| Trail running / fast day hike    | Trail Grip X           |
+| Day hike, moderate terrain       | Mid Hiking Boots       |
+| Multi-day backpacking (light)    | Mid Hiking Boots       |
+| Multi-day backpacking (heavy)    | Mid Hiking Boots       |
+| Alpine mountaineering / crampons | Alpinist Boots         |
+| Camp / post-hike recovery        | Recovery Sandals       |
 
-Getting the right size is critical for outdoor footwear. Shoes that are too small cause blisters, blackened toenails, and pain on descents. Shoes that are too large cause sliding, instability, and blisters from friction.
-
-General Sizing Rules:
-1. Order a half-size to full size larger than your street shoe size for hiking footwear. Your feet swell during long hikes, and you need clearance in the toe box for downhill sections.
-2. Try shoes on in the afternoon or evening, when your feet are at their largest (feet swell during the day).
-3. Wear the socks you plan to hike in when trying on shoes. Thick hiking socks take up more volume than dress socks.
-
-EU to US Size Conversion (approximate):
-EU 36 = US Women's 5.5 / US Men's 4
-EU 37 = US Women's 6.5 / US Men's 5
-EU 38 = US Women's 7.5 / US Men's 6
-EU 39 = US Women's 8.5 / US Men's 6.5
-EU 40 = US Women's 9 / US Men's 7
-EU 41 = US Women's 10 / US Men's 8
-EU 42 = US Women's 10.5 / US Men's 8.5
-EU 43 = US Men's 9.5
-EU 44 = US Men's 10.5
-EU 45 = US Men's 11.5
-EU 46 = US Men's 12
-EU 47 = US Men's 13
-
-Width:
-Most hiking shoes come in a standard width. If you have wide feet, look for models labeled "Wide" or choose brands known for generous toe boxes. If shoes feel tight across the forefoot (ball of the foot), you may need a wider size rather than a longer one.
-
-How to Measure Your Feet at Home:
-1. Place a piece of paper on a hard floor against a wall.
-2. Stand on the paper with your heel touching the wall.
-3. Mark the furthest point of your longest toe.
-4. Measure the distance from the wall to the mark in centimeters.
-5. Add 1.0–1.5 cm for hiking shoes (to account for swelling and downhill clearance).
-6. Use the size chart to find your EU or US size.
-
-Foot Length to EU Size:
-23.0 cm = EU 36
-23.5 cm = EU 37
-24.0 cm = EU 37.5
-24.5 cm = EU 38
-25.0 cm = EU 39
-25.5 cm = EU 40
-26.0 cm = EU 41
-26.5 cm = EU 42
-27.0 cm = EU 43
-27.5 cm = EU 43.5
-28.0 cm = EU 44
-28.5 cm = EU 45
-29.0 cm = EU 46
-29.5 cm = EU 47
-
-Product-Specific Sizing Notes:
-
-Trail Grip X Shoes:
-These run slightly small, as noted by customer reviews. We recommend ordering a half-size up from your usual EU size. For example, if you normally wear EU 42, order EU 42.5 or EU 43. The Vibram Megagrip outsole does not stretch, so the initial fit is the fit you will have.
-
-Alpinist Mountaineering Boots:
-These are designed to be worn with thick mountaineering socks. If you normally wear EU 43 with hiking socks, you may need EU 43 or 43.5 with thick socks. The rigid construction means there is virtually no break-in flex — the boot will not "stretch" to fit.
-
-Camp Recovery Sandals:
-These sandals have a relaxed fit. Order your standard size. If you are between sizes, order the smaller size for a snug fit or the larger for a loose, slide-on feel.
-
-Part 4: Breaking In Your Footwear
-
-Modern hiking boots require less break-in than leather boots of the past, but some break-in is still recommended:
-1. Wear new boots around the house for several hours over 2–3 days.
-2. Take short walks (1–2 km) on paved surfaces, gradually increasing distance.
-3. Do a short hike (3–5 km) with a light pack before committing to a multi-day trek.
-4. Pay attention to hot spots (areas of friction or pressure). Address these with moleskin, different lacing techniques, or different socks before they become blisters.
-
-Trail runners (like our Trail Grip X) typically require little to no break-in time — they are designed to be comfortable right out of the box.
-
-Part 5: Sole Technology Explained
-
-Vibram Megagrip:
-Used on our Trail Grip X shoes. Vibram is the world's leading outsole manufacturer. Megagrip is their premier compound for maximum traction on both wet and dry surfaces. The deep, multidirectional lugs are designed for trail running and hiking, providing confident grip on rock, dirt, mud, and wet roots. Megagrip is also one of Vibram's most durable compounds, resisting wear over hundreds of kilometers.
-
-Crampon Compatibility:
-Our Alpinist boots feature sole welts compatible with automatic (step-in) crampons — the most secure attachment system for technical ice climbing and steep frozen terrain. Semi-automatic and strap-on crampons also work. If you are buying crampons separately, confirm that the crampon binding matches your boot's welt system (C1, C2, or C3 rating).
-
-EVA Cushioning:
-Our Recovery Sandals use EVA (Ethylene-Vinyl Acetate) foam — a lightweight, shock-absorbing material commonly used in athletic footwear midsoles. EVA provides cushioning and energy return, making it ideal for recovery footwear.
-
-Part 6: Sock Recommendations
-
-The right socks are just as important as the right shoes:
-- Material: Merino wool is the gold standard for hiking socks. It wicks moisture, regulates temperature, and resists odor naturally. Synthetic blends (nylon/polyester with merino) add durability.
-- Cushioning: Match cushion to activity — thin socks for trail running, medium cushion for day hikes, heavy cushion for cold weather and heavy packs.
-- Height: Crew-length or higher for boots (to prevent rubbing from the boot collar). Ankle-length for trail runners.
-- Avoid cotton: Cotton absorbs moisture and does not dry, leading to blisters and cold feet.
-
-Outlander Gear Co. — The right shoes take you further. The wrong ones bring you home early.
+BOOT CARE
+-----------
+- After each hike: Remove insoles, open laces wide, and air-dry at room temperature. Never use a direct heat source (radiators, campfires, hair dryers) — heat damages adhesives and warps midsoles.
+- Cleaning: Brush off dirt with a soft brush and lukewarm water. For leather boots, apply a leather conditioner once or twice per season.
+- Waterproofing: Re-apply DWR spray every 20–30 wears (or when water stops beading). For leather boots, use wax-based waterproofing.
+- Storage: Store in a cool, dry place with insoles removed. Stuff with newspaper to hold shape.

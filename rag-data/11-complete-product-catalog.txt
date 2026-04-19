@@ -1,0 +1,247 @@
+OUTLANDER GEAR CO. — COMPLETE PRODUCT CATALOG
+================================================
+
+This file contains every product sold by Outlander Gear Co. with exact pricing, key specifications, and category information. All data matches our database as of the current season.
+
+=== CATEGORY: CAMPING (6 products) ===
+
+1. Alpine Pro Tent 2P
+   Price: €349.99 | Rating: 4.6/5
+   Freestanding 2-person, 3-season tent. 20D ripstop nylon fly, DAC aluminum poles, 2.8 m² floor, 1 vestibule.
+   Weight: 2.10 kg | Packed size: 45 × 15 cm
+   Tags: tent, camping, backpacking, ultralight, 3-season
+
+2. Expedition Sleeping Bag −15 °C
+   Price: €299.50 | Rating: 4.8/5
+   Mummy bag with 800-cuin RDS goose down. Comfort −10 °C, lower limit −15 °C (EN 13537). Draft collar, differential cut.
+   Weight: 1.20 kg | Fill weight: 750 g
+   Tags: sleeping-bag, camping, winter, down, ultralight
+
+3. UltraLight Sleeping Pad
+   Price: €129.00 | Rating: 4.3/5
+   Insulated inflatable pad, R-value 3.2, body-mapped baffles. 183 × 55 × 8 cm inflated.
+   Weight: 0.45 kg | R-value: 3.2
+   Tags: sleeping-pad, camping, backpacking, ultralight
+
+4. GasPro Compact Stove
+   Price: €59.95 | Rating: 4.7/5
+   Screw-on canister stove (EN 417). Piezo ignition, 3.5 min boil time per liter, 60 min burn on 230 g canister.
+   Weight: 0.095 kg | Fuel type: isobutane/propane
+   Tags: stove, camping, cooking, ultralight
+
+5. Headlamp 600 Lumens
+   Price: €49.99 | Rating: 4.5/5
+   CREE XP-L2 LED, 600 lm boost. USB-C rechargeable, IPX67, red light mode.
+   Weight: 0.075 kg | Battery life: up to 60 h (low mode)
+   Tags: headlamp, camping, hiking, lighting, safety
+
+6. Camp Chair Ultralight
+   Price: €69.95 | Rating: 4.2/5
+   Collapsible aluminum frame chair, ripstop nylon seat, 100 kg capacity.
+   Weight: 0.87 kg | Capacity: 100 kg
+   Tags: chair, camping, comfort, ultralight
+
+=== CATEGORY: HIKING (4 products) ===
+
+7. Trekking Backpack 55L
+   Price: €189.95 | Rating: 4.5/5
+   Internal aluminum frame, adjustable torso (42–52 cm), padded hip belt, integrated rain cover.
+   Weight: 1.80 kg | Volume: 55 L
+   Tags: backpack, hiking, backpacking, multi-day
+
+8. Day Hike Pack 28L
+   Price: €89.95 | Rating: 4.4/5
+   Ventilated back panel, trekking pole loops, stretch side pockets.
+   Weight: 0.68 kg | Volume: 28 L
+   Tags: backpack, hiking, daypack, ventilated
+
+9. Carbon Trekking Poles
+   Price: €89.95 | Rating: 4.6/5
+   Carbon fiber shafts, cork grips, FlickLock Pro, 65–135 cm adjustable. Tungsten carbide tips.
+   Weight: 0.38 kg (pair) | Material: carbon fiber
+   Tags: trekking-poles, hiking, carbon, poles
+
+10. Trail Running Vest 12L
+    Price: €119.00 | Rating: 4.3/5
+    Body-hugging vest with 1.5 L bladder included, 2 elastic chest pockets, breathable mesh.
+    Weight: 0.32 kg | Volume: 12 L
+    Tags: vest, trail-running, hydration, ultralight
+
+=== CATEGORY: CLOTHING (4 products) ===
+
+11. StormShield Waterproof Jacket
+    Price: €259.00 | Rating: 4.7/5
+    3-layer hardshell, 20 k/20 k waterproof/breathable, fully taped seams, adjustable hood.
+    Weight: 0.42 kg | Waterproofness: 20,000 mm
+    Tags: jacket, waterproof, rain, hardshell, 3-layer
+
+12. Down Jacket 700 Fill
+    Price: €179.00 | Rating: 4.5/5
+    700-cuin RDS duck down insulation, packs into own pocket, elastic cuffs. NOT waterproof.
+    Weight: 0.35 kg | Fill power: 700 cuin
+    Tags: jacket, down, insulation, packable, RDS
+
+13. Convertible Trek Pants
+    Price: €89.00 | Rating: 4.4/5
+    Zip-off legs convert to shorts. UPF 50+, DWR finish, 4-way stretch nylon.
+    Weight: 0.30 kg | UPF: 50+
+    Tags: pants, hiking, convertible, UPF, DWR
+
+14. Merino Base Layer Top
+    Price: €79.00 | Rating: 4.6/5
+    185 g/m² Merino wool, 18.5 micron (non-itch), temperature-regulating, odor-resistant.
+    Weight: 0.19 kg | Fiber: 18.5 micron Merino
+    Tags: base-layer, merino, wool, hiking, odor-resistant
+
+=== CATEGORY: FOOTWEAR (4 products) ===
+
+15. Trail Grip X
+    Price: €159.99 | Rating: 4.5/5
+    Trail running shoe. Vibram Megagrip outsole, 4 mm lugs, dual-density EVA midsole, 8 mm drop.
+    Weight: 0.62 kg (pair) | Outsole: Vibram Megagrip
+    Tags: shoes, trail-running, hiking, Vibram
+
+16. Mid Hiking Boots
+    Price: €169.00 | Rating: 4.4/5
+    Mid-cut, Nubuck leather upper, waterproof membrane, Vibram outsole 5 mm lugs, PU midsole.
+    Weight: 0.92 kg (pair) | Waterproof: Yes
+    Tags: boots, hiking, waterproof, mid-cut, leather
+
+17. Alpinist Boots
+    Price: €389.00 | Rating: 4.7/5
+    B2 crampon-compatible, PrimaLoft 200 g insulation, Gore-Tex lined, Vibram Montagna sole.
+    Weight: 1.45 kg (pair) | Crampon compatibility: B2
+    Tags: boots, mountaineering, crampon, winter, insulated
+
+18. Recovery Sandals
+    Price: €39.95 | Rating: 4.1/5
+    EVA foam, 20 mm cushioned midsole, post-hike recovery.
+    Weight: 0.22 kg (pair) | Material: injection-molded EVA
+    Tags: sandals, recovery, camp, comfort
+
+=== CATEGORY: ACCESSORIES (2 products) ===
+
+19. Multi-Tool Pro
+    Price: €49.95 | Rating: 4.3/5
+    12-function stainless steel multi-tool: knife, pliers, saw, screwdriver, can opener, wire cutter, file, awl, bottle opener, scissors, ruler, bit driver.
+    Weight: 0.20 kg | Functions: 12
+    Tags: multi-tool, accessories, knife, camping
+
+20. Dry Bag 20L
+    Price: €29.99 | Rating: 4.4/5
+    Roll-top waterproof dry bag, welded seams, 500D PVC tarpaulin.
+    Weight: 0.25 kg | Volume: 20 L
+    Tags: dry-bag, waterproof, kayak, accessories
+
+=== CATEGORY: CLIMBING (3 products) ===
+
+21. ComfortPro Harness
+    Price: €79.95 | Rating: 4.5/5
+    All-round sit harness, EN 12277 / UIAA certified, 4 gear loops, adjustable waist 68–120 cm.
+    Weight: 0.38 kg | Certification: EN 12277, UIAA
+    Tags: harness, climbing, sport, trad, safety
+
+22. Dynamic Rope 70 m
+    Price: €189.00 | Rating: 4.6/5
+    9.8 mm single rope, dry-treated sheath, 7+ UIAA falls, 8.4 kN impact force.
+    Weight: 4.20 kg | Length: 70 m | Diameter: 9.8 mm
+    Tags: rope, climbing, dynamic, single, dry-treated
+
+23. Climbing Helmet
+    Price: €69.00 | Rating: 4.4/5
+    Hybrid ABS shell + EPS foam, 8 vents, headlamp clips, 52–62 cm adjustable.
+    Weight: 0.25 kg | Certification: EN 12492, UIAA
+    Tags: helmet, climbing, safety, rockfall
+
+=== CATEGORY: HYDRATION (3 products) ===
+
+24. Insulated Bottle 1 L
+    Price: €32.95 | Rating: 4.6/5
+    Double-wall vacuum stainless steel. Cold 24 h, hot 12 h. BPA-free.
+    Weight: 0.35 kg | Capacity: 1 L
+    Tags: bottle, hydration, insulated, stainless-steel
+
+25. MiniPure Water Filter
+    Price: €44.95 | Rating: 4.5/5
+    Hollow-fiber 0.1 µm filter, 99.99999% bacteria removal, 2,000 L cartridge life, squeeze and inline modes.
+    Weight: 0.056 kg | Filter rating: 0.1 micron
+    Tags: filter, hydration, water-purification, safety
+
+26. Hydration Bladder 3 L
+    Price: €29.95 | Rating: 4.3/5
+    BPA-free TPU, wide-mouth fill, magnetic bite valve. Fits standard hydration sleeves.
+    Weight: 0.15 kg | Capacity: 3 L
+    Tags: bladder, hydration, BPA-free, backpack
+
+=== CATEGORY: WINTER SPORTS (2 products) ===
+
+27. Ski Goggles Pro
+    Price: €89.00 | Rating: 4.3/5
+    Dual-lens, anti-fog, orange/amber tint (VLT 20–25%), OTG compatible, UV400 protection, adjustable strap.
+    Weight: 0.18 kg | Lens: dual, anti-fog
+    Tags: goggles, skiing, snowboard, winter, OTG
+
+28. Insulated Gloves
+    Price: €79.00 | Rating: 4.4/5
+    PrimaLoft insulation, waterproof membrane, touchscreen-compatible (thumb + index), reinforced palm.
+    Weight: 0.16 kg (pair) | Insulation: PrimaLoft
+    Tags: gloves, winter, insulated, touchscreen, waterproof
+
+=== CATEGORY: TRAVEL & PACKING (3 products) ===
+
+29. Packing Cubes Set
+    Price: €24.95 | Rating: 4.5/5
+    Set of 4 (1 L, 2 M, 1 S), recycled polyester, mesh top panels, dual-zip openings.
+    Weight: 0.18 kg (set) | Material: recycled polyester
+    Tags: packing-cubes, travel, organization, recycled
+
+30. Microfiber Travel Towel
+    Price: €19.95 | Rating: 4.3/5
+    Size L (130 × 70 cm), absorbs 3× its weight, dries 5× faster than cotton, snap-loop for hanging.
+    Weight: 0.12 kg | Size: 130 × 70 cm
+    Tags: towel, travel, microfiber, quick-dry
+
+31. Travel Daypack 18L
+    Price: €34.95 | Rating: 4.2/5
+    Foldable daypack, 18 L capacity, stows into own pocket (13 × 13 cm), 210D ripstop nylon.
+    Weight: 0.15 kg | Volume: 18 L
+    Tags: daypack, travel, packable, ultralight
+
+=== PRICE SUMMARY ===
+
+Budget-friendly picks (under €50):
+- Packing Cubes Set ............... €24.95
+- Hydration Bladder 3 L ........... €29.95
+- Dry Bag 20L ..................... €29.99
+- Insulated Bottle 1 L ............ €32.95
+- Travel Daypack 18L .............. €34.95
+- Recovery Sandals ................ €39.95
+- MiniPure Water Filter ........... €44.95
+- Multi-Tool Pro .................. €49.95
+- Headlamp 600 Lumens ............. €49.99
+- Microfiber Travel Towel ......... €19.95
+
+Mid-range (€50–€150):
+- GasPro Compact Stove ............ €59.95
+- Climbing Helmet ................. €69.00
+- Camp Chair Ultralight ........... €69.95
+- Merino Base Layer Top ........... €79.00
+- Insulated Gloves ................ €79.00
+- ComfortPro Harness .............. €79.95
+- Convertible Trek Pants .......... €89.00
+- Ski Goggles Pro ................. €89.00
+- Day Hike Pack 28L ............... €89.95
+- Carbon Trekking Poles ........... €89.95
+- Trail Running Vest 12L .......... €119.00
+- UltraLight Sleeping Pad ......... €129.00
+
+Premium (€150+):
+- Trail Grip X .................... €159.99
+- Mid Hiking Boots ................ €169.00
+- Down Jacket 700 Fill ............ €179.00
+- Dynamic Rope 70 m ............... €189.00
+- Trekking Backpack 55L ........... €189.95
+- StormShield Waterproof Jacket ... €259.00
+- Expedition Sleeping Bag −15 °C .. €299.50
+- Alpine Pro Tent 2P .............. €349.99
+- Alpinist Boots .................. €389.00

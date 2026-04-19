@@ -5,17 +5,22 @@ export const routes: Routes = [
   {
     path: '',
     loadComponent: () =>
-      import('./components/product-list/product-list.component').then((m) => m.ProductListComponent),
+      import('./components/home/home-page/home-page.component').then((m) => m.HomePageComponent),
   },
   {
     path: 'products',
     loadComponent: () =>
-      import('./components/product-list/product-list.component').then((m) => m.ProductListComponent),
+      import('./components/catalog/catalog-page/catalog-page.component').then((m) => m.CatalogPageComponent),
   },
   {
     path: 'products/:slug',
     loadComponent: () =>
       import('./components/product-detail/product-detail.component').then((m) => m.ProductDetailComponent),
+  },
+  {
+    path: 'faq',
+    loadComponent: () =>
+      import('./components/faq/faq-page/faq-page.component').then((m) => m.FaqPageComponent),
   },
   {
     path: 'cart',

@@ -39,11 +39,11 @@ app.use(express.urlencoded({ extended: true }));
 app.get('/', (_req, res) => {
   res.json({
     name: 'Outlander Gear Co. API',
-    version: '2.0.0',
+    version: '3.0.0',
     endpoints: {
-      products:   'GET  /api/products',
+      products:   'GET  /api/products  (filter: category, search, min_price, max_price, featured, tags, sort, page, limit)',
       featured:   'GET  /api/products/featured',
-      product:    'GET  /api/products/:slug',
+      product:    'GET  /api/products/:slug  (includes specifications, tags, reviews, related)',
       categories: 'GET  /api/categories',
       auth:       'POST /api/auth/register | /api/auth/login | GET /api/auth/me',
       cart:       'GET|POST|PUT|DELETE /api/cart',
@@ -66,7 +66,7 @@ app.use(errorHandler);
 
 // ===================== Start =====================
 const server = app.listen(env.port, () => {
-  console.log(`🚀 Outlander Gear Co. API v2.0 — http://localhost:${env.port}`);
+  console.log(`🚀 Outlander Gear Co. API v3.0 — http://localhost:${env.port}`);
   console.log(`📦 Endpoints: /api/products, /api/categories, /api/auth, /api/cart, /api/orders, /api/reviews`);
 });
 

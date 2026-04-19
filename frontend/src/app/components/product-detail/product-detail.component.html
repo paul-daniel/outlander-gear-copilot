@@ -100,6 +100,14 @@
           <span class="text-gray-400 dark:text-gray-500 uppercase">{{ product.slug }}</span>
         </div>
       </div>
+
+      <!-- Tags -->
+      <div *ngIf="product.tags && product.tags.length > 0" class="mt-6 flex flex-wrap gap-2">
+        <span *ngFor="let tag of product.tags"
+              class="text-[11px] uppercase tracking-[0.1em] text-outlander-700 dark:text-outlander-400 bg-outlander-50 dark:bg-outlander-950 border border-outlander-200 dark:border-outlander-800 px-3 py-1.5 rounded-full">
+          {{ tag }}
+        </span>
+      </div>
     </div>
   </div>
 
@@ -109,6 +117,22 @@
     <p class="text-[14px] text-gray-600 dark:text-gray-400 leading-relaxed whitespace-pre-line max-w-3xl">{{ product.description }}</p>
   </section>
 
+  <!-- Specifications -->
+  <section *ngIf="product.specifications && product.specifications.length > 0" class="py-16 border-t border-gray-100 dark:border-gray-800">
+    <h2 class="text-[11px] uppercase tracking-[0.25em] text-gray-400 dark:text-gray-500 mb-8">{{ t('detail.specifications') }}</h2>
+    <div class="max-w-3xl space-y-8">
+      <div *ngFor="let group of specGroups">
+        <h3 *ngIf="group.name" class="text-[12px] uppercase tracking-[0.15em] text-gray-700 dark:text-gray-300 font-medium mb-4">{{ group.name }}</h3>
+        <div class="space-y-3">
+          <div *ngFor="let spec of group.specs" class="flex gap-3 text-[13px] py-2 border-b border-gray-50 dark:border-gray-800/50">
+            <span class="text-gray-400 dark:text-gray-500 w-40 shrink-0">{{ spec.spec_key }}</span>
+            <span class="text-gray-700 dark:text-gray-200">{{ spec.spec_value }}<span *ngIf="spec.spec_unit" class="text-gray-400 dark:text-gray-500 ml-1">{{ spec.spec_unit }}</span></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Reviews -->
   <section *ngIf="product.reviews && product.reviews.length > 0" class="py-16 border-t border-gray-100 dark:border-gray-800">
     <h2 class="text-[11px] uppercase tracking-[0.25em] text-gray-400 dark:text-gray-500 mb-8">{{ t('detail.customerReviews', { count: product.reviews.length }) }}</h2>
@@ -116,7 +140,7 @@
       <div *ngFor="let review of product.reviews" class="pb-8 border-b border-gray-100 dark:border-gray-800 last:border-0">
         <div class="flex items-center justify-between mb-3">
           <div>
-            <span class="text-[14px] text-gray-900 dark:text-white">{{ review.first_name }} {{ review.last_name?.charAt(0) }}.</span>
+            <span class="text-[14px] text-gray-900 dark:text-white">{{ review.first_name }} {{ review.last_name.charAt(0) }}.</span>
             <div class="flex gap-0.5 mt-1">
               <span *ngFor="let s of getStars(review.rating)"
                     class="text-[12px]" [ngClass]="s === 1 ? 'text-amber-400' : 'text-gray-300 dark:text-gray-600'">★</span>

@@ -12,12 +12,12 @@ body {
 }
 
 .dark body {
-  background-color: #111111;
+  background-color: #121110;
   color: #e5e5e5;
 }
 
 ::selection {
-  background-color: #3a4a3a;
+  background-color: #574c42;
   color: white;
 }
 

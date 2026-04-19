@@ -34,6 +34,7 @@ interface ChatSession {
 
 const MESSAGES_PAGE_SIZE = 50;
 const TYPEWRITER_CHAR_DELAY = 18;
+const RESPONSE_TIMEOUT_MS = 30_000;
 
 /** Slide-over AI chat assistant panel. */
 @Component({
@@ -52,6 +53,8 @@ export class ChatCopilotComponent implements AfterViewChecked {
 
   userMessage = '';
   messages: ChatMessage[] = [];
+  waiting = false;
+  timedOut = false;
 
   /** Chat history */
   chatHistory: ChatSession[] = [];
@@ -65,6 +68,7 @@ export class ChatCopilotComponent implements AfterViewChecked {
   private readonly zone = inject(NgZone);
   private shouldScrollToBottom = false;
   private typewriterTimer: ReturnType<typeof setInterval> | null = null;
+  private responseTimeoutTimer: ReturnType<typeof setTimeout> | null = null;
 
   constructor(private readonly router: Router) {
     const destroyRef = inject(DestroyRef);
@@ -117,6 +121,9 @@ export class ChatCopilotComponent implements AfterViewChecked {
   /** Clear all messages from the current chat without archiving. */
   clearChat(): void {
     this.stopTypewriter();
+    this.clearResponseTimeout();
+    this.waiting = false;
+    this.timedOut = false;
     this.messages = [];
     this.renderedCount = MESSAGES_PAGE_SIZE;
   }
@@ -157,7 +164,7 @@ export class ChatCopilotComponent implements AfterViewChecked {
   }
 
   sendMessage(): void {
-    if (!this.userMessage.trim()) return;
+    if (!this.userMessage.trim() || this.waiting) return;
 
     // Auto-create session on first message
     if (!this.activeSessionId && this.messages.length === 0) {
@@ -173,10 +180,25 @@ export class ChatCopilotComponent implements AfterViewChecked {
     });
     const userMsg = this.userMessage;
     this.userMessage = '';
+    this.waiting = true;
+    this.timedOut = false;
     this.shouldScrollToBottom = true;
     this.resetTextareaHeight();
 
+    // Start timeout timer
+    this.clearResponseTimeout();
+    this.responseTimeoutTimer = setTimeout(() => {
+      if (this.waiting) {
+        this.waiting = false;
+        this.timedOut = true;
+        this.shouldScrollToBottom = true;
+      }
+    }, RESPONSE_TIMEOUT_MS);
+
     setTimeout(() => {
+      this.clearResponseTimeout();
+      this.waiting = false;
+      this.timedOut = false;
       const fullText = this.translocoService.translate('copilot.demoResponse');
       const msg: ChatMessage = {
         role: 'assistant',
@@ -190,6 +212,10 @@ export class ChatCopilotComponent implements AfterViewChecked {
       this.newAssistantMessage.emit();
       this.startTypewriter(msg);
     }, 800);
+  }
+
+  dismissTimeout(): void {
+    this.timedOut = false;
   }
 
   adjustTextareaHeight(event: Event): void {
@@ -240,6 +266,13 @@ export class ChatCopilotComponent implements AfterViewChecked {
     if (this.typewriterTimer) {
       clearInterval(this.typewriterTimer);
       this.typewriterTimer = null;
+    }
+  }
+
+  private clearResponseTimeout(): void {
+    if (this.responseTimeoutTimer) {
+      clearTimeout(this.responseTimeoutTimer);
+      this.responseTimeoutTimer = null;
     }
   }
 

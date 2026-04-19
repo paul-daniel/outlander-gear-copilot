@@ -1,210 +1,185 @@
-Outlander Gear Co. — Frequently Asked Questions (FAQ)
+OUTLANDER GEAR CO. — FREQUENTLY ASKED QUESTIONS
+=================================================
 
-This document contains the most commonly asked questions by customers of Outlander Gear Co., organized by topic. The AI copilot should use this information to provide quick, accurate answers.
-
-=== GENERAL QUESTIONS ===
-
-Q: What is Outlander Gear Co.?
-A: Outlander Gear Co. is a premium outdoor equipment company specializing in high-quality gear for hiking, camping, climbing, trail running, and general outdoor adventures. We curate the best products across seven categories: Camping, Hiking, Clothing, Footwear, Accessories, Climbing, and Hydration. Our motto is "Adventure starts with the right gear."
-
-Q: Where is Outlander Gear Co. based?
-A: Outlander Gear Co. is based in France and primarily serves customers in metropolitan France and the European Union. Our website and communications are available in both French and English.
-
-Q: What languages does the website support?
-A: The Outlander Gear Co. website is available in English and French. You can switch between languages using the language selector on the website.
-
-Q: How can I contact customer support?
-A: You can reach our customer support team through:
-- AI Copilot: Available 24/7 on our website for instant help with products, orders, and general questions.
-- Email: support@outlander-gear.co (response within 24 hours on business days).
-We aim to resolve all inquiries as quickly as possible.
-
-Q: Do you have physical stores?
-A: Currently, Outlander Gear Co. operates exclusively online through our website. This allows us to offer competitive pricing by eliminating the overhead of physical retail locations while investing in product quality and customer experience.
-
-=== PRODUCT QUESTIONS ===
-
-Q: How many products do you carry?
-A: Our 2026 collection features 21 carefully selected products across 7 categories. We intentionally keep our catalog focused — every product is hand-selected and tested rather than offering thousands of mediocre options.
-
-Q: What are your product categories?
-A: We organize our products into seven categories:
-1. Camping — Tents, sleeping bags, sleeping pads, stoves
-2. Hiking (Randonnée) — Backpacks, trekking poles, trail running vests
-3. Clothing (Vêtements) — Hardshell jackets, down jackets, convertible pants
-4. Footwear (Chaussures) — Trail running shoes, mountaineering boots, recovery sandals
-5. Accessories — Headlamps, multi-tools, compasses
-6. Climbing (Escalade) — Harnesses, ropes
-7. Hydration — Water bottles, water filters
-
-Q: What are your featured products?
-A: Our featured products represent the best value and performance in their categories. Currently featured:
-- Alpine Pro 3-Season Tent (€349.99) — 2-person lightweight tent
-- Expedition Sleeping Bag -15°C (€299.50) — 800-fill goose down
-- 55L Hiking Backpack (€189.95) — Aluminum frame with rain cover
-- StormShield Waterproof Jacket (€259.00) — 3-layer hardshell
-- Trail Grip X Shoes (€159.99) — Vibram Megagrip outsole
-- ConfortPro Climbing Harness (€79.95) — CE EN 12277 certified
-- MiniPure Portable Water Filter (€44.95) — 4,000-liter lifespan
-
-Q: Do you offer product comparisons?
-A: Yes, you can ask our AI Copilot to compare any products in our catalog. The copilot can compare specifications, prices, use cases, and help you decide which product is right for your needs.
-
-Q: What is the most affordable product you sell?
-A: Our most affordable product is the Boussole de Visée Pro sighting compass at €29.95. Our most affordable products by category:
-- Accessories: Compass €29.95, Knife €34.99, Headlamp €49.99
-- Hydration: Bottle €32.95, Filter €44.95
-- Footwear: Recovery Sandals €39.95
-- Camping: GasPro Stove €59.95
-- Climbing: ConfortPro Harness €79.95
-
-Q: What is your most expensive product?
-A: Our most premium product is the Alpinist High Mountain Boot at €389.00 (compare price €449.00). This is a fully rigid mountaineering boot with automatic crampon compatibility, Gore-Tex Insulated membrane, and 400g Thinsulate insulation.
-
-Q: Are your products available in different sizes/colors?
-A: Product availability in specific sizes and colors depends on the individual item. For footwear, check the product page for available sizes. For clothing, sizes typically range from XS to XXL. For specific availability questions, please contact our customer support team or ask the AI Copilot.
-
-Q: Do you sell children's or kids' products?
-A: Currently, our product range is designed for adult use. We do not carry a dedicated children's line at this time, but we are considering expanding to youth sizes in future collections.
-
-=== PRICING AND DISCOUNTS ===
-
-Q: Do you have sales or discounts?
-A: Yes, several of our products feature reduced prices compared to their original retail price. Products on sale display both the current price and the original "compare at" price, along with the discount percentage. Currently on sale:
-- Alpine Pro Tent: €349.99 (was €429.99) — Save 19%
-- UltraLight Sleeping Pad: €129.00 (was €159.00) — Save 19%
-- 55L Hiking Backpack: €189.95 (was €229.00) — Save 17%
-- StormShield Jacket: €259.00 (was €319.00) — Save 19%
-- Convertible Trek Pants: €89.00 (was €109.00) — Save 18%
-- Alpinist Boots: €389.00 (was €449.00) — Save 13%
-- ConfortPro Harness: €79.95 (was €99.00) — Save 19%
-- MiniPure Water Filter: €44.95 (was €54.00) — Save 17%
-
-Q: Do you have promo codes or coupons?
-A: Promotional codes are offered periodically through our newsletter and special campaigns. Sign up for our newsletter on the website to receive the latest offers and inspiration directly in your inbox.
-
-Q: What currency do you use?
-A: All prices on Outlander Gear Co. are displayed in Euros (€).
-
-=== ORDERING AND ACCOUNT ===
+ORDERING AND ACCOUNT
+----------------------
 
 Q: How do I create an account?
-A: Click the "Sign in" button in the navigation bar, then select "Create account." You will need to provide your first name, last name, email address, and a password (minimum 8 characters). Creating an account allows you to track orders, save items, and check out faster.
+A: Click "Sign Up" on our website, enter your email, and choose a password. You will receive a confirmation email. Once verified, you can start shopping.
 
 Q: Can I order without creating an account?
-A: An account is required to place orders. Creating an account is free and takes less than a minute. It allows us to provide order tracking, order history, and personalized product recommendations.
-
-Q: How do I add items to my cart?
-A: Navigate to a product page by browsing our collection or searching for a specific product. Select your desired quantity and click "Add to cart." You can view and modify your cart at any time by clicking the cart icon in the navigation bar.
-
-Q: Can I modify my order after placing it?
-A: If your order status is still "Pending" or "Confirmed," please contact our customer support team immediately and we will do our best to accommodate changes. Once an order moves to "Processing" or "Shipped," modifications are no longer possible — you would need to initiate a return after receiving the order.
+A: No, an account is required to place orders. This lets you track your orders, save addresses, and manage your wishlist.
 
 Q: What payment methods do you accept?
-A: We accept:
-- Visa, Mastercard, American Express, and Carte Bancaire
-- PayPal
-- Apple Pay and Google Pay
-- Bank transfer (for orders over €500)
-All transactions are secured with SSL encryption.
+A: We accept Visa, Mastercard, American Express, PayPal, and bank transfer (SEPA for EU customers).
 
-=== SHIPPING ===
+Q: Are prices shown in euros?
+A: Yes, all prices on our website are in euros (€) and include VAT for EU customers.
 
-Q: Do you offer free shipping?
-A: Yes! All orders over €100 qualify for free standard shipping within metropolitan France and the European Union.
+Q: Can I change or cancel my order?
+A: You can cancel within 1 hour of placing the order by contacting support@outlandergear.co. After that, we begin warehouse processing and cannot guarantee changes.
 
-Q: How much does shipping cost for orders under €100?
-A: Standard shipping starts at €5.95 for France and €8.95 for EU countries. Express shipping starts at €12.95 for France and €19.95 for EU. Relay point pickup starts at €3.95 for France.
+SHIPPING
+---------
+
+Q: Where do you ship?
+A: We ship to all EU countries, Switzerland, Norway, the UK, the US, and Canada.
+
+Q: How much does shipping cost?
+A: Standard shipping is €5.99 within the EU and €12.99 for international orders. Orders over €100 ship free within the EU.
 
 Q: How long does shipping take?
-A: Estimated delivery times:
-- Standard to France: 3–5 business days
-- Standard to EU: 5–8 business days
-- Express to France: 1–2 business days
-- Express to EU: 2–4 business days
-- Relay Point (France only): 4–6 business days
+A: EU orders: 3–5 business days. UK/Switzerland/Norway: 5–7 business days. US/Canada: 7–14 business days.
 
-Q: Do you ship internationally?
-A: Currently, we ship to metropolitan France and EU countries. We are working on expanding to Switzerland, the UK, Norway, and other international destinations. Contact us for special arrangements.
+Q: Do you offer express shipping?
+A: Yes. Express shipping (1–2 business days within the EU) is available for €14.99.
 
 Q: How do I track my order?
-A: Once your order ships, you will receive a confirmation email with a tracking number and link. You can also check your order status by logging into your account.
+A: Once shipped, you will receive a tracking number by email. You can also view tracking status in your account under "My Orders."
 
-=== RETURNS AND EXCHANGES ===
+RETURNS AND EXCHANGES
+----------------------
 
 Q: What is your return policy?
-A: You have 30 days from the date of delivery to return items for a full refund. Items must be unused, unworn, with all original tags and packaging intact.
+A: You have 30 days from delivery to return unused items in original packaging for a full refund. Items must have all tags attached and show no signs of use. Climbing safety gear (harnesses, ropes, helmets) cannot be returned once the sealed safety packaging is opened, due to safety certification requirements.
 
-Q: How do I return an item?
-A: Log into your account, go to order history, select the order, and click "Request Return." Follow the instructions to print a return label and drop off the package. You can also contact us at support@outlander-gear.co or ask the AI Copilot for help.
+Q: How do I start a return?
+A: Log in to your account, go to "My Orders," select the order, and click "Request Return." You will receive a prepaid return label by email.
 
-Q: Are there items that cannot be returned?
-A: Yes — for hygiene reasons, used water filters, used hydration bladders, worn undergarments/base layers, and items marked "Final Sale" cannot be returned.
+Q: Who pays for return shipping?
+A: We provide a free return label for EU customers. International returns are at the customer's expense.
 
-Q: How long does a refund take?
-A: Once we receive and inspect the return, refunds are processed within 5–7 business days. Your bank may take an additional 3–5 business days to post the refund.
+Q: How long do refunds take?
+A: Refunds are processed within 5–7 business days after we receive and inspect the returned item. The refund goes back to your original payment method.
 
-Q: Do you offer exchanges?
-A: To exchange an item, return the original item and place a new order for the replacement. This is the fastest method as we ship new orders daily.
+Q: Can I exchange an item for a different size?
+A: Yes. Request a return for the original item and place a new order for the correct size. This is faster than waiting for an exchange.
 
-Q: What if I receive a damaged or wrong item?
-A: Contact us within 48 hours of delivery with photos of the damage and your order number. We will arrange a free return and send a replacement or full refund.
+PRODUCTS — GENERAL
+--------------------
 
-=== PRODUCT CARE ===
+Q: Are your products covered by warranty?
+A: Yes. All Outlander Gear Co. products carry a 2-year warranty against manufacturing defects. Climbing ropes and harnesses include additional safety certification documentation.
 
-Q: How do I wash a down jacket or sleeping bag?
-A: Use a front-loading washing machine on a gentle cycle with a down-specific detergent (like Nikwax Down Wash Direct). Tumble dry on low heat with 2–3 clean tennis balls to restore loft. Never use regular detergent or fabric softener. See our Product Care Guide for detailed instructions.
+Q: Where are your products made?
+A: Products are designed in Europe. Manufacturing locations vary by product — details are on each product page.
 
-Q: How do I maintain the waterproofing on my jacket?
-A: Wash with a technical fabric wash (Nikwax Tech Wash), then tumble dry on low heat for 20 minutes to reactivate the DWR coating. If water no longer beads on the surface, apply a DWR reproofing treatment (Nikwax TX.Direct). See our Product Care Guide.
+Q: Do you sell replacement parts (tent poles, stove parts, etc.)?
+A: Yes, for selected products. Contact support@outlandergear.co with your product name and the part you need.
 
-Q: How do I clean my tent?
-A: Never machine wash a tent. Set it up and wipe with a damp sponge or use a tent-specific cleaner. Always dry completely before storage. Store loosely in a breathable bag, not in the tight stuff sack. See our Product Care Guide.
+PRODUCTS — CAMPING
+--------------------
 
-Q: When should I retire my climbing harness or rope?
-A: Harnesses: 3–5 years with regular use, 7–10 years with occasional use. Ropes: 2–5 years with regular use, 10 years maximum. Retire immediately if you see visible damage (fraying, cuts, core exposure). See our Climbing Safety Guide.
+Q: What temperature is the Expedition Sleeping Bag rated to?
+A: The Expedition Sleeping Bag −15 °C (€299.50) has a comfort rating of −10 °C and a lower limit of −15 °C (EN 13537 tested). It uses 800-cuin RDS goose down and weighs 1.20 kg.
 
-=== AI COPILOT ===
+Q: Can I use the GasPro Compact Stove in cold weather?
+A: The GasPro Compact Stove (€59.95) works well down to about −5 °C. Below that, canister pressure drops. Keep the canister warm in your jacket or sleeping bag before use.
 
-Q: What is the Outlander Copilot?
-A: The Outlander Copilot is our AI-powered assistant available on the website. It can help you find products, compare options, answer questions about gear specifications, explain shipping and return policies, and provide outdoor advice. It is available 24/7.
+Q: How many people does the Alpine Pro Tent 2P fit?
+A: Two adults comfortably. The tent has a floor area of 2.8 m² and a vestibule for gear storage. It weighs 2.10 kg.
 
-Q: What can I ask the Copilot?
-A: You can ask about:
-- Product details, specifications, and comparisons ("What is the difference between the Trail Grip X and the Alpinist boots?")
-- Product recommendations ("What tent do you recommend for summer camping?")
-- Availability and stock levels ("Is the StormShield jacket in stock?")
-- Pricing and discounts ("What products are currently on sale?")
-- Shipping and returns ("How long does delivery take to Germany?")
-- Outdoor advice ("What gear do I need for a 3-day hiking trip?")
-- Product care ("How do I wash my down jacket?")
-- Order status (when integrated with the order system)
+Q: Is the UltraLight Sleeping Pad warm enough for winter?
+A: The UltraLight Sleeping Pad (€129.00) has an R-value of 3.2, suitable for 3-season use (spring through autumn). For winter camping below −5 °C, pair it with a closed-cell foam pad underneath for added insulation.
 
-Q: Can the Copilot place orders for me?
-A: The Copilot can help you find products and answer questions, but placing orders is done through the website's shopping cart and checkout process.
+PRODUCTS — HIKING AND BACKPACKS
+---------------------------------
 
-Q: Is the Copilot always accurate?
-A: The Copilot strives for accuracy but, like any AI system, it can occasionally make mistakes. Always verify critical information (especially regarding safety equipment specifications) against the product page and manufacturer documentation.
+Q: What size backpack do I need for a multi-day trek?
+A: For 3–7 day treks carrying tent, sleeping bag, food and cooking gear, our Trekking Backpack 55L (€189.95) is ideal. For day hikes, choose the Day Hike Pack 28L (€89.95).
 
-=== SUSTAINABILITY ===
+Q: Are your backpacks carry-on compatible for flights?
+A: The Day Hike Pack 28L generally fits as carry-on luggage (check your airline's specific dimensions). The Trekking Backpack 55L exceeds carry-on limits and must be checked.
 
-Q: Is Outlander Gear Co. committed to sustainability?
-A: Yes, sustainability is one of our core values. Key initiatives:
-- We use RDS-certified down (Responsible Down Standard) in our down products, ensuring ethical sourcing.
-- We prioritize durable, long-lasting products that reduce waste from frequent replacements.
-- We encourage gear care and maintenance to extend product lifespans.
-- We promote Leave No Trace principles in our community.
-- We are continually working to reduce packaging waste and carbon footprint in our supply chain.
+Q: Do the Carbon Trekking Poles fold down for air travel?
+A: The Carbon Trekking Poles (€89.95) collapse to 65 cm with a FlickLock system. They must be packed in checked luggage — trekking poles are not allowed in carry-on bags.
 
-Q: Is your packaging eco-friendly?
-A: We are transitioning to recyclable and reduced-waste packaging across our entire catalog. Product boxes are made from recycled cardboard, and we minimize plastic use in shipping materials.
+Q: Is the Trail Running Vest 12L good for day hikes too?
+A: Yes, though its 12 L capacity limits what you can carry. It is designed for trail running and fast-and-light day adventures where you need hydration and essentials only.
 
-=== WARRANTY ===
+PRODUCTS — FOOTWEAR
+---------------------
 
-Q: Do your products come with a warranty?
-A: All products sold by Outlander Gear Co. are covered by the standard EU legal warranty (2 years) for manufacturing defects. Some products may have additional manufacturer warranties. If you believe a product has a manufacturing defect, contact our customer support with your order number, photos, and a description of the issue.
+Q: What is the difference between the Trail Grip X and Mid Hiking Boots?
+A: The Trail Grip X (€159.99) is a low-cut trail shoe weighing 310 g per shoe — fast, agile, not waterproof, best for trail running and light hikes. The Mid Hiking Boots (€169.00) are mid-cut with a waterproof membrane, weighing 460 g per shoe — better ankle support and weather protection, ideal for varied terrain and moderate loads.
 
-Q: What does the warranty cover?
-A: The warranty covers defects in materials and workmanship under normal use. It does not cover normal wear and tear, damage from misuse, modification, improper care, or accidents.
+Q: Are the Alpinist Boots compatible with crampons?
+A: Yes, the Alpinist Boots (€389.00) are B2-rated and compatible with strap-on and semi-automatic crampons. They are NOT compatible with step-in (C3) crampons.
 
-Outlander Gear Co. — We are here to help. Ask us anything.
+Q: How do I break in new hiking boots?
+A: Wear them around the house for a few hours, then on short walks before taking them on a full hike. Our Mid Hiking Boots use Nubuck leather that softens quickly.
+
+Q: How should I size my trail shoes?
+A: Measure your feet in the afternoon when they are largest. Wear the socks you will hike in. Leave about one finger width between your longest toe and the front of the shoe. Go half a size up if in doubt — your feet swell during long hikes.
+
+PRODUCTS — CLOTHING
+---------------------
+
+Q: Is the StormShield Jacket fully waterproof?
+A: Yes, the StormShield Waterproof Jacket (€259.00) is rated 20,000 mm waterproofness and 20,000 g/m²/24 h breathability with fully taped seams. It handles sustained heavy rain.
+
+Q: Can I use the Down Jacket 700 Fill as a standalone jacket?
+A: The Down Jacket 700 Fill (€179.00) is primarily designed as an insulation layer. It is not waterproof or windproof. In calm, dry conditions it works as an outer layer. In wind or rain, wear it under a shell like the StormShield Jacket.
+
+Q: Do the Convertible Trek Pants zip off into shorts?
+A: Yes, the Convertible Trek Pants (€89.00) have zip-off legs. Both configurations have a UPF 50+ rating for sun protection. They also feature a DWR finish for light rain resistance.
+
+Q: How do I wash Merino wool?
+A: Machine wash cold on a wool/delicate cycle with a wool-specific detergent. Do not use fabric softener. Lay flat to dry.
+
+PRODUCTS — CLIMBING
+---------------------
+
+Q: Is the ComfortPro Harness suitable for beginners?
+A: Yes, the ComfortPro Harness (€79.95) is an all-round harness suitable for sport climbing, trad climbing, and indoor climbing. Its adjustable waist (68–120 cm) and leg loops fit a wide range of body shapes.
+
+Q: How long does a climbing rope last?
+A: With regular weekend use (100+ days per year), retire after 3–5 years. With occasional use (20–50 days per year), 5–7 years. Maximum lifespan is 10 years from manufacture date regardless of use. Our Dynamic Rope 70 m (€189.00) meets EN 892 and UIAA standards.
+
+Q: Do I need a helmet for indoor climbing?
+A: Indoor gyms typically do not require helmets because there is no rockfall risk. However, for all outdoor climbing, we strongly recommend our Climbing Helmet (€69.00).
+
+PRODUCTS — HYDRATION
+---------------------
+
+Q: How long does the Insulated Bottle keep water cold?
+A: The Insulated Bottle 1 L (€32.95) keeps liquids cold for 24 hours and hot for 12 hours thanks to double-wall vacuum insulation.
+
+Q: What does the MiniPure Water Filter remove?
+A: The MiniPure Water Filter (€44.95) uses a hollow-fiber membrane (0.1 micron) to remove 99.99999% of bacteria and 99.999% of protozoa. It does NOT remove viruses — in tropical regions, combine with chemical treatment or boiling.
+
+Q: How long does the MiniPure filter last?
+A: The filter cartridge lasts for approximately 2,000 liters. When flow rate drops significantly even after backflushing, replace the cartridge.
+
+PRODUCTS — WINTER SPORTS
+--------------------------
+
+Q: What lens tint do the Ski Goggles use?
+A: Our Ski Goggles (€89.00) come with a contrast-enhancing orange/amber lens (VLT 20–25%), ideal for overcast and variable light conditions. Anti-fog coating and OTG (Over-The-Glasses) design accommodate prescription eyewear.
+
+Q: Are the Insulated Gloves touchscreen compatible?
+A: Yes, the Insulated Gloves (€79.00) have conductive fingertips on thumb and index finger so you can use your phone without removing them.
+
+PRODUCTS — TRAVEL
+------------------
+
+Q: How many Packing Cubes are in a set?
+A: The Packing Cubes Set (€24.95) includes 4 cubes: 1 large, 2 medium, 1 small. They are made from recycled polyester with mesh tops for visibility.
+
+Q: Is the Travel Towel absorbent?
+A: Yes, the Microfiber Travel Towel (€19.95) absorbs 3× its weight in water and dries 5× faster than cotton. It weighs only 120 g (size L, 130 × 70 cm).
+
+CONTACT AND SUPPORT
+---------------------
+
+Q: How do I reach customer support?
+A: Email support@outlandergear.co or use the chat feature on our website. Support hours: Monday–Friday 08:00–18:00 CET. We aim to respond within 24 hours.
+
+Q: Do you have physical stores?
+A: We are an online-only retailer. This allows us to offer competitive prices by eliminating brick-and-mortar costs.
+
+Q: Do you offer group or corporate discounts?
+A: Yes, for orders of 10+ items. Contact sales@outlandergear.co with your requirements.
+
+Q: Do you sponsor athletes or outdoor clubs?
+A: We have a limited ambassador program for outdoor professionals. Contact partnerships@outlandergear.co with your profile and social media links.

@@ -21,6 +21,9 @@ export interface Product {
   // Joined fields
   category_name?: string;
   category_slug?: string;
+  // Enriched fields (detail endpoint)
+  specifications?: ProductSpecification[];
+  tags?: string[];
 }
 
 // ===================== Category =====================
@@ -122,6 +125,23 @@ export interface Address {
   country: string;
   is_default: boolean;
   created_at: Date;
+}
+
+// ===================== Product Specification =====================
+export interface ProductSpecification {
+  id: number;
+  product_id: number;
+  spec_key: string;
+  spec_value: string;
+  spec_unit: string | null;
+  spec_group: string;
+}
+
+// ===================== Product Tag =====================
+export interface ProductTag {
+  id: number;
+  product_id: number;
+  tag: string;
 }
 
 // ===================== JWT =====================

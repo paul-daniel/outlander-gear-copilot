@@ -1,0 +1,28 @@
+<ng-container *transloco="let t">
+<section class="relative overflow-hidden">
+  <!-- Background with parallax-like feel -->
+  <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1200')] bg-cover bg-center bg-fixed"></div>
+  <div class="absolute inset-0 bg-gradient-to-b from-outlander-950/60 via-outlander-950/40 to-outlander-950/70"></div>
+
+  <div class="relative z-10 px-8 py-28 sm:px-16 sm:py-40 max-w-7xl mx-auto">
+    <p class="text-[11px] uppercase tracking-[0.3em] text-white/60 mb-6 animate-[fadeInUp_0.8s_ease-out]">{{ t('home.heroSubtitle') }}</p>
+    <h1 class="text-5xl sm:text-7xl font-extralight text-white leading-[1.05] mb-8 max-w-3xl animate-[fadeInUp_0.8s_ease-out_0.1s_both]" [innerHTML]="t('home.heroTitle')"></h1>
+    <p class="text-[15px] text-white/70 max-w-lg mb-10 leading-relaxed animate-[fadeInUp_0.8s_ease-out_0.2s_both]">{{ t('home.heroDescription') }}</p>
+    <div class="flex flex-wrap gap-4 animate-[fadeInUp_0.8s_ease-out_0.3s_both]">
+      <a routerLink="/products" class="inline-block text-[13px] uppercase tracking-[0.15em] text-white bg-outlander-700 hover:bg-outlander-800 px-8 py-3.5 transition-colors">
+        {{ t('home.shopCollection') }}
+      </a>
+      <a routerLink="/faq" class="inline-block text-[13px] uppercase tracking-[0.15em] text-white border border-white/30 hover:border-white/60 px-8 py-3.5 transition-colors">
+        {{ t('home.learnMore') }}
+      </a>
+    </div>
+  </div>
+
+  <!-- Scroll indicator -->
+  <div class="absolute bottom-6 left-1/2 -translate-x-1/2 animate-bounce">
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white/40" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+    </svg>
+  </div>
+</section>
+</ng-container>

@@ -1,0 +1,26 @@
+<ng-container *transloco="let t">
+<div class="max-w-3xl mx-auto px-6 sm:px-10 py-16">
+  <!-- Header -->
+  <div class="text-center mb-16">
+    <p class="text-[11px] uppercase tracking-[0.3em] text-outlander-500 dark:text-outlander-400 mb-3">{{ t('faq.subtitle') }}</p>
+    <h1 class="text-3xl sm:text-4xl font-light text-gray-900 dark:text-white mb-4">{{ t('faq.title') }}</h1>
+    <p class="text-[14px] text-gray-500 dark:text-gray-400">{{ t('faq.description') }}</p>
+  </div>
+
+  <!-- FAQ sections -->
+  <app-faq-section
+    *ngFor="let category of categories"
+    [category]="category">
+  </app-faq-section>
+
+  <!-- Contact CTA -->
+  <div class="text-center mt-16 pt-12 border-t border-gray-100 dark:border-gray-800">
+    <p class="text-[15px] text-gray-900 dark:text-white mb-2">{{ t('faq.stillHaveQuestions') }}</p>
+    <p class="text-[13px] text-gray-500 dark:text-gray-400 mb-6">{{ t('faq.contactHint') }}</p>
+    <a href="mailto:support@outlandergear.co"
+       class="inline-block text-[13px] uppercase tracking-[0.15em] text-white bg-outlander-700 hover:bg-outlander-800 px-8 py-3.5 transition-colors">
+      {{ t('faq.contactUs') }}
+    </a>
+  </div>
+</div>
+</ng-container>

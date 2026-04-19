@@ -5,8 +5,13 @@ import { TranslocoModule, TranslocoService } from '@jsverse/transloco';
 import { ProductService } from '@services/product.service';
 import { CartService } from '@services/cart.service';
 import { AuthService } from '@services/auth.service';
-import { Product } from '@models';
+import { Product, ProductSpecification } from '@models';
 import { getDiscount, getStars } from '@shared/utils/product.utils';
+
+interface SpecGroup {
+  name: string | null;
+  specs: ProductSpecification[];
+}
 
 /**
  * Full product detail page — image, pricing, reviews, quantity picker,
@@ -28,6 +33,18 @@ export class ProductDetailComponent implements OnInit {
   /** Expose shared utilities to the template. */
   readonly getDiscount = getDiscount;
   readonly getStars = getStars;
+
+  /** Specifications grouped by spec_group for display. */
+  get specGroups(): SpecGroup[] {
+    if (!this.product?.specifications) return [];
+    const map = new Map<string | null, ProductSpecification[]>();
+    for (const spec of this.product.specifications) {
+      const group = spec.spec_group ?? null;
+      if (!map.has(group)) map.set(group, []);
+      map.get(group)!.push(spec);
+    }
+    return Array.from(map.entries()).map(([name, specs]) => ({ name, specs }));
+  }
 
   private addedTimer: ReturnType<typeof setTimeout> | null = null;
   private readonly destroyRef = inject(DestroyRef);

@@ -37,6 +37,15 @@ router.get('/', asyncHandler(async (req: Request, res: Response): Promise<void> 
     conditions.push('p.is_featured = TRUE');
   }
 
+  if (query.tags) {
+    const tagList = query.tags.split(',').map(t => t.trim()).filter(Boolean);
+    if (tagList.length > 0) {
+      conditions.push(`p.id IN (SELECT product_id FROM product_tags WHERE tag = ANY($${paramIdx}::text[]))`);
+      values.push(tagList);
+      paramIdx++;
+    }
+  }
+
   const where = conditions.length > 0 ? `WHERE ${conditions.join(' AND ')}` : '';
 
   let orderBy = 'ORDER BY p.created_at DESC';
@@ -112,8 +121,8 @@ router.get('/:slug', asyncHandler(async (req: Request, res: Response): Promise<v
 
   const product = result.rows[0];
 
-  // Fetch reviews and related products in parallel
-  const [reviews, related] = await Promise.all([
+  // Fetch reviews, related, specs, and tags in parallel
+  const [reviews, related, specs, tags] = await Promise.all([
     pool.query(
       `SELECT r.*, u.first_name, u.last_name
        FROM reviews r
@@ -130,12 +139,25 @@ router.get('/:slug', asyncHandler(async (req: Request, res: Response): Promise<v
        LIMIT 4`,
       [product.category_id, product.id]
     ),
+    pool.query(
+      `SELECT id, spec_key, spec_value, spec_unit, spec_group
+       FROM product_specifications
+       WHERE product_id = $1
+       ORDER BY spec_group, spec_key`,
+      [product.id]
+    ),
+    pool.query(
+      `SELECT tag FROM product_tags WHERE product_id = $1 ORDER BY tag`,
+      [product.id]
+    ),
   ]);
 
   res.json({
     ...product,
     reviews: reviews.rows,
     related_products: related.rows,
+    specifications: specs.rows,
+    tags: tags.rows.map((r: { tag: string }) => r.tag),
   });
 }));
 
