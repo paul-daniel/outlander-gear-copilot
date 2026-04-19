@@ -8,8 +8,9 @@
 
 ## Demo Videos
 
-[![Watch the demo 1](https://drive.google.com/file/d/1wkD0fRiMGZ094KB41MZ55JPgyxhKY8Ti/view?usp=sharing)
-[![Watch the demo 2](https://drive.google.com/file/d/1NJoM4BIu9RvTp_a-HNSocLr7EWKfgwLa/view?usp=sharing)
+https://github.com/user-attachments/assets/110e0119-6736-481e-9f60-8f68370ef1b8
+https://github.com/user-attachments/assets/b0b37cca-c473-4c80-8088-a5042f8e438b
+
 
 ---
 
