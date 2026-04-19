@@ -1,0 +1,11 @@
+[project]
+name = "promptflow-outlander-co"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "promptflow>=1.18.4",
+    "promptflow-azure>=1.18.4",
+    "promptflow-tools>=1.6.1",
+]

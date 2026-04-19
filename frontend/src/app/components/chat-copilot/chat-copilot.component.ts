@@ -15,7 +15,8 @@ import { FormsModule } from '@angular/forms';
 import { Router, NavigationStart } from '@angular/router';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { TranslocoModule, TranslocoService } from '@jsverse/transloco';
-import { filter } from 'rxjs';
+import { filter, Subscription } from 'rxjs';
+import { CopilotService, CopilotHistoryEntry } from '@services/copilot.service';
 
 interface ChatMessage {
   role: 'user' | 'assistant';
@@ -65,10 +66,12 @@ export class ChatCopilotComponent implements AfterViewChecked {
   renderedCount = MESSAGES_PAGE_SIZE;
 
   private readonly translocoService = inject(TranslocoService);
+  private readonly copilotService = inject(CopilotService);
   private readonly zone = inject(NgZone);
   private shouldScrollToBottom = false;
   private typewriterTimer: ReturnType<typeof setInterval> | null = null;
   private responseTimeoutTimer: ReturnType<typeof setTimeout> | null = null;
+  private chatSub: Subscription | null = null;
 
   constructor(private readonly router: Router) {
     const destroyRef = inject(DestroyRef);
@@ -122,6 +125,7 @@ export class ChatCopilotComponent implements AfterViewChecked {
   clearChat(): void {
     this.stopTypewriter();
     this.clearResponseTimeout();
+    this.chatSub?.unsubscribe();
     this.waiting = false;
     this.timedOut = false;
     this.messages = [];
@@ -195,23 +199,34 @@ export class ChatCopilotComponent implements AfterViewChecked {
       }
     }, RESPONSE_TIMEOUT_MS);
 
-    setTimeout(() => {
-      this.clearResponseTimeout();
-      this.waiting = false;
-      this.timedOut = false;
-      const fullText = this.translocoService.translate('copilot.demoResponse');
-      const msg: ChatMessage = {
-        role: 'assistant',
-        content: fullText,
-        displayedContent: '',
-        read: this.isOpen,
-        typing: true,
-      };
-      this.messages.push(msg);
-      this.shouldScrollToBottom = true;
-      this.newAssistantMessage.emit();
-      this.startTypewriter(msg);
-    }, 800);
+    // Build PromptFlow chat_history from existing messages
+    const history = this.buildChatHistory();
+
+    this.chatSub?.unsubscribe();
+    this.chatSub = this.copilotService.chat(userMsg, history).subscribe({
+      next: (reply) => {
+        this.clearResponseTimeout();
+        this.waiting = false;
+        this.timedOut = false;
+        const msg: ChatMessage = {
+          role: 'assistant',
+          content: reply,
+          displayedContent: '',
+          read: this.isOpen,
+          typing: true,
+        };
+        this.messages.push(msg);
+        this.shouldScrollToBottom = true;
+        this.newAssistantMessage.emit();
+        this.startTypewriter(msg);
+      },
+      error: () => {
+        this.clearResponseTimeout();
+        this.waiting = false;
+        this.timedOut = true;
+        this.shouldScrollToBottom = true;
+      },
+    });
   }
 
   dismissTimeout(): void {
@@ -260,6 +275,26 @@ export class ChatCopilotComponent implements AfterViewChecked {
 
   private generateId(): string {
     return Date.now().toString(36) + Math.random().toString(36).slice(2, 8);
+  }
+
+  /**
+   * Build the PromptFlow chat_history array from the current messages.
+   * Pairs consecutive user→assistant turns into the expected format.
+   */
+  private buildChatHistory(): CopilotHistoryEntry[] {
+    const history: CopilotHistoryEntry[] = [];
+    for (let i = 0; i < this.messages.length - 1; i++) {
+      const msg = this.messages[i];
+      const next = this.messages[i + 1];
+      if (msg.role === 'user' && next?.role === 'assistant') {
+        history.push({
+          inputs: { chat_input: msg.content },
+          outputs: { chat_output: next.content },
+        });
+        i++; // skip the assistant message
+      }
+    }
+    return history;
   }
 
   private stopTypewriter(): void {

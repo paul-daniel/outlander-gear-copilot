@@ -11,6 +11,7 @@ import categoryRoutes from './routes/categories';
 import cartRoutes from './routes/cart';
 import orderRoutes from './routes/orders';
 import reviewRoutes from './routes/reviews';
+import copilotRoutes from './routes/copilot';
 import { errorHandler, notFound } from './middleware/errorHandler';
 import pool from './config/database';
 
@@ -59,6 +60,7 @@ app.use('/api/categories', categoryRoutes);
 app.use('/api/cart',       cartRoutes);
 app.use('/api/orders',     orderRoutes);
 app.use('/api/reviews',    reviewRoutes);
+app.use('/api/copilot',    copilotRoutes);
 
 // ===================== Error handling =====================
 app.use(notFound);

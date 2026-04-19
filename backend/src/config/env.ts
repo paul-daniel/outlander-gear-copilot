@@ -16,4 +16,9 @@ export const env = {
     ? process.env.CORS_ORIGINS.split(',').map(s => s.trim())
     : ['http://localhost:4200', 'http://localhost:4000'],
   nodeEnv: process.env.NODE_ENV || 'development',
+
+  // Azure ML PromptFlow copilot endpoint
+  copilotUrl: process.env.COPILOT_URL || '',
+  copilotApiKey: process.env.COPILOT_API_KEY || '',
+  copilotDeployment: process.env.COPILOT_DEPLOYMENT || '',
 } as const;
