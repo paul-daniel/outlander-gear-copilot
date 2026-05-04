@@ -1,176 +1,181 @@
-# Outlander Gear Co. AI Product Data Copilot
+# Outlander Gear Co. — GuideLander AI Copilot
 
-This repository supports the Outlander Gear Co. team scenario from the AI developer project.  
-Goal: build and deploy an AI Product Data Copilot that helps customers quickly access product details, pricing, and comparisons.
-
-Current stack in this repository:
-- PostgreSQL
-- Node.js and Express with TypeScript
-- Angular 19 and Tailwind CSS
-
-The web platform and APIs in this repo provide the business and product data foundation that the copilot will query and use.
+**A full-stack e-commerce platform with a production-grade AI shopping assistant, built end-to-end on Azure AI Foundry.**
 
 ---
 
-## Project Introduction
+## Demo
 
-In this project, you step into the role of an AI developer to build a copilot tailored to a real business context.
+https://github.com/user-attachments/assets/110e0119-6736-481e-9f60-8f68370ef1b8
 
-Selected team:
-- Outlander Gear Co. (Product and Retail)
-
-Mission for this team:
-- Build a Product Data Copilot that improves the shopping experience through instant access to product information, pricing, and product comparisons.
+https://github.com/user-attachments/assets/b0b37cca-c473-4c80-8088-a5042f8e438b
 
 ---
 
-## Project Summary
+## What GuideLander Does
 
-You will build, test, and deploy a copilot that retrieves relevant information from indexed data and returns accurate, real-time responses.
+GuideLander is an AI shopping assistant embedded in the Outlander Gear Co. storefront. It answers customer questions grounded exclusively in the brand's own product knowledge — no hallucinations, no competitor mentions, no off-topic drift.
 
-High-level workflow:
-1. Create an AI Studio project and deploy a model to power the copilot.
-2. Upload and index relevant data for retrieval.
-3. Build a chat copilot flow with Azure AI Foundry Prompt Flow.
-4. Test with realistic questions to validate quality and usefulness.
-5. Evaluate with manual and automated assessments.
-6. Deploy for real usage by customers or internal users.
+- Compares products side-by-side with spec tables (volume, weight, frame type, rain cover, price)
+- Handles fuzzy or invented product names by auto-mapping to the closest catalog match
+- Gives scenario-based recommendations (beginner hiker, frequent traveller, one-bag setup)
+- Answers policy questions (returns, shipping timelines) directly from indexed documents
+- Transparently acknowledges missing specs instead of fabricating them
+- Enforces guardrails — competitor comparisons and off-topic queries are refused cleanly
 
 ---
 
 ## Azure Architecture
 
-### Diagram
-
 ![Outlander Gear Copilot Azure Architecture](docs/azure-architecture-diagram.png)
 
-### Architecture Explanation
+The full system is a RAG pipeline deployed as an Azure ML managed endpoint and called by the Angular frontend through an Express proxy route.
 
-The diagram represents a Retrieval-Augmented Generation (RAG) and workflow architecture centered on Azure AI Foundry and Azure AI Search.
+**5-node PromptFlow pipeline:**
 
-1. Data ingestion for RAG
-- Product knowledge enters from multiple sources such as blob storage, Azure Cosmos DB, and Azure SQL Database.
-- Azure AI Search acts as the indexing and retrieval hub.
-- A text embedding model is used during indexing to vectorize content and enable semantic retrieval.
+```
+User message
+    │
+    ▼
+[1] modify_query_with_history   ← rewrites the query using chat history for context continuity
+    │
+    ▼
+[2] lookup                      ← Azure AI Search vector lookup (text-embedding-3-large)
+    │
+    ▼
+[3] generate_prompt_context     ← assembles retrieved chunks into a structured context block
+    │
+    ▼
+[4] Prompt_variants             ← injects the GuideLander system prompt + user query + context
+    │
+    ▼
+[5] chat_with_context           ← GPT-4o generates the final grounded response
+```
 
-2. Query-time retrieval path
-- At runtime, user queries are vectorized with the same embedding approach.
-- The vectorized query is sent to Azure AI Search.
-- Azure AI Search returns relevant chunks from the index to ground the response.
+| Layer | Technology |
+|-------|-----------|
+| AI Orchestration | Azure AI Foundry — PromptFlow |
+| Language Model | GPT-4o |
+| Embeddings | text-embedding-3-large |
+| Vector Search | Azure AI Search |
+| Deployment | Azure ML Managed Endpoint (real-time inference) |
+| Frontend | Angular 19, Tailwind CSS, Transloco i18n (EN/FR) |
+| Backend | Node.js / Express / TypeScript — JWT auth, PostgreSQL, copilot proxy route |
+| Database | PostgreSQL — 31 products, categories, reviews, specs |
 
-3. Prompt Flow orchestration
-- Azure Prompt Flow orchestrates the full response pipeline.
-- It combines retrieved context from search with model reasoning from a conversational model.
-- It also supports evaluation through Azure AI Foundry evaluator components.
-
-4. Database call tool and guardrails
-- A dedicated database tool is available for controlled DB access.
-- Guardrails are applied to limit what the AI can query and how much it can return.
-- This protects reliability, performance, and data safety.
-
-5. Delivery to user interface
-- Prompt Flow exposes an API endpoint.
-- The frontend copilot UI (web app or app service endpoint) calls that API.
-- The end user interacts with a grounded, domain-specific assistant for product questions.
+**RAG knowledge base:** 13 hand-authored documents covering the full product catalog, comparison guides, buying guides, care guides, shipping and returns policy, and FAQ — all indexed and queryable via vector search.
 
 ---
 
-## Local Setup Prerequisites
+## Evaluation
 
-### 1. Node.js (v18+)
+Evaluated on a **16-query test set** using Azure AI Foundry's built-in evaluation framework across coherence, groundedness, fluency, and relevance.
 
-macOS with Homebrew:
+| Category | What it tests |
+|---|---|
+| Direct comparisons | Table-based product comparisons grounded in catalog data |
+| Fuzzy / invented names | Auto-mapping of non-exact product names to catalog |
+| Open-ended recommendations | Scenario-based advice (beginner, travel, one-pack) |
+| Cross-domain | Mixing product info with policy (returns, shipping) |
+| Missing data fields | Requests for specs not present in the indexed documents |
+| Competitor / out-of-scope | Guardrail enforcement for off-topic questions |
+| Short-form | Abbreviation handling and concise response formatting |
+
+---
+
+## Screenshots
+
+### GuideLander — Live Interactions
+
+![Interaction 1](interactions_with_copilot/screen1.png)
+
+![Interaction 2](interactions_with_copilot/screen2.png)
+
+![Interaction 3](interactions_with_copilot/screen3.png)
+
+![Interaction 4](interactions_with_copilot/screen4.png)
+
+![Interaction 5](interactions_with_copilot/screen5.png)
+
+---
+
+### PromptFlow Pipeline — Azure AI Foundry
+
+![PromptFlow setup 1](prompflow_setup/screen1.png)
+
+![PromptFlow setup 2](prompflow_setup/screen2.png)
+
+![PromptFlow setup 3](prompflow_setup/screen3.png)
+
+![PromptFlow setup 4](prompflow_setup/screen4.png)
+
+![PromptFlow setup 5](prompflow_setup/screen5.png)
+
+---
+
+### Evaluation Metrics — Azure AI Foundry
+
+![Evaluation metrics overview](evaluation_report/evaluation_metrics.png)
+
+![Evaluation metrics detailed](evaluation_report/evaluation_metrics_detailed.png)
+
+---
+
+### Azure ML Endpoint — Deployment Confirmation
+
+![Deployment confirmation 1](deployment_confirmation/screenshot1.png)
+
+![Deployment confirmation 2](deployment_confirmation/screenshot2.png)
+
+---
+
+## Running Locally
+
+### Prerequisites
+
+**Node.js (v18+)**
 ```bash
 brew install node
 ```
 
-If Homebrew is not installed:
-```bash
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-brew install node
-```
-
-Verify:
-```bash
-node --version
-npm --version
-```
-
----
-
-### 2. PostgreSQL
-
-macOS with Homebrew:
+**PostgreSQL**
 ```bash
 brew install postgresql@16
-```
-
-Add PostgreSQL to PATH:
-```bash
 echo 'export PATH="/opt/homebrew/opt/postgresql@16/bin:$PATH"' >> ~/.zshrc
 source ~/.zshrc
-```
-
-Start PostgreSQL:
-```bash
 brew services start postgresql@16
 ```
 
-Verify:
-```bash
-psql --version
-createdb --version
-```
-
-Alternative without Homebrew:
-- https://www.postgresql.org/download/macosx/
-- https://postgresapp.com/
-
----
-
-### 3. Angular CLI (optional but recommended)
-
+**Angular CLI** (optional but recommended)
 ```bash
 npm install -g @angular/cli
 ```
 
 ---
 
-## Project Installation and Run Steps
-
-### Step 1: Create and seed the database
+### Step 1 — Database
 
 ```bash
-cd website
-
 createdb outlander_gear
 psql -d outlander_gear -f database/schema.sql
 psql -d outlander_gear -f database/seed.sql
 ```
 
-If createdb fails with role does not exist:
+If `createdb` fails with "role does not exist":
 ```bash
 psql postgres -c "CREATE ROLE $(whoami) WITH LOGIN SUPERUSER;"
 ```
 
-Verify data load:
-```bash
-psql -d outlander_gear -c "SELECT count(*) FROM products;"
-```
-
-Expected products count: 21
-
 ---
 
-### Step 2: Configure and run backend
+### Step 2 — Backend
 
 ```bash
 cd backend
 npm install
 ```
 
-Update backend/.env:
-
+Create `backend/.env`:
 ```env
 DB_HOST=localhost
 DB_PORT=5432
@@ -182,19 +187,13 @@ JWT_SECRET=outlander-gear-dev-secret-change-me
 JWT_EXPIRES_IN=7d
 ```
 
-Run backend:
 ```bash
 npm run dev
 ```
 
-Test API quickly:
-```bash
-curl http://localhost:3000/api/products | head -c 200
-```
-
 ---
 
-### Step 3: Run frontend
+### Step 3 — Frontend
 
 ```bash
 cd frontend
@@ -202,140 +201,25 @@ npm install
 npx ng serve
 ```
 
-Open:
-- http://localhost:4200
+Open: http://localhost:4200
 
 ---
 
-## Test Accounts
+### Test Accounts
 
-| Role   | Email                    | Password   |
-|--------|--------------------------|------------|
-| Admin  | admin@outlander-gear.co  | Admin1234! |
-| Client | marie.dupont@email.com   | Test1234!  |
-
----
-
-## Repository Structure
-
-```text
-website/
-├── README.md
-├── docs/
-│   └── azure-architecture-diagram.png
-├── database/
-│   ├── schema.sql
-│   └── seed.sql
-├── rag-data/
-├── backend/
-│   ├── package.json
-│   ├── tsconfig.json
-│   ├── .env
-│   └── src/
-│       ├── server.ts
-│       ├── config/
-│       │   ├── database.ts
-│       │   └── env.ts
-│       ├── middleware/
-│       │   ├── asyncHandler.ts
-│       │   ├── auth.ts
-│       │   └── errorHandler.ts
-│       ├── routes/
-│       │   ├── auth.ts
-│       │   ├── cart.ts
-│       │   ├── categories.ts
-│       │   ├── orders.ts
-│       │   ├── products.ts
-│       │   └── reviews.ts
-│       ├── types/
-│       │   └── index.ts
-│       └── validators/
-│           └── index.ts
-└── frontend/
-    ├── package.json
-    ├── angular.json
-    ├── tailwind.config.js
-    └── src/
-        ├── assets/
-        │   └── i18n/
-        │       ├── en.json
-        │       └── fr.json
-        ├── environments/
-        ├── app/
-        │   ├── app.component.ts
-        │   ├── app.component.html
-        │   ├── app.routes.ts
-        │   ├── app.config.ts
-        │   ├── transloco-loader.ts
-        │   ├── components/
-        │   │   ├── product-list/
-        │   │   ├── product-detail/
-        │   │   ├── cart/
-        │   │   ├── login/
-        │   │   └── chat-copilot/
-        │   ├── services/
-        │   │   ├── auth.service.ts
-        │   │   ├── cart.service.ts
-        │   │   ├── product.service.ts
-        │   │   └── theme.service.ts
-        │   ├── models/
-        │   ├── guards/
-        │   ├── interceptors/
-        │   └── shared/
-        │       └── utils/
-        ├── styles.css
-        ├── index.html
-        └── main.ts
-```
+| Role | Email | Password |
+|------|-------|----------|
+| Admin | admin@outlander-gear.co | Admin1234! |
+| Client | marie.dupont@email.com | Test1234! |
 
 ---
 
-## API Endpoints
+### Troubleshooting
 
-| Method | Route                    | Auth | Description                         |
-|--------|--------------------------|------|-------------------------------------|
-| GET    | /api/products            | No   | Product list with filters and paging |
-| GET    | /api/products/featured   | No   | Featured products                   |
-| GET    | /api/products/:slug      | No   | Product details                     |
-| GET    | /api/categories          | No   | Categories list                     |
-| GET    | /api/categories/:slug    | No   | Category details                    |
-| POST   | /api/auth/register       | No   | Register user                       |
-| POST   | /api/auth/login          | No   | Login and receive JWT               |
-| GET    | /api/auth/me             | Yes  | Current user profile                |
-| GET    | /api/cart                | Yes  | Read cart                           |
-| POST   | /api/cart                | Yes  | Add cart item                       |
-| PUT    | /api/cart/:productId     | Yes  | Update cart item quantity           |
-| DELETE | /api/cart/:productId     | Yes  | Remove cart item                    |
-| DELETE | /api/cart                | Yes  | Clear cart                          |
-| GET    | /api/orders              | Yes  | List user orders                    |
-| POST   | /api/orders              | Yes  | Create order from cart              |
-| GET    | /api/orders/:id          | Yes  | Order details                       |
-| GET    | /api/reviews/product/:id | No   | Product reviews                     |
-| POST   | /api/reviews/product/:id | Yes  | Create review                       |
-
----
-
-## Troubleshooting
-
-If psql command is not found:
-- PostgreSQL is not in your PATH. Re-check the PostgreSQL prerequisite section.
-
-If FATAL role does not exist:
-```bash
-psql postgres -c "CREATE ROLE $(whoami) WITH LOGIN SUPERUSER;"
-```
-
-If backend starts with ECONNREFUSED:
-- PostgreSQL is likely not running.
-```bash
-brew services start postgresql@16
-```
-
-If frontend does not load products:
-- Check backend availability with curl http://localhost:3000/api/products
-- Check CORS allows localhost:4200 (enabled by default in this project)
-
-If frontend shows Error: Module not found:
-```bash
-cd frontend && npm install
-```
+| Symptom | Fix |
+|---|---|
+| `psql` command not found | Re-check the PostgreSQL PATH export in `.zshrc` |
+| `FATAL: role does not exist` | `psql postgres -c "CREATE ROLE $(whoami) WITH LOGIN SUPERUSER;"` |
+| Backend starts with `ECONNREFUSED` | `brew services start postgresql@16` |
+| Frontend shows no products | `curl http://localhost:3000/api/products` to verify backend is up |
+| `Module not found` on frontend | `cd frontend && npm install` |
